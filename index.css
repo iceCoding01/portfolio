@@ -10,10 +10,10 @@
 }
 
 :root{
-    --bg-color: #1f242d;
-    --secondary-bg: #323942;
+    --bg-color: rgb(45, 45, 45);
+    --secondary-bg: rgb(0, 31, 63);
     --text-color: #fff;
-    --main-color: rgb(51, 198, 224);
+    --main-color: rgb(0, 123, 255);
 
 
  
@@ -84,8 +84,10 @@ section{
 .home .home-img img{
     width: 35vw;
     animation: floatImage 4s ease-in-out infinite;
-    border-radius: 1%;
+    border-radius: 2%;
+  
 
+    
 }
 @keyframes floatImage {
     0%{
@@ -164,9 +166,9 @@ section{
     background: var(--secondary-bg);
 }
 .about-img img{
-    width: 35vw;
+    width: 30vw;
     border-radius: 20px;
-    height: 395px;
+    height: 495px;
 }
 .heading{
     text-align: center;
@@ -415,6 +417,11 @@ section{
 }
 
 @media (max-width: 991px){
+    .home-img img{
+        /* width: 90vw; */
+        width: 80vw;
+           
+    }
     .header{
         padding: 2rem 3%;
     }
@@ -430,6 +437,15 @@ section{
     section{
         padding:  10rem 3% 2rem;
     }
+
+
+    .home .home-img img{
+    width: 35vw;
+    animation: floatImage 4s ease-in-out infinite;
+    border-radius: 2%;
+
+
+
     
     .footer{
         padding:  2rem 3%;
@@ -471,15 +487,16 @@ section{
         font-size: 5rem;
     }
     .home-img img{
-        width: 70vw;
+        width: 80vw;
         margin-top: 4rem;
     }
+    
 
     .about{
         flex-direction: column-reverse;
     }
     .about img{
-        width: 70vw;
+        width: 90vw;
         margin-top: 4rem;
     }
     .services h2{
@@ -497,6 +514,10 @@ section{
         .portfolio-container{
             grid-template-columns: 1fr;
         }
+        .home-img img{
+            width: 90vw;
+        }
+        
     }
 
     @media (max-width: 450px){
@@ -505,6 +526,9 @@ section{
         }
         .contact form .input-box input{
             width: 100%;
+        }
+        .home-img img{
+            width: 90vw;
         }
     }
 
@@ -599,7 +623,16 @@ section{
       .sql {width: 25%; background-color: #f56726;}
       .bst {width: 50%; background-color: #6c0575;}
 
+    }
 
+    @media (max-width: 768px) {
+        .home .home-img img{
+            padding-top: 10px;
+            width: 90%;
+            max-width: 300px;
+            height: auto;
+        }
+    }
 
 
      
