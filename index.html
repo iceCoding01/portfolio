@@ -18,17 +18,62 @@
 </head>
 <body>
     <header class="header">
-        <a class="logo" href="#">Henry Mfodwo</a>
-        <i class='bx bx-menu' id="menu-icon"></i>
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a> 
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#myskills">Skills</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <div class="header-container">
+            <div class="logo-container">
+                <a class="logo" href="#">
+                    <div class="logo-icon">
+                        <i class='bx bx-code-alt'></i>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-name">Henry Mfodwo</span>
+                        <span class="logo-tagline">Software Engineer</span>
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="navbar">
+                <a href="#home" class="nav-link active">
+                    <i class='bx bx-home-alt'></i>
+                    <span>Home</span>
+                </a>
+                <a href="#about" class="nav-link">
+                    <i class='bx bx-user'></i>
+                    <span>About</span>
+                </a>
+                <a href="#services" class="nav-link">
+                    <i class='bx bx-cog'></i>
+                    <span>Services</span>
+                </a>
+                <a href="#portfolio" class="nav-link">
+                    <i class='bx bx-briefcase'></i>
+                    <span>Portfolio</span>
+                </a>
+                <a href="#testimonials" class="nav-link">
+                    <i class='bx bx-star'></i>
+                    <span>Testimonials</span>
+                </a>
+                <a href="#myskills" class="nav-link">
+                    <i class='bx bx-brain'></i>
+                    <span>Skills</span>
+                </a>
+                <a href="#contact" class="nav-link">
+                    <i class='bx bx-envelope'></i>
+                    <span>Contact</span>
+                </a>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="#contact" class="cta-button">
+                    <i class='bx bx-message-rounded'></i>
+                    <span>Get In Touch</span>
+                </a>
+                <button class="menu-toggle" id="menu-icon" aria-label="Toggle navigation menu">
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                </button>
+            </div>
+        </div>
     </header>
 
     <!-- Premium Hero Section -->
