@@ -208,72 +208,131 @@ section {
 }
 
 /* 4. Header and Navbar improvements */
-/* --- Modern Glassy Header --- */
+/* --- Premium Navbar Design --- */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 2rem 5vw;
-  background: rgba(30, 34, 44, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 1.5rem 5vw;
+  background: rgba(10, 23, 78, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 100;
-  transition: background 0.3s, box-shadow 0.3s;
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .header.sticky {
-  background: rgba(30, 34, 44, 0.92);
-  box-shadow: 0 4px 24px rgba(0,123,255,0.10);
-  border-bottom: 1.5px solid rgba(0,123,255,0.10);
+  background: rgba(10, 23, 78, 0.98);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1rem 5vw;
 }
+
 .logo {
-  font-size: 2.7rem;
-  color: var(--main-color);
-  font-family: 'Shrikhand', cursive, sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-shadow: 0 2px 8px rgba(0,123,255,0.08);
-  text-decoration: none;
-}
-.navbar a {
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: #fff;
-  margin-left: 3rem;
+  font-weight: 700;
   text-decoration: none;
-  transition: color 0.3s, background 0.3s, box-shadow 0.3s;
-  font-weight: 500;
-  padding: 0.6rem 1.2rem;
-  border-radius: 1.2rem;
+  letter-spacing: -0.02em;
   position: relative;
+  transition: all 0.3s ease;
 }
-.navbar a.active, .navbar a:hover {
-  color: var(--main-color);
-  background: rgba(0,123,255,0.08);
-  box-shadow: 0 2px 8px rgba(0,123,255,0.10);
+
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.7));
+  transition: width 0.3s ease;
 }
+
+.logo:hover::after {
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar a {
+  position: relative;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 0.8rem 1.6rem;
+  border-radius: 1.2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.01em;
+}
+
+.navbar a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1.2rem;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar a:hover::before,
+.navbar a.active::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: #fff;
+  transform: translateY(-1px);
+}
+
 .navbar a.active::after {
   content: '';
-  display: block;
-  height: 3px;
-  width: 60%;
-  background: linear-gradient(90deg, var(--main-color) 60%, #0056b3 100%);
-  border-radius: 2px;
-  margin: 0.3rem auto 0 auto;
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.7));
+  border-radius: 1px;
 }
+
 #menu-icon {
-  font-size: 3.2rem;
-  color: var(--main-color);
   display: none;
-  cursor: pointer;
-  transition: transform 0.3s, color 0.3s;
-}
-#menu-icon.bx-x {
-  transform: rotate(90deg) scale(1.2);
+  font-size: 2.8rem;
   color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#menu-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+#menu-icon.bx-x {
+  transform: rotate(90deg) scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
 }
 @media (max-width: 768px) {
   #menu-icon {
