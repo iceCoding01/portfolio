@@ -264,6 +264,18 @@ document.querySelector('.back-to-top').addEventListener('click', (e) => {
     });
 });
 
+// Hero scroll indicator functionality
+document.querySelector('.hero-scroll-indicator').addEventListener('click', (e) => {
+    e.preventDefault();
+    const aboutSection = document.querySelector('#about');
+    if (aboutSection) {
+        aboutSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+});
+
 // Intersection Observer for animations
 const observerOptions = {
     threshold: 0.1,
