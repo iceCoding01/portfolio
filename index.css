@@ -13,9 +13,9 @@
 :root {
   --main-color: #0a174e;
   --main-color-dark: #133b7a;
-  --bg-color: #0a174e;
-  --secondary-bg: #133b7a;
-  --text-color: #fff;
+  --bg-color: #ffffff;
+  --secondary-bg: #f8fafc;
+  --text-color: #0a174e;
   --card-bg: #fff;
   --input-bg: #fff;
   --shadow: 0 2px 16px rgba(10,23,78,0.08);
@@ -24,7 +24,7 @@
 }
 body {
   background: var(--bg-color);
-  color: var(--main-color);
+  color: var(--text-color);
   font-family: 'Poppins', sans-serif;
   transition: var(--transition);
 }
@@ -167,9 +167,9 @@ section {
   }
 }
 .skill-card {
-  background: rgba(0,31,63,0.18);
+  background: var(--card-bg);
   border-radius: 1.2rem;
-  box-shadow: 0 2px 8px rgba(0,123,255,0.07);
+  box-shadow: 0 2px 8px rgba(10,23,78,0.07);
   padding: 2.5rem 2rem 2rem 2rem;
   display: flex;
   flex-direction: column;
@@ -186,7 +186,7 @@ section {
 .skill-card span {
   font-size: 1.7rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-color);
   margin-bottom: 1.2rem;
 }
 .skill-card .skills {
@@ -203,7 +203,7 @@ section {
   z-index: 2;
 }
 .skill-card:hover {
-  box-shadow: 0 8px 32px rgba(0,123,255,0.15), 0 2px 8px rgba(0,0,0,0.10);
+  box-shadow: 0 8px 32px rgba(10,23,78,0.15), 0 2px 8px rgba(0,0,0,0.10);
   transform: translateY(-4px) scale(1.03);
 }
 
@@ -572,7 +572,7 @@ section {
   gap: 4rem;
   background: var(--secondary-bg);
   border-radius: 1.5rem;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 16px rgba(10,23,78,0.08);
   padding: 5rem 3vw;
   margin: 3rem 0;
 }
@@ -600,27 +600,27 @@ section {
   border: 6px solid var(--main-color);
 }
 .about-content {
-  background: rgba(30, 34, 44, 0.75);
+  background: var(--card-bg);
   border-radius: 1.2rem;
-  box-shadow: 0 2px 8px rgba(0,123,255,0.07);
+  box-shadow: 0 2px 8px rgba(10,23,78,0.07);
   padding: 2.5rem 2rem 2rem 2rem;
   max-width: 500px;
   margin: 0 auto;
 }
 .about-content h2 {
   color: var(--main-color);
-  font-family: 'Shrikhand', cursive, sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 2.8rem;
   margin-bottom: 1.2rem;
 }
 .about-content h3 {
   font-size: 2rem;
-  color: #fff;
+  color: var(--main-color);
   margin-bottom: 1.2rem;
 }
 .about-content p {
   font-size: 1.5rem;
-  color: #e0e0e0;
+  color: var(--text-color);
   margin-bottom: 2.2rem;
 }
 .about-content .btn {
@@ -905,16 +905,16 @@ section {
 
 /* --- Modern Portfolio Section --- */
 .portfolio {
-  background: var(--secondary-bg);
+    background: var(--secondary-bg);
   border-radius: 1.5rem;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 16px rgba(10,23,78,0.08);
   padding: 5rem 3vw;
   margin: 3rem 0;
 }
 .portfolio h2 {
   margin-bottom: 3.5rem;
   color: var(--main-color);
-  font-family: 'Shrikhand', cursive, sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 2.8rem;
 }
 .portfolio-container {
@@ -1024,24 +1024,24 @@ section {
 .contact {
   background: var(--secondary-bg);
   border-radius: 1.5rem;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 16px rgba(10,23,78,0.08);
   padding: 5rem 3vw;
   margin: 3rem 0;
 }
 .contact h2 {
   margin-bottom: 3.5rem;
   color: var(--main-color);
-  font-family: 'Shrikhand', cursive, sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 2.8rem;
 }
 .contact form {
   max-width: 500px;
   margin: 0 auto 3rem auto;
-  background: rgba(30, 34, 44, 0.75);
+  background: var(--card-bg);
   border-radius: 1.2rem;
-  box-shadow: 0 2px 8px rgba(0,123,255,0.07);
+  box-shadow: 0 2px 8px rgba(10,23,78,0.07);
   padding: 2.5rem 2rem 2rem 2rem;
-  text-align: center;
+    text-align: center;
 }
 .contact form .input-box {
   display: flex;
@@ -1049,16 +1049,16 @@ section {
   gap: 1.2rem;
   margin-bottom: 1.2rem;
 }
-.contact form .input-box input,
+.contact form .input-box input, 
 .contact form textarea {
-  width: 100%;
+    width: 100%;
   padding: 1.3rem 1.8rem;
   font-size: 1.5rem;
-  color: #fff;
-  background: #1a2330;
+  color: var(--text-color);
+  background: var(--input-bg);
   border: 1.5px solid var(--main-color);
   border-radius: 2rem;
-  box-shadow: 0 1px 4px rgba(0,123,255,0.07);
+  box-shadow: 0 1px 4px rgba(10,23,78,0.07);
   margin-bottom: 0.5rem;
   transition: border 0.3s, box-shadow 0.3s;
   outline: none;
@@ -1066,8 +1066,8 @@ section {
 }
 .contact form .input-box input:focus,
 .contact form textarea:focus {
-  border: 1.5px solid #0056b3;
-  box-shadow: 0 2px 8px rgba(0,123,255,0.13);
+  border: 1.5px solid var(--main-color-dark);
+  box-shadow: 0 2px 8px rgba(10,23,78,0.13);
 }
 .contact form .btn {
   margin-top: 1.5rem;
@@ -1103,7 +1103,8 @@ section {
     align-items: center;
     flex-wrap: wrap;
     padding:  2rem 9%;
-    background: var(--secondary-bg);
+    background: var(--main-color);
+    color: #fff;
 }
 
 .footer-text p{
@@ -1278,7 +1279,7 @@ section {
 
 
 .myskills{
-    background: var(--secondary-bg);
+    background: var(--bg-color);
 }
 
     .decontainer {
@@ -1509,7 +1510,7 @@ section {
 
 .feature span {
   font-size: 1.6rem;
-  color: #fff;
+  color: var(--text-color);
   font-weight: 500;
 }
 
@@ -1579,7 +1580,7 @@ section {
 .testimonials {
   background: var(--secondary-bg);
   border-radius: 1.5rem;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 16px rgba(10,23,78,0.08);
   padding: 5rem 3vw;
   margin: 3rem 0;
 }
