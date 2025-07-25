@@ -9,243 +9,99 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* --- Advanced Theming: 5 Beautiful Themes --- */
+/* --- Deep Blue & White Minimal UI --- */
 :root {
-  --main-color: #3a8bfd;
-  --main-color-dark: #1a5fd7;
-  --accent-color: #ffb300;
-  --bg-color: #181d26;
-  --secondary-bg: #232b3b;
-  --text-color: #f5f7fa;
-  --card-bg: #232b3b;
-  --input-bg: #1a2330;
-  --shadow: 0 2px 16px rgba(58,139,253,0.08);
+  --main-color: #0a174e;
+  --main-color-dark: #133b7a;
+  --bg-color: #0a174e;
+  --secondary-bg: #133b7a;
+  --text-color: #fff;
+  --card-bg: #fff;
+  --input-bg: #fff;
+  --shadow: 0 2px 16px rgba(10,23,78,0.08);
   --border-radius: 1.5rem;
   --transition: background 0.3s, color 0.3s, box-shadow 0.3s, border 0.3s;
 }
-.theme-ocean {
-  --main-color: #3a8bfd;
-  --main-color-dark: #1a5fd7;
-  --accent-color: #00eaff;
-  --bg-color: #0e2233;
-  --secondary-bg: #18344a;
-  --text-color: #eaf6fb;
-  --card-bg: #18344a;
-  --input-bg: #1a2330;
-}
-.theme-sunset {
-  --main-color: #ff6e40;
-  --main-color-dark: #d84315;
-  --accent-color: #ffd740;
-  --bg-color: #2d1a1a;
-  --secondary-bg: #4e2727;
-  --text-color: #fff3e0;
-  --card-bg: #4e2727;
-  --input-bg: #3e1f1f;
-}
-.theme-emerald {
-  --main-color: #00c853;
-  --main-color-dark: #009624;
-  --accent-color: #ffd740;
-  --bg-color: #10291a;
-  --secondary-bg: #1b3a24;
-  --text-color: #eafff3;
-  --card-bg: #1b3a24;
-  --input-bg: #18341f;
-}
-.theme-classic-dark {
-  --main-color: #7c4dff;
-  --main-color-dark: #651fff;
-  --accent-color: #ffb300;
-  --bg-color: #181828;
-  --secondary-bg: #23233b;
-  --text-color: #f5f7fa;
-  --card-bg: #23233b;
-  --input-bg: #1a1a30;
-}
-.theme-minimal-light {
-  --main-color: #3a8bfd;
-  --main-color-dark: #1a5fd7;
-  --accent-color: #ffb300;
-  --bg-color: #f5f7fa;
-  --secondary-bg: #e9eef6;
-  --text-color: #232b3b;
-  --card-bg: #fff;
-  --input-bg: #e9eef6;
-}
-body, section, .services, .portfolio, .myskills, .contact, .footer, .card, .services-box, .portfolio-box, .skill-card, .contact form, .about-content, input, textarea, .btn, .footer-iconTop a, .social-media a, .portfolio-layer a, .services-box .btn {
-  transition: var(--transition) !important;
-}
-/* Theme switcher UI */
-.theme-switcher {
-  position: fixed;
-  top: 2rem;
-  left: 2rem;
-  z-index: 999;
-  display: flex;
-  gap: 0.7rem;
-  align-items: center;
-}
-.theme-swatch {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border 0.3s, transform 0.2s;
-  outline: none;
-}
-.theme-swatch.selected, .theme-swatch:focus {
-  border: 2.5px solid var(--main-color);
-  transform: scale(1.12);
-}
-.theme-swatch[data-theme="ocean"] { background: linear-gradient(135deg, #3a8bfd 60%, #00eaff 100%); }
-.theme-swatch[data-theme="sunset"] { background: linear-gradient(135deg, #ff6e40 60%, #ffd740 100%); }
-.theme-swatch[data-theme="emerald"] { background: linear-gradient(135deg, #00c853 60%, #ffd740 100%); }
-.theme-swatch[data-theme="classic-dark"] { background: linear-gradient(135deg, #7c4dff 60%, #ffb300 100%); }
-.theme-swatch[data-theme="minimal-light"] { background: linear-gradient(135deg, #3a8bfd 60%, #fff 100%); border: 2px solid #bbb; }
-/* Custom accent color picker */
-.theme-custom-picker {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  cursor: pointer;
-  margin-left: 0.7rem;
-  background: linear-gradient(135deg, var(--main-color) 60%, var(--accent-color) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border 0.3s, transform 0.2s;
-}
-.theme-custom-picker input[type="color"] {
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  border: none;
-  background: none;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
 body {
   background: var(--bg-color);
-  color: var(--text-color);
+  color: var(--main-color);
+  font-family: 'Poppins', sans-serif;
   transition: var(--transition);
 }
 section, .services, .portfolio, .myskills, .contact, .footer {
-  background: var(--secondary-bg);
+  background: var(--bg-color);
   color: var(--text-color);
   transition: var(--transition);
 }
 .card, .services-box, .portfolio-box, .skill-card, .contact form, .about-content {
   background: var(--card-bg);
-  color: var(--text-color);
+  color: var(--main-color);
   box-shadow: var(--shadow);
   border-radius: var(--border-radius);
   transition: var(--transition);
 }
 input, textarea {
   background: var(--input-bg);
-  color: var(--text-color);
+  color: var(--main-color);
+  border: 1.5px solid var(--main-color-dark);
   transition: var(--transition);
 }
 .btn, .footer-iconTop a, .social-media a, .portfolio-layer a, .services-box .btn {
-  background: linear-gradient(90deg, var(--main-color) 60%, var(--main-color-dark) 100%);
-  color: #fff;
-  border: none;
-  transition: var(--transition);
-}
-.btn:hover, .footer-iconTop a:hover, .social-media a:hover, .portfolio-layer a:hover, .services-box .btn:hover {
-  background: linear-gradient(90deg, var(--main-color-dark) 0%, var(--main-color) 100%);
-  color: var(--accent-color);
-}
-.heading, .logo {
-  color: var(--main-color);
-}
-
-/* Light mode overrides */
-body.light-mode {
-  --main-color: #3a8bfd;
-  --main-color-dark: #1a5fd7;
-  --accent-color: #ffb300;
-  --bg-color: #f5f7fa;
-  --secondary-bg: #e9eef6;
-  --text-color: #232b3b;
-  --card-bg: #fff;
-  --input-bg: #e9eef6;
-  --shadow: 0 2px 16px rgba(58,139,253,0.08);
-}
-body.light-mode section,
-body.light-mode .services,
-body.light-mode .portfolio,
-body.light-mode .myskills,
-body.light-mode .contact,
-body.light-mode .footer {
-  background: var(--secondary-bg);
-  color: var(--text-color);
-}
-body.light-mode .card,
-body.light-mode .services-box,
-body.light-mode .portfolio-box,
-body.light-mode .skill-card,
-body.light-mode .contact form,
-body.light-mode .about-content {
-  background: var(--card-bg);
-  color: var(--text-color);
-  box-shadow: var(--shadow);
-}
-body.light-mode .btn,
-body.light-mode .footer-iconTop a,
-body.light-mode .social-media a,
-body.light-mode .portfolio-layer a,
-body.light-mode .services-box .btn {
-  color: #fff;
-}
-body.light-mode .btn:hover,
-body.light-mode .footer-iconTop a:hover,
-body.light-mode .social-media a:hover,
-body.light-mode .portfolio-layer a:hover,
-body.light-mode .services-box .btn:hover {
-  color: var(--accent-color);
-}
-body.light-mode .heading,
-body.light-mode .logo {
-  color: var(--main-color);
-}
-
-/* Mode toggle button */
-.mode-toggle {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  z-index: 999;
   background: var(--main-color);
   color: #fff;
   border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,123,255,0.10);
-  cursor: pointer;
-  font-size: 2rem;
+  border-radius: 2rem;
+  font-weight: 600;
   transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(10,23,78,0.10);
 }
-.mode-toggle:hover {
+.btn:hover, .footer-iconTop a:hover, .social-media a:hover, .portfolio-layer a:hover, .services-box .btn:hover {
   background: var(--main-color-dark);
-  color: var(--accent-color);
+  color: #fff;
 }
-
-/* --- Responsive Enhancements & Cleanup --- */
+.heading, .logo {
+  color: var(--main-color);
+  font-family: 'Poppins', sans-serif;
+}
+.navbar a {
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s, background 0.3s;
+  border-radius: 1.2rem;
+  padding: 0.6rem 1.2rem;
+}
+.navbar a.active, .navbar a:hover {
+  background: #fff;
+  color: var(--main-color);
+}
+.header {
+  background: var(--main-color);
+  box-shadow: 0 2px 16px rgba(10,23,78,0.08);
+}
+.footer {
+  background: var(--main-color-dark);
+  color: #fff;
+}
+.footer-text p {
+  color: #fff;
+}
+/* Remove all theme, accent, and color picker code */
+.theme-switcher, .mode-toggle, .theme-swatch, .theme-custom-picker { display: none !important; }
+/* Modern card spacing and whitespace */
+.card, .services-box, .portfolio-box, .skill-card, .contact form, .about-content {
+  margin: 2rem 0;
+  padding: 2.5rem 2rem 2rem 2rem;
+}
+section {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+}
+@media (max-width: 700px) {
+  section {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+}
 
 /* 1. General improvements for all devices */
 html {
