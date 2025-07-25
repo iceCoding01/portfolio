@@ -58,3 +58,83 @@ const typed = new Typed('.multiple-text', {
     backDelay: 1000,
     loop: true
 })
+
+// Light/Dark mode toggle
+const modeToggle = document.getElementById('modeToggle');
+const body = document.body;
+
+function setMode(mode) {
+  if (mode === 'light') {
+    body.classList.add('light-mode');
+    modeToggle.textContent = '☀️';
+  } else {
+    body.classList.remove('light-mode');
+    modeToggle.textContent = '🌙';
+  }
+  localStorage.setItem('colorMode', mode);
+}
+
+modeToggle.addEventListener('click', () => {
+  const isLight = body.classList.contains('light-mode');
+  setMode(isLight ? 'dark' : 'light');
+});
+
+// On load, set mode from localStorage or system preference
+(function() {
+  const saved = localStorage.getItem('colorMode');
+  if (saved) {
+    setMode(saved);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+    setMode('light');
+  } else {
+    setMode('dark');
+  }
+})();
+
+// Advanced theme switcher
+const themeSwitcher = document.getElementById('themeSwitcher');
+const themeSwatches = document.querySelectorAll('.theme-swatch');
+const customAccent = document.getElementById('customAccent');
+
+function setTheme(theme) {
+  // Remove all theme-* classes
+  document.body.classList.remove(
+    'theme-ocean', 'theme-sunset', 'theme-emerald', 'theme-classic-dark', 'theme-minimal-light'
+  );
+  if (theme) {
+    document.body.classList.add('theme-' + theme);
+    localStorage.setItem('theme', theme);
+  } else {
+    localStorage.removeItem('theme');
+  }
+  // Highlight selected swatch
+  themeSwatches.forEach(btn => {
+    btn.classList.toggle('selected', btn.dataset.theme === theme);
+  });
+}
+
+themeSwatches.forEach(btn => {
+  btn.addEventListener('click', () => {
+    setTheme(btn.dataset.theme);
+  });
+});
+
+// Custom accent color
+customAccent.addEventListener('input', (e) => {
+  const color = e.target.value;
+  document.documentElement.style.setProperty('--accent-color', color);
+  document.documentElement.style.setProperty('--main-color', color);
+  localStorage.setItem('customAccent', color);
+});
+
+// On load, restore theme and custom accent
+(function() {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) setTheme(savedTheme);
+  const savedAccent = localStorage.getItem('customAccent');
+  if (savedAccent) {
+    document.documentElement.style.setProperty('--accent-color', savedAccent);
+    document.documentElement.style.setProperty('--main-color', savedAccent);
+    customAccent.value = savedAccent;
+  }
+})();
