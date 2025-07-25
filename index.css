@@ -334,37 +334,123 @@ section {
   transform: rotate(90deg) scale(1.1);
   background: rgba(255, 255, 255, 0.2);
 }
+/* Mobile Menu */
 @media (max-width: 768px) {
   #menu-icon {
     display: block;
   }
+
   .navbar {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100vw;
-    background: rgba(30, 34, 44, 0.98);
-    border-top: 1.5px solid rgba(0,123,255,0.10);
-    box-shadow: 0 4px 24px rgba(0,123,255,0.10);
-    display: none;
-    z-index: 200;
+    width: 100%;
+    background: rgba(10, 23, 78, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 2rem 0;
-    border-radius: 0 0 1.5rem 1.5rem;
+    flex-direction: column;
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
   .navbar.active {
-    display: block;
-    animation: slideDown 0.4s cubic-bezier(.77,0,.18,1) forwards;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
-  @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+
   .navbar a {
-    display: block;
-    font-size: 2rem;
-    margin: 1.5rem 0;
+    width: 100%;
     text-align: center;
+    padding: 1.2rem 2rem;
+    margin: 0.5rem 0;
     border-radius: 1.2rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .navbar a::before {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .navbar a:hover,
+  .navbar a.active {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(10px);
+  }
+
+  .navbar a.active::after {
+    display: none;
+  }
+
+  .navbar a.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.7));
+    border-radius: 0 2px 2px 0;
+  }
+}
+
+/* Tablet Adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar a {
+    font-size: 1.4rem;
+    padding: 0.7rem 1.4rem;
+  }
+  
+  .logo {
+    font-size: 2.2rem;
+  }
+}
+
+/* Large Screen Enhancements */
+@media (min-width: 1025px) {
+  .navbar a {
+    font-size: 1.6rem;
+    padding: 1rem 1.8rem;
+  }
+  
+  .logo {
+    font-size: 2.6rem;
+  }
+}
+
+/* Smooth scroll behavior for navbar links */
+.navbar a {
+  scroll-behavior: smooth;
+}
+
+/* Add subtle animation for navbar items on page load */
+.navbar a {
+  animation: fadeInDown 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.navbar a:nth-child(1) { animation-delay: 0.1s; }
+.navbar a:nth-child(2) { animation-delay: 0.2s; }
+.navbar a:nth-child(3) { animation-delay: 0.3s; }
+.navbar a:nth-child(4) { animation-delay: 0.4s; }
+.navbar a:nth-child(5) { animation-delay: 0.5s; }
+.navbar a:nth-child(6) { animation-delay: 0.6s; }
+.navbar a:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
