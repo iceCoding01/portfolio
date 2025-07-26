@@ -3,6 +3,103 @@ let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 let header = document.querySelector('.header');
 
+// Premium Mobile Menu Elements
+let mobileMenuOverlay = document.querySelector('#mobile-menu-overlay');
+let mobileMenu = document.querySelector('#mobile-menu');
+let mobileMenuClose = document.querySelector('#mobile-menu-close');
+let mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initializeNavbar();
+    initializeMobileMenu();
+});
+
+// Initialize mobile menu functionality
+function initializeMobileMenu() {
+    // Ensure mobile menu elements exist
+    if (!mobileMenuOverlay || !mobileMenu || !menuIcon) {
+        console.warn('Mobile menu elements not found, retrying...');
+        setTimeout(initializeMobileMenu, 100);
+        return;
+    }
+
+    // Mobile menu toggle functionality
+    menuIcon.addEventListener('click', openMobileMenu);
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+    mobileMenuOverlay.addEventListener('click', (e) => {
+        if (e.target === mobileMenuOverlay) {
+            closeMobileMenu();
+        }
+    });
+
+    // Mobile navigation links
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetSection = link.getAttribute('href');
+            
+            // Update active state
+            mobileNavLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            
+            // Close mobile menu
+            closeMobileMenu();
+            
+            // Smooth scroll to section
+            setTimeout(() => {
+                scrollToSection(targetSection);
+            }, 300);
+        });
+    });
+
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+}
+
+// Open mobile menu
+function openMobileMenu() {
+    console.log('Opening mobile menu');
+    mobileMenuOverlay.classList.add('active');
+    menuIcon.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Reset animations
+    mobileNavLinks.forEach((link, index) => {
+        link.style.animation = 'none';
+        setTimeout(() => {
+            link.style.animation = `mobileNavSlideIn 0.6s ease-out forwards`;
+            link.style.animationDelay = `${0.1 + (index * 0.05)}s`;
+        }, 50);
+    });
+}
+
+// Close mobile menu
+function closeMobileMenu() {
+    console.log('Closing mobile menu');
+    mobileMenuOverlay.classList.remove('active');
+    menuIcon.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Smooth scroll to section
+function scrollToSection(targetSelector) {
+    const target = document.querySelector(targetSelector);
+    if (target) {
+        const headerHeight = header.offsetHeight;
+        const targetPosition = target.offsetTop - headerHeight - 20;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+}
+
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     initializeNavbar();
@@ -71,71 +168,29 @@ function debounce(func, wait) {
     };
 }
 
-// Enhanced menu toggle with smooth animations
-if (menuIcon && navbar) {
-    menuIcon.onclick = () => {
-        console.log('Menu icon clicked, current screen width:', window.innerWidth);
-        console.log('Navbar before toggle:', {
-            classList: navbar.classList.toString(),
-            style: navbar.style.cssText,
-            display: getComputedStyle(navbar).display,
-            visibility: getComputedStyle(navbar).visibility,
-            opacity: getComputedStyle(navbar).opacity
-        });
-        
-        menuIcon.classList.toggle('active');
-        navbar.classList.toggle('active');
-        
-        console.log('Navbar after toggle:', {
-            classList: navbar.classList.toString(),
-            hasActive: navbar.classList.contains('active')
-        });
-        
-        // Add backdrop blur effect when mobile menu is open
-        if (navbar.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-            header.style.borderBottom = '2px solid rgba(255, 255, 255, 0.3)';
-            
-            // Force show navbar on mobile when active with maximum z-index
-            if (window.innerWidth < 1025) {
-                navbar.style.opacity = '1';
-                navbar.style.visibility = 'visible';
-                navbar.style.transform = 'translateY(0) scale(1)';
-                navbar.style.display = 'flex';
-                navbar.style.zIndex = '99999';
-                navbar.style.position = 'absolute';
-                console.log('Force showing mobile navbar with z-index 99999');
-            }
-        } else {
-            document.body.style.overflow = '';
-            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
-            
-            // Reset z-index when closed
-            if (window.innerWidth < 1025) {
-                navbar.style.zIndex = '';
-            }
-        }
-    };
-}
+// Enhanced menu toggle with smooth animations (Legacy - now using premium mobile menu)
+// The new mobile menu functionality is handled in initializeMobileMenu()
+// This section is kept for desktop navbar functionality only
 
 // Enhanced smooth scrolling with offset for fixed header
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        // Skip if this is a mobile nav link (handled separately)
+        if (this.classList.contains('mobile-nav-link')) {
+            return;
+        }
+        
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const headerHeight = header.offsetHeight;
-            const targetPosition = target.offsetTop - headerHeight - 20;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-            
-            // Close mobile menu if open
-            menuIcon.classList.remove('active');
-            navbar.classList.remove('active');
-            document.body.style.overflow = '';
+        const targetSelector = this.getAttribute('href');
+        scrollToSection(targetSelector);
+        
+        // Update desktop navbar active state
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => link.classList.remove('active'));
+        
+        const activeDesktopLink = document.querySelector(`.nav-link[href="${targetSelector}"]`);
+        if (activeDesktopLink) {
+            activeDesktopLink.classList.add('active');
         }
     });
 });
@@ -180,37 +235,37 @@ window.addEventListener('scroll', () => {
             let id = sec.getAttribute('id');
 
             if (top >= offset && top < offset + height) {
+                // Update desktop navbar
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                 });
-                const activeLink = document.querySelector(`.nav-link[href*="${id}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
+                const activeDesktopLink = document.querySelector(`.nav-link[href*="${id}"]`);
+                if (activeDesktopLink) {
+                    activeDesktopLink.classList.add('active');
+                }
+                
+                // Update mobile navbar
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                const activeMobileLink = document.querySelector(`.mobile-nav-link[href*="${id}"]`);
+                if (activeMobileLink) {
+                    activeMobileLink.classList.add('active');
                 }
             }
         });
 
         // Auto-close mobile menu on scroll
-        if (navbar.classList.contains('active')) {
-            menuIcon.classList.remove('active');
-            navbar.classList.remove('active');
-            document.body.style.overflow = '';
+        if (mobileMenuOverlay && mobileMenuOverlay.classList.contains('active')) {
+            closeMobileMenu();
         }
         
         lastScrollTop = scrollTop;
     }, 10);
 });
 
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!navbar.contains(e.target) && !menuIcon.contains(e.target)) {
-        if (navbar.classList.contains('active')) {
-            menuIcon.classList.remove('active');
-            navbar.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    }
-});
+// Close mobile menu when clicking outside (handled in initializeMobileMenu)
+// Desktop navbar doesn't need outside click handling
 
 // Enhanced navbar link hover effects
 navLinks.forEach(link => {
@@ -260,12 +315,25 @@ const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const id = entry.target.getAttribute('id');
+            
+            // Update desktop navbar
             navLinks.forEach(link => {
                 link.classList.remove('active');
             });
-            const activeLink = document.querySelector(`.nav-link[href*="${id}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
+            const activeDesktopLink = document.querySelector(`.nav-link[href*="${id}"]`);
+            if (activeDesktopLink) {
+                activeDesktopLink.classList.add('active');
+            }
+            
+            // Update mobile navbar
+            if (mobileNavLinks.length > 0) {
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                const activeMobileLink = document.querySelector(`.mobile-nav-link[href*="${id}"]`);
+                if (activeMobileLink) {
+                    activeMobileLink.classList.add('active');
+                }
             }
         }
     });
