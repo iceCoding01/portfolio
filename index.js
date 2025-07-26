@@ -125,31 +125,16 @@ function initializeNavbar() {
 function handleNavbarResponsive() {
     const screenWidth = window.innerWidth;
     
-    // Don't interfere if mobile menu is currently active
-    if (screenWidth < 1025 && navbar.classList.contains('active')) {
-        console.log('Skipping responsive handling - mobile menu is active');
-        return;
-    }
-    
-    // Reset any inline styles that might interfere
-    navbar.style.display = '';
-    
-    // Handle different screen sizes
     if (screenWidth >= 1025) {
         // Desktop: ensure navbar is visible and menu is closed
         navbar.classList.remove('active');
         menuIcon.classList.remove('active');
         document.body.style.overflow = '';
         
-        // Show/hide nav text based on screen size
-        const navLinks = document.querySelectorAll('.nav-link span');
-        if (screenWidth >= 1301) {
-            navLinks.forEach(span => span.style.display = 'inline');
-        } else if (screenWidth >= 1025 && screenWidth <= 1300) {
-            navLinks.forEach(span => span.style.display = 'none');
-        }
+        // Let CSS handle all responsive styling
+        // No inline styles needed - CSS breakpoints handle everything
     } else {
-        // Mobile/Tablet: ensure nav text is visible in mobile menu
+        // Mobile/Tablet: let mobile menu handle navigation
         const navLinks = document.querySelectorAll('.nav-link span');
         navLinks.forEach(span => span.style.display = 'inline');
     }
@@ -615,98 +600,21 @@ if ('IntersectionObserver' in window) {
 
 // Navbar display fix - run multiple times to ensure it works
 function forceNavbarDisplay() {
-    const navbar = document.querySelector('.navbar');
-    const header = document.querySelector('.header');
-    const headerContainer = document.querySelector('.header-container');
-    const menuToggle = document.querySelector('.menu-toggle');
-    
-    // Only apply desktop fixes on desktop screens
-    if (window.innerWidth >= 1025) {
-        if (navbar) {
-            navbar.style.cssText = `
-                display: flex !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                position: static !important;
-                transform: none !important;
-                top: auto !important;
-                left: auto !important;
-                right: auto !important;
-                width: auto !important;
-                max-width: none !important;
-                background: rgba(255, 255, 255, 0.08) !important;
-                backdrop-filter: blur(20px) !important;
-                border: 1px solid rgba(255, 255, 255, 0.15) !important;
-                border-radius: 2rem !important;
-                padding: 0.4rem 0.6rem !important;
-                gap: 0.2rem !important;
-                flex-shrink: 1 !important;
-                overflow: visible !important;
-                margin: 0 !important;
-                z-index: auto !important;
-            `;
-            navbar.classList.remove('active');
+    // Minimal intervention - only ensure navbar is visible on desktop
+    if (window.innerWidth >= 1025 && navbar) {
+        // Only remove the 'active' class if it exists (from old mobile menu system)
+        navbar.classList.remove('active');
+        
+        // Let CSS handle all styling - no inline styles
+        if (navbar.style.display === 'none') {
+            navbar.style.display = 'flex';
         }
         
-        if (headerContainer) {
-            headerContainer.style.cssText = `
-                overflow: visible !important;
-                width: 100% !important;
-                max-width: 1800px !important;
-                box-sizing: border-box !important;
-                padding: 1.5rem 2vw !important;
-            `;
-        }
-        
+        // Hide mobile menu toggle on desktop
+        const menuToggle = document.querySelector('.menu-toggle');
         if (menuToggle) {
-            menuToggle.style.display = 'none !important';
+            menuToggle.style.display = 'none';
         }
-        
-        // Handle nav links based on screen size
-        const navLinks = document.querySelectorAll('.nav-link');
-        const screenWidth = window.innerWidth;
-        
-        navLinks.forEach(link => {
-            if (screenWidth >= 1301) {
-                // Show text on larger screens
-                const span = link.querySelector('span');
-                if (span) span.style.display = 'inline';
-                link.style.cssText = `
-                    padding: 0.8rem 1.2rem !important;
-                    gap: 0.5rem !important;
-                    font-size: 1.2rem !important;
-                `;
-            } else if (screenWidth >= 1025 && screenWidth <= 1300) {
-                // Hide text on compact screens
-                const span = link.querySelector('span');
-                if (span) span.style.display = 'none';
-                link.style.cssText = `
-                    padding: 0.8rem !important;
-                    gap: 0 !important;
-                    font-size: 1.1rem !important;
-                    justify-content: center !important;
-                `;
-            }
-        });
-    } else {
-        // On mobile/tablet, reset any desktop-specific styles that might interfere
-        if (navbar) {
-            navbar.style.cssText = '';
-        }
-        if (headerContainer) {
-            headerContainer.style.cssText = '';
-        }
-        if (menuToggle) {
-            menuToggle.style.display = '';
-        }
-        
-        // Reset nav links to use CSS defaults
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.style.cssText = '';
-            const span = link.querySelector('span');
-            if (span) span.style.display = '';
-        });
     }
 }
 

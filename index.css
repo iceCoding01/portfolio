@@ -417,22 +417,26 @@ section {
 }
 
 /* Revolutionary Navigation Design */
+/* ===============================================
+   PREMIUM DESKTOP NAVBAR DESIGN
+   =============================================== */
+
 .navbar {
-  display: flex !important;
+  display: flex;
   align-items: center;
-  gap: 0.1rem;
+  gap: 0.15rem;
   background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 2rem;
-  padding: 0.3rem 0.4rem;
+  padding: 0.4rem 0.6rem;
   position: relative;
   overflow: visible;
-  flex-shrink: 1;
+  flex-shrink: 0;
   visibility: visible;
   opacity: 1;
-  min-width: 0;
-  max-width: none;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 4px 20px rgba(10, 23, 78, 0.1);
 }
 
 .navbar::before {
@@ -445,32 +449,39 @@ section {
   background: linear-gradient(135deg, 
     rgba(255, 255, 255, 0.1), 
     rgba(255, 255, 255, 0.05));
+  border-radius: 2rem;
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: -1;
 }
 
 .navbar:hover::before {
   opacity: 1;
 }
 
+.navbar:hover {
+  box-shadow: 0 6px 25px rgba(10, 23, 78, 0.15);
+  transform: translateY(-1px);
+}
+
 .nav-link {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.4rem;
   color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  padding: 0.6rem 0.4rem;
-  border-radius: 1.2rem;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  padding: 0.7rem 0.9rem;
+  border-radius: 1.4rem;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   letter-spacing: 0.02em;
   overflow: hidden;
   z-index: 1;
   white-space: nowrap;
   flex-shrink: 0;
-  min-width: auto;
+  min-width: fit-content;
 }
 
 .nav-link::before {
@@ -508,8 +519,8 @@ section {
 }
 
 .nav-link i {
-  font-size: 1.2rem;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  font-size: 1.15rem;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
   flex-shrink: 0;
 }
@@ -532,9 +543,27 @@ section {
 
 .nav-link:hover {
   color: #fff;
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15),
-              0 2px 5px rgba(255, 255, 255, 0.1) inset;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.15) 0%, 
+    rgba(255, 255, 255, 0.08) 100%);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
+              0 2px 4px rgba(255, 255, 255, 0.1) inset;
+}
+
+.nav-link.active {
+  color: #fff;
+  background: linear-gradient(135deg, 
+    var(--main-color) 0%, 
+    #0066cc 100%);
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3),
+              0 2px 4px rgba(255, 255, 255, 0.1) inset;
+}
+
+.nav-link:hover i,
+.nav-link.active i {
+  color: #fff;
+  transform: scale(1.1);
 }
 
 .nav-link:hover i {
@@ -1322,64 +1351,108 @@ section {
   }
 }
 
-/* Handle very compact screens */
-@media (min-width: 1025px) and (max-width: 1300px) {
+/* ===============================================
+   DESKTOP NAVBAR RESPONSIVE BREAKPOINTS
+   =============================================== */
+
+/* Force desktop navbar visibility - override any JavaScript inline styles */
+@media (min-width: 1025px) {
   .navbar {
     display: flex !important;
-    gap: 0.05rem;
-    padding: 0.25rem 0.3rem;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    transform: none !important;
   }
   
-  .nav-link span {
+  .menu-toggle {
     display: none !important;
-  }
-  
-  .nav-link {
-    padding: 0.6rem 0.5rem !important;
-    min-width: auto;
-    justify-content: center;
-    width: auto;
-    gap: 0;
-  }
-  
-  .nav-link i {
-    margin: 0;
-    font-size: 1.3rem;
-  }
-  
-  .header-container {
-    padding: 1.5rem 1vw;
-  }
-  
-  .logo-container {
-    margin-right: 0.5rem;
-  }
-  
-  .header-actions {
-    margin-left: 0.5rem;
-  }
-  
-  .cta-button {
-    padding: 0.6rem 1.2rem;
-    font-size: 1.1rem;
   }
 }
 
-/* Show text on larger screens */
-@media (min-width: 1301px) {
+/* Compact Desktop (1025px - 1300px) - Icons Only */
+@media (min-width: 1025px) and (max-width: 1300px) {
   .navbar {
-    display: flex !important;
     gap: 0.1rem;
-    padding: 0.3rem 0.5rem;
-  }
-  
-  .nav-link span {
-    display: inline !important;
+    padding: 0.35rem 0.45rem;
   }
   
   .nav-link {
-    padding: 0.7rem 1rem !important;
-    gap: 0.3rem !important;
+    padding: 0.65rem 0.75rem;
+    gap: 0;
+    justify-content: center;
+    min-width: 3rem;
+  }
+  
+  .nav-link span {
+    display: none;
+  }
+  
+  .nav-link i {
+    font-size: 1.2rem;
+  }
+  
+  .header-container {
+    padding: 1.5rem 2vw;
+  }
+  
+  .cta-button span {
+    display: none;
+  }
+  
+  .cta-button {
+    padding: 0.65rem;
+    min-width: 3rem;
+    justify-content: center;
+  }
+}
+
+/* Large Desktop (1301px+) - Icons + Text */
+@media (min-width: 1301px) {
+  .navbar {
+    gap: 0.2rem;
+    padding: 0.4rem 0.6rem;
+  }
+  
+  .nav-link {
+    padding: 0.7rem 1rem;
+    gap: 0.4rem;
+  }
+  
+  .nav-link span {
+    display: inline;
+    font-size: 0.95rem;
+  }
+  
+  .nav-link i {
+    font-size: 1.15rem;
+  }
+  
+  .header-container {
+    padding: 1.5rem 3vw;
+    max-width: 1800px;
+  }
+}
+
+/* Extra Large Desktop (1600px+) - More spacious */
+@media (min-width: 1600px) {
+  .navbar {
+    gap: 0.25rem;
+    padding: 0.45rem 0.7rem;
+  }
+  
+  .nav-link {
+    padding: 0.8rem 1.2rem;
+    gap: 0.5rem;
+    font-size: 1.05rem;
+  }
+  
+  .nav-link i {
+    font-size: 1.25rem;
+  }
+  
+  .header-container {
+    padding: 1.8rem 3vw;
   }
 }
 
