@@ -1,53 +1,281 @@
-    //toggle icon navbar
+// Enhanced Premium Navbar Functionality
 let menuIcon = document.querySelector('#menu-icon');
-let navbar =  document.querySelector('.navbar');
+let navbar = document.querySelector('.navbar');
+let header = document.querySelector('.header');
 
-menuIcon.onclick = () =>  {
-    menuIcon.classList.toggle('active');
-    navbar.classList.toggle('active')
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initializeNavbar();
+});
+
+// Initialize navbar functionality
+function initializeNavbar() {
+    // Ensure all elements exist
+    if (!menuIcon || !navbar || !header) {
+        console.warn('Navbar elements not found, retrying...');
+        setTimeout(initializeNavbar, 100);
+        return;
+    }
+    
+    // Handle responsive navbar display
+    handleNavbarResponsive();
+    
+    // Add resize listener
+    window.addEventListener('resize', debounce(handleNavbarResponsive, 250));
 }
 
-// Smooth scrolling for navigation links
+// Handle navbar responsive behavior
+function handleNavbarResponsive() {
+    const screenWidth = window.innerWidth;
+    
+    // Don't interfere if mobile menu is currently active
+    if (screenWidth < 1025 && navbar.classList.contains('active')) {
+        console.log('Skipping responsive handling - mobile menu is active');
+        return;
+    }
+    
+    // Reset any inline styles that might interfere
+    navbar.style.display = '';
+    
+    // Handle different screen sizes
+    if (screenWidth >= 1025) {
+        // Desktop: ensure navbar is visible and menu is closed
+        navbar.classList.remove('active');
+        menuIcon.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Show/hide nav text based on screen size
+        const navLinks = document.querySelectorAll('.nav-link span');
+        if (screenWidth >= 1301) {
+            navLinks.forEach(span => span.style.display = 'inline');
+        } else if (screenWidth >= 1025 && screenWidth <= 1300) {
+            navLinks.forEach(span => span.style.display = 'none');
+        }
+    } else {
+        // Mobile/Tablet: ensure nav text is visible in mobile menu
+        const navLinks = document.querySelectorAll('.nav-link span');
+        navLinks.forEach(span => span.style.display = 'inline');
+    }
+}
+
+// Debounce function for performance
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Enhanced menu toggle with smooth animations
+if (menuIcon && navbar) {
+    menuIcon.onclick = () => {
+        console.log('Menu icon clicked, current screen width:', window.innerWidth);
+        console.log('Navbar before toggle:', {
+            classList: navbar.classList.toString(),
+            style: navbar.style.cssText,
+            display: getComputedStyle(navbar).display,
+            visibility: getComputedStyle(navbar).visibility,
+            opacity: getComputedStyle(navbar).opacity
+        });
+        
+        menuIcon.classList.toggle('active');
+        navbar.classList.toggle('active');
+        
+        console.log('Navbar after toggle:', {
+            classList: navbar.classList.toString(),
+            hasActive: navbar.classList.contains('active')
+        });
+        
+        // Add backdrop blur effect when mobile menu is open
+        if (navbar.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+            header.style.borderBottom = '2px solid rgba(255, 255, 255, 0.3)';
+            
+            // Force show navbar on mobile when active with maximum z-index
+            if (window.innerWidth < 1025) {
+                navbar.style.opacity = '1';
+                navbar.style.visibility = 'visible';
+                navbar.style.transform = 'translateY(0) scale(1)';
+                navbar.style.display = 'flex';
+                navbar.style.zIndex = '99999';
+                navbar.style.position = 'absolute';
+                console.log('Force showing mobile navbar with z-index 99999');
+            }
+        } else {
+            document.body.style.overflow = '';
+            header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+            
+            // Reset z-index when closed
+            if (window.innerWidth < 1025) {
+                navbar.style.zIndex = '';
+            }
+        }
+    };
+}
+
+// Enhanced smooth scrolling with offset for fixed header
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            const headerHeight = header.offsetHeight;
+            const targetPosition = target.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
             });
+            
+            // Close mobile menu if open
+            menuIcon.classList.remove('active');
+            navbar.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
 });
 
-
+// Enhanced scroll detection with improved performance
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('.nav-link');
+let lastScrollTop = 0;
+let scrollTimeout;
 
-window.onscroll = () =>{
-    sections.forEach(sec => {
-        let top = window.scrollY;
-        let offset = sec.offsetTop - 150;
-        let height = sec.offsetHeight;
-        let id = sec.getAttribute('id')
+// Add debug information
+console.log('Navbar elements found:', {
+    header: !!header,
+    navbar: !!navbar,
+    menuIcon: !!menuIcon,
+    navLinksCount: navLinks.length,
+    sectionsCount: sections.length
+});
 
-        if(top >= offset && top  < + height){
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                document.querySelector('.nav-link[href*=' + id + ']').classList.add('active');
-            });
-        };
+window.addEventListener('scroll', () => {
+    // Clear previous timeout
+    clearTimeout(scrollTimeout);
+    
+    // Debounce scroll events for better performance
+    scrollTimeout = setTimeout(() => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Enhanced sticky header with dynamic blur effect
+        if (scrollTop > 50) {
+            header.classList.add('sticky');
+            header.style.backdropFilter = 'blur(25px) saturate(180%)';
+        } else {
+            header.classList.remove('sticky');
+            header.style.backdropFilter = 'blur(20px) saturate(160%)';
+        }
+        
+        // Enhanced active section detection
+        sections.forEach(sec => {
+            let top = scrollTop;
+            let offset = sec.offsetTop - 200;
+            let height = sec.offsetHeight;
+            let id = sec.getAttribute('id');
+
+            if (top >= offset && top < offset + height) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                const activeLink = document.querySelector(`.nav-link[href*="${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+
+        // Auto-close mobile menu on scroll
+        if (navbar.classList.contains('active')) {
+            menuIcon.classList.remove('active');
+            navbar.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        lastScrollTop = scrollTop;
+    }, 10);
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!navbar.contains(e.target) && !menuIcon.contains(e.target)) {
+        if (navbar.classList.contains('active')) {
+            menuIcon.classList.remove('active');
+            navbar.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
+
+// Enhanced navbar link hover effects
+navLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+        if (!link.classList.contains('active')) {
+            link.style.transform = 'translateY(-2px) scale(1.02)';
+        }
     });
-    //sticky nabar
-    let header = document.querySelector('header');
-    header.classList.toggle('sticky', window.scrollY > 100); 
+    
+    link.addEventListener('mouseleave', () => {
+        if (!link.classList.contains('active')) {
+            link.style.transform = '';
+        }
+    });
+});
 
+// Force navbar visibility on page load
+window.addEventListener('load', () => {
+    const navbar = document.querySelector('.navbar');
+    const header = document.querySelector('.header');
+    
+    if (navbar && window.innerWidth >= 1025) {
+        // Force navbar to be visible on desktop
+        navbar.style.display = 'flex';
+        navbar.style.visibility = 'visible';
+        navbar.style.opacity = '1';
+        navbar.classList.remove('active');
+        
+        // Ensure header is properly styled
+        header.style.display = 'block';
+        header.style.visibility = 'visible';
+    }
+    
+    // Reinitialize after a short delay to ensure everything is loaded
+    setTimeout(() => {
+        handleNavbarResponsive();
+    }, 500);
+});
 
-    //remove toggle icon and navbar when click navbar link (scroll)
-    menuIcon.classList.remove('active');
-    navbar.classList.remove('active')
+// Add intersection observer for enhanced scroll animations
+const sectionObserverOptions = {
+    threshold: 0.1,
+    rootMargin: '-50px 0px -50px 0px'
 };
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            const activeLink = document.querySelector(`.nav-link[href*="${id}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    });
+}, sectionObserverOptions);
+
+sections.forEach(section => {
+    if (section.id) {
+        sectionObserver.observe(section);
+    }
+});
 
 // Portfolio filtering
 const filterButtons = document.querySelectorAll('.filter-btn');
@@ -277,7 +505,7 @@ document.querySelector('.hero-scroll-indicator').addEventListener('click', (e) =
 });
 
 // Intersection Observer for animations
-const observerOptions = {
+const animationObserverOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
 };
@@ -289,7 +517,7 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.style.transform = 'translateY(0)';
         }
     });
-}, observerOptions);
+}, animationObserverOptions);
 
 // Observe elements for animation
 document.querySelectorAll('.skill-card, .testimonial-card, .contact-item').forEach(el => {
@@ -316,3 +544,126 @@ if ('IntersectionObserver' in window) {
         imageObserver.observe(img);
     });
 }
+
+// Navbar display fix - run multiple times to ensure it works
+function forceNavbarDisplay() {
+    const navbar = document.querySelector('.navbar');
+    const header = document.querySelector('.header');
+    const headerContainer = document.querySelector('.header-container');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    // Only apply desktop fixes on desktop screens
+    if (window.innerWidth >= 1025) {
+        if (navbar) {
+            navbar.style.cssText = `
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: static !important;
+                transform: none !important;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                width: auto !important;
+                max-width: none !important;
+                background: rgba(255, 255, 255, 0.08) !important;
+                backdrop-filter: blur(20px) !important;
+                border: 1px solid rgba(255, 255, 255, 0.15) !important;
+                border-radius: 2rem !important;
+                padding: 0.4rem 0.6rem !important;
+                gap: 0.2rem !important;
+                flex-shrink: 1 !important;
+                overflow: visible !important;
+                margin: 0 !important;
+                z-index: auto !important;
+            `;
+            navbar.classList.remove('active');
+        }
+        
+        if (headerContainer) {
+            headerContainer.style.cssText = `
+                overflow: visible !important;
+                width: 100% !important;
+                max-width: 1800px !important;
+                box-sizing: border-box !important;
+                padding: 1.5rem 2vw !important;
+            `;
+        }
+        
+        if (menuToggle) {
+            menuToggle.style.display = 'none !important';
+        }
+        
+        // Handle nav links based on screen size
+        const navLinks = document.querySelectorAll('.nav-link');
+        const screenWidth = window.innerWidth;
+        
+        navLinks.forEach(link => {
+            if (screenWidth >= 1301) {
+                // Show text on larger screens
+                const span = link.querySelector('span');
+                if (span) span.style.display = 'inline';
+                link.style.cssText = `
+                    padding: 0.8rem 1.2rem !important;
+                    gap: 0.5rem !important;
+                    font-size: 1.2rem !important;
+                `;
+            } else if (screenWidth >= 1025 && screenWidth <= 1300) {
+                // Hide text on compact screens
+                const span = link.querySelector('span');
+                if (span) span.style.display = 'none';
+                link.style.cssText = `
+                    padding: 0.8rem !important;
+                    gap: 0 !important;
+                    font-size: 1.1rem !important;
+                    justify-content: center !important;
+                `;
+            }
+        });
+    } else {
+        // On mobile/tablet, reset any desktop-specific styles that might interfere
+        if (navbar) {
+            navbar.style.cssText = '';
+        }
+        if (headerContainer) {
+            headerContainer.style.cssText = '';
+        }
+        if (menuToggle) {
+            menuToggle.style.display = '';
+        }
+        
+        // Reset nav links to use CSS defaults
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.style.cssText = '';
+            const span = link.querySelector('span');
+            if (span) span.style.display = '';
+        });
+    }
+}
+
+// Run navbar fix on page load and after short delays - only on desktop
+setTimeout(() => {
+    if (window.innerWidth >= 1025) {
+        forceNavbarDisplay();
+    }
+}, 100);
+
+setTimeout(() => {
+    if (window.innerWidth >= 1025) {
+        forceNavbarDisplay();
+    }
+}, 500);
+
+setTimeout(() => {
+    if (window.innerWidth >= 1025) {
+        forceNavbarDisplay();
+    }
+}, 1000);
+
+// Also run on window resize
+window.addEventListener('resize', () => {
+    setTimeout(() => {
+        forceNavbarDisplay();
+    }, 100);
+});
