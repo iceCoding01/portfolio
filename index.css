@@ -618,6 +618,28 @@ body {
   color: white;
 }
 
+.mobile-menu-info p {
+  margin: 0.25rem 0;
+}
+
+/* Mobile Navigation Link Animations */
+@keyframes mobileNavSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobile-nav-link {
+  animation: mobileNavSlideIn 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateX(50px);
+}
+
 /* 22. Scroll Margin for Fixed Header */
 section[id] {
   scroll-margin-top: 90px;
