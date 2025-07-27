@@ -1660,3 +1660,197 @@ section:not(.hero) {
         gap: 1.5rem !important;
     }
 }
+
+/* Premium Portfolio Section Animations */
+@keyframes projectCardHover {
+    0% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    100% {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
+}
+
+@keyframes badgeGlow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+    }
+}
+
+@keyframes filterButtonHover {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        transform: translateY(-2px) scale(1.05);
+    }
+}
+
+@keyframes floatingElements {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+.portfolio-box:hover {
+    animation: projectCardHover 0.4s ease-out forwards;
+}
+
+.filter-btn:hover {
+    animation: filterButtonHover 0.3s ease-out forwards;
+}
+
+.portfolio .absolute {
+    animation: floatingElements 6s ease-in-out infinite;
+}
+
+.portfolio .absolute:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.portfolio .absolute:nth-child(3) {
+    animation-delay: 4s;
+}
+
+/* Portfolio Grid Responsive Enhancements */
+@media (max-width: 1024px) {
+    .portfolio-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+    
+    .portfolio-box {
+        border-radius: 1.5rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-container {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    .portfolio-box {
+        margin-bottom: 1rem;
+    }
+    
+    /* Fix mobile text visibility on portfolio cards */
+    .portfolio-box .portfolio-layer {
+        opacity: 1 !important;
+        background: linear-gradient(to top, rgba(10, 23, 78, 0.95), rgba(10, 23, 78, 0.7), transparent) !important;
+        padding: 1.5rem !important;
+    }
+    
+    .portfolio-box .portfolio-layer h4 {
+        color: white !important;
+        font-size: 1.25rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .portfolio-box .portfolio-layer p {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .portfolio-box .portfolio-links {
+        display: flex !important;
+        gap: 0.75rem !important;
+    }
+    
+    .portfolio-box .portfolio-links a {
+        background: rgba(255, 255, 255, 0.2) !important;
+        backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    .portfolio .absolute {
+        display: none;
+    }
+}
+
+/* Premium Typography Effects */
+.heading {
+    background: linear-gradient(135deg, #1f2937, #3b82f6, #8b5cf6);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Enhanced Button Effects */
+.filter-btn.active {
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6) !important;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3) !important;
+}
+
+.filter-btn:not(.active):hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Project Card Enhancements */
+.portfolio-box .absolute {
+    backdrop-filter: blur(10px);
+}
+
+.portfolio-box img {
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-box:hover img {
+    transform: scale(1.1) rotate(1deg);
+}
+
+/* Status Badge Animations */
+.portfolio-box .animate-pulse {
+    animation: badgeGlow 2s ease-in-out infinite;
+}
+
+/* Technology Tag Enhancements */
+.portfolio-box span[class*="bg-"] {
+    transition: all 0.3s ease;
+}
+
+.portfolio-box:hover span[class*="bg-"] {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Premium Glassmorphism Effects */
+.portfolio {
+    backdrop-filter: blur(20px);
+    position: relative;
+}
+
+.portfolio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    pointer-events: none;
+}
+
+/* Call to Action Enhancements */
+.portfolio .bg-gradient-to-r {
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+}
+
+.portfolio a:hover {
+    transform: translateY(-2px) scale(1.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
