@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Skills - Henry Mfodwo</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main-color': '#0a174e',
+                        'secondary-color': '#133b7a',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .communication-hero {
+            background: linear-gradient(135deg, #0a174e 0%, #133b7a 50%, #059669 100%);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 1rem;
+        }
+        
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .communication-card {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .skill-metric {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .chat-bubble {
+            animation: messageSlide 0.5s ease-out;
+        }
+
+        @keyframes messageSlide {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-3 text-white font-bold text-xl">
+                    <i class='bx bx-arrow-left'></i>
+                    Back to Portfolio
+                </a>
+                <div class="flex items-center gap-6">
+                    <a href="#overview" class="text-white/80 hover:text-white transition-colors">Overview</a>
+                    <a href="#skills" class="text-white/80 hover:text-white transition-colors">Skills</a>
+                    <a href="#examples" class="text-white/80 hover:text-white transition-colors">Examples</a>
+                    <a href="#testimonials" class="text-white/80 hover:text-white transition-colors">Testimonials</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="communication-hero min-h-screen flex items-center relative overflow-hidden" id="overview">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl floating-element"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-green-300 rounded-full blur-3xl floating-element" style="animation-delay: -3s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-6 py-3 mb-8">
+                        <i class='bx bx-chat text-green-400 text-xl'></i>
+                        <span class="font-medium">Communication Excellence</span>
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-bold mb-6">
+                        Clear <span class="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Communication</span>
+                    </h1>
+                    
+                    <p class="text-xl text-white/90 leading-relaxed mb-8">
+                        Bridging technical complexity with clear, accessible communication for diverse audiences - 
+                        from development teams to C-level executives and end users.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="skill-metric rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-bold text-green-400 mb-2">100+</div>
+                            <div class="text-white/80 text-sm">Client Presentations</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-bold text-blue-400 mb-2">50+</div>
+                            <div class="text-white/80 text-sm">Technical Docs</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-bold text-purple-400 mb-2">25+</div>
+                            <div class="text-white/80 text-sm">Workshops Led</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-bold text-yellow-400 mb-2">98%</div>
+                            <div class="text-white/80 text-sm">Client Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="communication-card rounded-3xl p-8 text-center">
+                        <div class="video-container mb-6">
+                            <video controls poster="./img/communication/presentation-poster.jpg" class="rounded-lg">
+                                <source src="./videos/communication-demo.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Communication Philosophy</h3>
+                        <p class="text-white/80">Watch how I explain complex technical concepts clearly</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Communication Skills Section -->
+    <section class="py-24 bg-white" id="skills">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+                    Communication <span class="text-main-color">Skills</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Technical Communication -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-code-alt text-2xl text-white'></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Technical Communication</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Code documentation & comments
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            API documentation
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Technical specifications
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Architecture diagrams
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Client Communication -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-user-voice text-2xl text-white'></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Client Communication</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Project status updates
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Requirements gathering
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Demo presentations
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Stakeholder meetings
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Visual Communication -->
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-palette text-2xl text-white'></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Visual Communication</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Interactive prototypes
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Wireframes & mockups
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Process flowcharts
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Data visualizations
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Communication Examples -->
+    <section class="py-24 bg-gradient-to-br from-gray-50 to-blue-50" id="examples">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+                    Communication in <span class="text-main-color">Action</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Documentation Example -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Technical Documentation</h3>
+                    <div class="bg-gray-900 rounded-xl p-6 mb-6 text-green-400 font-mono text-sm overflow-x-auto">
+<pre>/**
+ * User Authentication Service
+ * 
+ * Handles secure user login/logout with JWT tokens
+ * Implements rate limiting and security best practices
+ * 
+ * @example
+ * const auth = new AuthService();
+ * const result = await auth.login(email, password);
+ * 
+ * @throws {ValidationError} Invalid credentials
+ * @throws {RateLimitError} Too many attempts
+ */
+class AuthService {
+  // Clear, documented implementation...
+}</pre>
+                    </div>
+                    <p class="text-gray-600">Clear, comprehensive documentation that helps developers understand and use APIs effectively.</p>
+                </div>
+
+                <!-- Client Communication Example -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Client Presentation</h3>
+                    <div class="video-container mb-6">
+                        <video controls poster="./img/communication/client-presentation-poster.jpg">
+                            <source src="./videos/client-presentation.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="text-gray-600">Explaining complex technical solutions in business terms that stakeholders can understand and act upon.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 bg-gradient-to-br from-main-color via-secondary-color to-green-600" id="testimonials">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-6xl font-bold text-white mb-6">
+                    What <span class="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Clients Say</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="communication-card rounded-3xl p-8">
+                    <div class="flex items-start gap-4 mb-6">
+                        <img src="./img/clients/david-smith.jpg" alt="David Smith" class="w-16 h-16 rounded-full object-cover">
+                        <div class="flex-1">
+                            <h4 class="text-xl font-bold text-white mb-2">David Smith</h4>
+                            <p class="text-white/70 mb-4">CTO, TechCorp</p>
+                            <div class="flex gap-1 mb-4">
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                            </div>
+                            <blockquote class="text-white/90 italic">
+                                "Henry's ability to translate complex technical concepts into clear business value 
+                                is exceptional. His presentations to our board were instrumental in securing 
+                                project funding."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="communication-card rounded-3xl p-8">
+                    <div class="flex items-start gap-4 mb-6">
+                        <img src="./img/clients/maria-gonzalez.jpg" alt="Maria Gonzalez" class="w-16 h-16 rounded-full object-cover">
+                        <div class="flex-1">
+                            <h4 class="text-xl font-bold text-white mb-2">Maria Gonzalez</h4>
+                            <p class="text-white/70 mb-4">Product Manager, StartupXYZ</p>
+                            <div class="flex gap-1 mb-4">
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                            </div>
+                            <blockquote class="text-white/90 italic">
+                                "Working with Henry was seamless. His documentation was so clear that our 
+                                entire team could onboard quickly. He anticipates questions and provides 
+                                answers before you even ask."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-main-color to-green-600">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+                Let's Start a Conversation
+            </h2>
+            <p class="text-xl text-white/90 mb-8">
+                Ready to experience clear, effective communication on your next project?
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html#contact" class="inline-flex items-center gap-2 bg-white text-main-color px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-gray-100 hover:-translate-y-1">
+                    <i class='bx bx-envelope'></i>
+                    Get In Touch
+                </a>
+                <a href="index.html" class="inline-flex items-center gap-2 bg-transparent text-white border-2 border-white/30 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white">
+                    <i class='bx bx-arrow-left'></i>
+                    Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p>&copy; 2024 Henry Mfodwo. All rights reserved.</p>
+                <p class="text-gray-400 mt-2">Communication Skills Portfolio</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

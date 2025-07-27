@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Solving - Henry Mfodwo</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main-color': '#0a174e',
+                        'secondary-color': '#133b7a',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .problem-solving-hero {
+            background: linear-gradient(135deg, #0a174e 0%, #133b7a 50%, #dc2626 100%);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 1rem;
+        }
+        
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .problem-card {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .skill-metric {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .problem-step {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: stepReveal 0.6s ease-out forwards;
+        }
+
+        .problem-step:nth-child(2) { animation-delay: 0.2s; }
+        .problem-step:nth-child(3) { animation-delay: 0.4s; }
+        .problem-step:nth-child(4) { animation-delay: 0.6s; }
+        .problem-step:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes stepReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .complexity-meter {
+            background: linear-gradient(to right, #ef4444, #f59e0b, #10b981);
+            height: 8px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .complexity-indicator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 4px;
+            transition: width 2s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-3 text-white font-bold text-xl">
+                    <i class='bx bx-arrow-left'></i>
+                    Back to Portfolio
+                </a>
+                <div class="flex items-center gap-6">
+                    <a href="#overview" class="text-white/80 hover:text-white transition-colors">Overview</a>
+                    <a href="#methodology" class="text-white/80 hover:text-white transition-colors">Methodology</a>
+                    <a href="#case-studies" class="text-white/80 hover:text-white transition-colors">Case Studies</a>
+                    <a href="#testimonials" class="text-white/80 hover:text-white transition-colors">Testimonials</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="problem-solving-hero min-h-screen flex items-center relative overflow-hidden" id="overview">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl floating-element"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-red-300 rounded-full blur-3xl floating-element" style="animation-delay: -3s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-6 py-3 mb-8">
+                        <i class='bx bx-brain text-red-400 text-xl'></i>
+                        <span class="font-medium">Creative Problem Solving</span>
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-bold mb-6">
+                        Problem <span class="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">Solving</span>
+                    </h1>
+                    
+                    <p class="text-xl text-white/90 leading-relaxed mb-8">
+                        Transforming complex challenges into elegant solutions through systematic analysis, 
+                        creative thinking, and innovative approaches that drive measurable results.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="skill-metric rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-bold text-red-400 mb-2">200+</div>
+                            <div class="text-white/80 text-sm">Problems Solved</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-bold text-orange-400 mb-2">95%</div>
+                            <div class="text-white/80 text-sm">Success Rate</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-bold text-yellow-400 mb-2">24hrs</div>
+                            <div class="text-white/80 text-sm">Avg Response Time</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-bold text-green-400 mb-2">80%</div>
+                            <div class="text-white/80 text-sm">Efficiency Gains</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="problem-card rounded-3xl p-8 text-center">
+                        <div class="video-container mb-6">
+                            <video controls poster="./img/problem-solving/debugging-poster.jpg" class="rounded-lg">
+                                <source src="./videos/problem-solving-demo.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Problem-Solving in Action</h3>
+                        <p class="text-white/80">Watch how I approach and solve complex technical challenges</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem-Solving Methodology -->
+    <section class="py-24 bg-white" id="methodology">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+                    My <span class="text-main-color">Methodology</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    A systematic approach to breaking down complex problems and building effective solutions
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Step 1 -->
+                <div class="problem-step flex flex-col lg:flex-row items-center gap-8 bg-gradient-to-r from-red-50 to-pink-50 rounded-3xl p-8">
+                    <div class="lg:w-1/3">
+                        <div class="w-20 h-20 bg-gradient-to-br from-red-500 to-pink-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mb-4">
+                            1
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Understand & Define</h3>
+                        <p class="text-gray-600">Thoroughly analyze the problem, gather requirements, and define success criteria.</p>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg">
+                            <h4 class="font-bold text-gray-900 mb-3">Key Activities:</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Stakeholder interviews and requirement gathering
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Problem statement definition and scope clarification
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Success metrics and acceptance criteria establishment
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="problem-step flex flex-col lg:flex-row-reverse items-center gap-8 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-3xl p-8">
+                    <div class="lg:w-1/3">
+                        <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mb-4">
+                            2
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Research & Analyze</h3>
+                        <p class="text-gray-600">Investigate existing solutions, analyze patterns, and identify root causes.</p>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg">
+                            <h4 class="font-bold text-gray-900 mb-3">Research Methods:</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Technical documentation and best practices review
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Root cause analysis using systematic debugging
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Competitive analysis and industry benchmarking
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="problem-step flex flex-col lg:flex-row items-center gap-8 bg-gradient-to-r from-green-50 to-emerald-50 rounded-3xl p-8">
+                    <div class="lg:w-1/3">
+                        <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mb-4">
+                            3
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Ideate & Design</h3>
+                        <p class="text-gray-600">Generate multiple solution approaches and design the optimal strategy.</p>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg">
+                            <h4 class="font-bold text-gray-900 mb-3">Creative Process:</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Brainstorming multiple solution approaches
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Prototyping and proof-of-concept development
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Solution architecture and technical design
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="problem-step flex flex-col lg:flex-row-reverse items-center gap-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8">
+                    <div class="lg:w-1/3">
+                        <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mb-4">
+                            4
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Implement & Test</h3>
+                        <p class="text-gray-600">Build the solution incrementally with continuous testing and validation.</p>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg">
+                            <h4 class="font-bold text-gray-900 mb-3">Implementation Strategy:</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Iterative development with frequent testing
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Unit testing, integration testing, and user acceptance testing
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Performance monitoring and optimization
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="problem-step flex flex-col lg:flex-row items-center gap-8 bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl p-8">
+                    <div class="lg:w-1/3">
+                        <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold mb-4">
+                            5
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Evaluate & Improve</h3>
+                        <p class="text-gray-600">Assess results, gather feedback, and continuously optimize the solution.</p>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg">
+                            <h4 class="font-bold text-gray-900 mb-3">Continuous Improvement:</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Metrics analysis and performance evaluation
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    User feedback collection and analysis
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Iterative refinements and feature enhancements
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="py-24 bg-gradient-to-br from-gray-50 to-blue-50" id="case-studies">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+                    Problem-Solving <span class="text-main-color">Case Studies</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Case Study 1 -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center">
+                            <i class='bx bx-bug text-white text-xl'></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Performance Crisis Resolution</h3>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="text-sm text-gray-600">Complexity:</span>
+                                <div class="complexity-meter w-24">
+                                    <div class="complexity-indicator" style="width: 85%;"></div>
+                                </div>
+                                <span class="text-sm font-medium text-red-600">High</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Problem:</h4>
+                            <p class="text-gray-600">E-commerce platform experiencing 300% increase in load times during peak traffic, causing 40% user abandonment.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Solution:</h4>
+                            <p class="text-gray-600">Implemented database optimization, Redis caching layer, and CDN integration. Added real-time monitoring and auto-scaling.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Results:</h4>
+                            <ul class="space-y-1 text-gray-600">
+                                <li class="flex items-center gap-2">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    85% reduction in load times
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    60% decrease in user abandonment
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    $200K+ annual revenue recovery
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="video-container">
+                        <video controls poster="./img/case-studies/performance-case-poster.jpg">
+                            <source src="./videos/performance-case-study.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                            <i class='bx bx-shield text-white text-xl'></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Security Vulnerability Fix</h3>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="text-sm text-gray-600">Complexity:</span>
+                                <div class="complexity-meter w-24">
+                                    <div class="complexity-indicator" style="width: 95%;"></div>
+                                </div>
+                                <span class="text-sm font-medium text-red-600">Critical</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Problem:</h4>
+                            <p class="text-gray-600">Critical SQL injection vulnerability discovered in production healthcare platform affecting 50K+ patient records.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Solution:</h4>
+                            <p class="text-gray-600">Implemented parameterized queries, input validation, and comprehensive security audit. Added WAF and intrusion detection.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Results:</h4>
+                            <ul class="space-y-1 text-gray-600">
+                                <li class="flex items-center gap-2">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    100% vulnerability elimination
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    HIPAA compliance achieved
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Zero security incidents since
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-900 rounded-xl p-6 text-green-400 font-mono text-sm">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class='bx bx-terminal'></i>
+                            <span class="text-white">Security Audit Results</span>
+                        </div>
+                        <div class="space-y-1">
+                            <div>✓ SQL Injection: FIXED</div>
+                            <div>✓ XSS Vulnerabilities: PATCHED</div>
+                            <div>✓ Authentication: STRENGTHENED</div>
+                            <div>✓ Data Encryption: IMPLEMENTED</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 bg-gradient-to-br from-main-color via-secondary-color to-red-600" id="testimonials">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-6xl font-bold text-white mb-6">
+                    Client <span class="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">Testimonials</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="problem-card rounded-3xl p-8">
+                    <div class="flex items-start gap-4">
+                        <img src="./img/clients/robert-kim.jpg" alt="Robert Kim" class="w-16 h-16 rounded-full object-cover">
+                        <div class="flex-1">
+                            <h4 class="text-xl font-bold text-white mb-2">Robert Kim</h4>
+                            <p class="text-white/70 mb-4">Engineering Director, HealthTech Inc.</p>
+                            <div class="flex gap-1 mb-4">
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                            </div>
+                            <blockquote class="text-white/90 italic">
+                                "Henry saved our company from a potential HIPAA violation. His systematic approach 
+                                to identifying and fixing our security vulnerabilities was masterful. He didn't 
+                                just patch the problem - he built a comprehensive security framework."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="problem-card rounded-3xl p-8">
+                    <div class="flex items-start gap-4">
+                        <img src="./img/clients/lisa-thompson.jpg" alt="Lisa Thompson" class="w-16 h-16 rounded-full object-cover">
+                        <div class="flex-1">
+                            <h4 class="text-xl font-bold text-white mb-2">Lisa Thompson</h4>
+                            <p class="text-white/70 mb-4">CTO, E-commerce Solutions</p>
+                            <div class="flex gap-1 mb-4">
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                            </div>
+                            <blockquote class="text-white/90 italic">
+                                "When our platform was crashing under Black Friday traffic, Henry jumped in and 
+                                turned a potential disaster into our best sales day ever. His problem-solving 
+                                skills are absolutely exceptional."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-main-color to-red-600">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+                Got a Complex Challenge?
+            </h2>
+            <p class="text-xl text-white/90 mb-8">
+                Let's tackle it together with proven problem-solving methodologies
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html#contact" class="inline-flex items-center gap-2 bg-white text-main-color px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-gray-100 hover:-translate-y-1">
+                    <i class='bx bx-envelope'></i>
+                    Discuss Your Challenge
+                </a>
+                <a href="index.html" class="inline-flex items-center gap-2 bg-transparent text-white border-2 border-white/30 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white">
+                    <i class='bx bx-arrow-left'></i>
+                    Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p>&copy; 2024 Henry Mfodwo. All rights reserved.</p>
+                <p class="text-gray-400 mt-2">Problem Solving Portfolio</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

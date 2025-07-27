@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Leadership - Henry Mfodwo</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main-color': '#0a174e',
+                        'secondary-color': '#133b7a',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .leadership-hero {
+            background: linear-gradient(135deg, #0a174e 0%, #133b7a 50%, #1e40af 100%);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 1rem;
+        }
+        
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .leadership-card {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .image-card {
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .testimonial-video {
+            background: linear-gradient(45deg, #1e293b, #374151);
+        }
+        
+        .skill-metric {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .milestone-timeline {
+            position: relative;
+        }
+
+        .milestone-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .milestone-timeline::before {
+                left: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-3 text-white font-bold text-xl">
+                    <i class='bx bx-arrow-left'></i>
+                    Back to Portfolio
+                </a>
+                <div class="flex items-center gap-6">
+                    <a href="#overview" class="text-white/80 hover:text-white transition-colors">Overview</a>
+                    <a href="#experience" class="text-white/80 hover:text-white transition-colors">Experience</a>
+                    <a href="#testimonials" class="text-white/80 hover:text-white transition-colors">Testimonials</a>
+                    <a href="#media" class="text-white/80 hover:text-white transition-colors">Media</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="leadership-hero min-h-screen flex items-center relative overflow-hidden" id="overview">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl floating-element"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-300 rounded-full blur-3xl floating-element" style="animation-delay: -3s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-6 py-3 mb-8">
+                        <i class='bx bx-crown text-yellow-400 text-xl'></i>
+                        <span class="font-medium">Leadership Excellence</span>
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-bold mb-6">
+                        Team <span class="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Leadership</span>
+                    </h1>
+                    
+                    <p class="text-xl text-white/90 leading-relaxed mb-8">
+                        Empowering teams to achieve extraordinary results through strategic vision, 
+                        collaborative leadership, and innovative problem-solving approaches.
+                    </p>
+                    
+                    <!-- Key Metrics -->
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="skill-metric rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-bold text-yellow-400 mb-2">50+</div>
+                            <div class="text-white/80 text-sm">Team Members Led</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-bold text-green-400 mb-2">15+</div>
+                            <div class="text-white/80 text-sm">Successful Projects</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-bold text-blue-400 mb-2">98%</div>
+                            <div class="text-white/80 text-sm">Team Satisfaction</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-bold text-purple-400 mb-2">3+</div>
+                            <div class="text-white/80 text-sm">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Image/Video -->
+                <div class="relative">
+                    <div class="leadership-card rounded-3xl p-8 text-center">
+                        <div class="video-container mb-6">
+                            <!-- Replace with your leadership video -->
+                            <video controls poster="./img/leadership-poster.jpg" class="rounded-lg">
+                                <source src="./videos/leadership-intro.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Leadership Philosophy</h3>
+                        <p class="text-white/80">Watch my approach to building high-performing teams</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Experience Section -->
+    <section class="py-24 bg-white" id="experience">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-3 bg-main-color/10 rounded-2xl px-6 py-3 mb-8">
+                    <i class='bx bx-trending-up text-main-color text-xl'></i>
+                    <span class="text-main-color font-medium">Professional Journey</span>
+                </div>
+                <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+                    Leadership <span class="text-main-color">Experience</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    A proven track record of leading diverse teams across multiple projects and technologies
+                </p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="milestone-timeline space-y-12">
+                <!-- Experience 1 -->
+                <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+                    <div class="lg:w-1/2 space-y-6">
+                        <div class="inline-flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class='bx bx-calendar'></i>
+                            2022 - Present
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Senior Development Team Lead</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Leading a cross-functional team of 12 developers, designers, and QA engineers 
+                            in delivering enterprise-level applications. Implemented agile methodologies 
+                            that increased team productivity by 40% and reduced project delivery time by 25%.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-3 text-gray-700">
+                                <i class='bx bx-check-circle text-green-500'></i>
+                                Managed $2M+ project budgets
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700">
+                                <i class='bx bx-check-circle text-green-500'></i>
+                                Mentored 8 junior developers
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700">
+                                <i class='bx bx-check-circle text-green-500'></i>
+                                100% on-time project delivery
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <div class="image-gallery grid grid-cols-2 gap-4">
+                            <div class="image-card">
+                                <img src="./img/leadership/team-meeting-1.jpg" alt="Team meeting" class="w-full h-48 object-cover">
+                            </div>
+                            <div class="image-card">
+                                <img src="./img/leadership/project-planning.jpg" alt="Project planning session" class="w-full h-48 object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-16">
+                    <div class="lg:w-1/2 space-y-6">
+                        <div class="inline-flex items-center gap-2 bg-purple-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class='bx bx-calendar'></i>
+                            2021 - 2022
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Technical Project Manager</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Coordinated multiple development teams across 3 time zones for a global 
+                            fintech platform. Successfully launched 5 major features that increased 
+                            user engagement by 60% and customer satisfaction scores by 35%.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-3 text-gray-700">
+                                <i class='bx bx-check-circle text-green-500'></i>
+                                Led international teams (15+ members)
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700">
+                                <i class='bx bx-check-circle text-green-500'></i>
+                                Improved team communication by 50%
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700">
+                                <i class='bx bx-check-circle text-green-500'></i>
+                                Zero critical post-launch issues
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <div class="video-container">
+                            <video controls poster="./img/leadership/project-success-poster.jpg">
+                                <source src="./videos/project-success.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+                    <div class="lg:w-1/2 space-y-6">
+                        <div class="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class='bx bx-calendar'></i>
+                            2020 - 2021
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Team Lead & Mentor</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Established mentorship programs and led knowledge-sharing initiatives 
+                            that improved team skill levels by 45%. Created documentation standards 
+                            and coding guidelines adopted company-wide.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-3 text-gray-700">
+                                <i class='bx bx-check-circle text-green-500'></i>
+                                Mentored 20+ developers
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700">
+                                <i class='bx bx-check-circle text-green-500'></i>
+                                Created team training programs
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700">
+                                <i class='bx bx-check-circle text-green-500'></i>
+                                95% team retention rate
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <div class="image-gallery grid grid-cols-1 gap-4">
+                            <div class="image-card">
+                                <img src="./img/leadership/mentoring-session.jpg" alt="Mentoring session" class="w-full h-64 object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Testimonials Section -->
+    <section class="py-24 bg-gradient-to-br from-main-color via-secondary-color to-main-color" id="testimonials">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-6 py-3 mb-8">
+                    <i class='bx bx-heart text-red-400 text-xl'></i>
+                    <span class="text-white font-medium">Team Voices</span>
+                </div>
+                <h2 class="text-4xl lg:text-6xl font-bold text-white mb-6">
+                    What My <span class="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Team Says</span>
+                </h2>
+                <p class="text-xl text-white/80 max-w-3xl mx-auto">
+                    Hear directly from team members about their experience working under my leadership
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Video Testimonial 1 -->
+                <div class="testimonial-video rounded-3xl p-8">
+                    <div class="video-container mb-6">
+                        <video controls poster="./img/testimonials/sarah-poster.jpg">
+                            <source src="./videos/testimonial-sarah.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <img src="./img/team/sarah-johnson.jpg" alt="Sarah Johnson" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <h4 class="text-xl font-bold text-white">Sarah Johnson</h4>
+                            <p class="text-white/70">Senior Frontend Developer</p>
+                            <div class="flex gap-1 mt-1">
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Testimonial 2 -->
+                <div class="testimonial-video rounded-3xl p-8">
+                    <div class="video-container mb-6">
+                        <video controls poster="./img/testimonials/mike-poster.jpg">
+                            <source src="./videos/testimonial-mike.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <img src="./img/team/mike-chen.jpg" alt="Mike Chen" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <h4 class="text-xl font-bold text-white">Mike Chen</h4>
+                            <p class="text-white/70">DevOps Engineer</p>
+                            <div class="flex gap-1 mt-1">
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Written Testimonials -->
+                <div class="leadership-card rounded-3xl p-8">
+                    <div class="flex items-start gap-4 mb-6">
+                        <img src="./img/team/alex-rodriguez.jpg" alt="Alex Rodriguez" class="w-16 h-16 rounded-full object-cover">
+                        <div class="flex-1">
+                            <h4 class="text-xl font-bold text-white mb-2">Alex Rodriguez</h4>
+                            <p class="text-white/70 mb-4">Backend Developer</p>
+                            <div class="flex gap-1 mb-4">
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                            </div>
+                            <blockquote class="text-white/90 italic">
+                                "Henry's leadership style is both inspiring and practical. He always makes time for 
+                                one-on-ones and provides clear direction while giving us the autonomy to innovate. 
+                                Under his guidance, I've grown more in 6 months than in my previous 2 years."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leadership-card rounded-3xl p-8">
+                    <div class="flex items-start gap-4 mb-6">
+                        <img src="./img/team/emily-davis.jpg" alt="Emily Davis" class="w-16 h-16 rounded-full object-cover">
+                        <div class="flex-1">
+                            <h4 class="text-xl font-bold text-white mb-2">Emily Davis</h4>
+                            <p class="text-white/70 mb-4">UX Designer</p>
+                            <div class="flex gap-1 mb-4">
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                            </div>
+                            <blockquote class="text-white/90 italic">
+                                "Working with Henry has been transformative. He creates an environment where everyone 
+                                feels heard and valued. His ability to bridge technical and creative perspectives 
+                                has elevated our entire team's output."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Gallery Section -->
+    <section class="py-24 bg-gray-50" id="media">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-3 bg-main-color/10 rounded-2xl px-6 py-3 mb-8">
+                    <i class='bx bx-camera text-main-color text-xl'></i>
+                    <span class="text-main-color font-medium">Visual Documentation</span>
+                </div>
+                <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+                    Leadership in <span class="text-main-color">Action</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    A visual journey through team collaborations, project milestones, and leadership moments
+                </p>
+            </div>
+
+            <!-- Media Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Image Cards -->
+                <div class="image-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <img src="./img/leadership/team-celebration.jpg" alt="Team celebrating project success" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Project Milestone Celebration</h3>
+                        <p class="text-gray-600">Celebrating the successful launch of our e-commerce platform with the entire team</p>
+                    </div>
+                </div>
+
+                <div class="image-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <img src="./img/leadership/workshop-leading.jpg" alt="Leading a workshop" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Technical Workshop</h3>
+                        <p class="text-gray-600">Conducting a hands-on workshop on modern development practices</p>
+                    </div>
+                </div>
+
+                <div class="image-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <img src="./img/leadership/one-on-one-meeting.jpg" alt="One-on-one mentoring" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Mentoring Session</h3>
+                        <p class="text-gray-600">Regular one-on-one sessions focused on career development and growth</p>
+                    </div>
+                </div>
+
+                <!-- Video Cards -->
+                <div class="md:col-span-2 lg:col-span-2 bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="video-container">
+                        <video controls poster="./img/leadership/team-retrospective-poster.jpg">
+                            <source src="./videos/team-retrospective.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Team Retrospective Meeting</h3>
+                        <p class="text-gray-600">Quarterly retrospective where we reflect on our achievements and plan for continuous improvement</p>
+                    </div>
+                </div>
+
+                <div class="image-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <img src="./img/leadership/team-building.jpg" alt="Team building activity" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Team Building</h3>
+                        <p class="text-gray-600">Quarterly team building activities to strengthen collaboration and trust</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-main-color to-secondary-color">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+                Ready to Work Together?
+            </h2>
+            <p class="text-xl text-white/90 mb-8">
+                Let's discuss how I can bring my leadership experience to your next project
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html#contact" class="inline-flex items-center gap-2 bg-white text-main-color px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-gray-100 hover:-translate-y-1">
+                    <i class='bx bx-envelope'></i>
+                    Get In Touch
+                </a>
+                <a href="index.html" class="inline-flex items-center gap-2 bg-transparent text-white border-2 border-white/30 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white">
+                    <i class='bx bx-arrow-left'></i>
+                    Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p>&copy; 2024 Henry Mfodwo. All rights reserved.</p>
+                <p class="text-gray-400 mt-2">Team Leadership Portfolio</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
