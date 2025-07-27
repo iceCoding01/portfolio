@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables for compatibility with existing styles */
+:root {
+  --main-color: #0a174e;
+  --text-color: #0a174e;
+  --bg-color: #ffffff;
+  --secondary-color: #133b7a;
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .glass-morphism {
+    @apply backdrop-blur-glass bg-glass-light border border-glass-border;
+  }
+  
+  .glass-morphism-dark {
+    @apply backdrop-blur-glass bg-glass-primary border border-glass-border;
+  }
+  
+  .text-shadow {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+/* Custom component classes */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-main-color to-accent text-white font-semibold rounded-premium transition-all duration-300 hover:shadow-premium-hover hover:-translate-y-1;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white border-2 border-glass-border rounded-premium transition-all duration-300 hover:bg-glass-light hover:border-white hover:-translate-y-1;
+  }
+  
+  .nav-link-base {
+    @apply relative flex items-center gap-1 text-white/95 no-underline font-semibold px-3 py-2 rounded-glass transition-all duration-300 text-shadow;
+  }
+  
+  .nav-link-hover {
+    @apply hover:bg-gradient-to-r hover:from-white/25 hover:to-white/15 hover:text-white hover:-translate-y-0.5 hover:scale-105 hover:text-shadow-lg;
+  }
+  
+  .section-padding {
+    @apply py-20 px-4 lg:px-8;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+/* Keep existing animations and critical styles intact */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes fadeInUp {
+  0% { 
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}

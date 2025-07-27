@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS Integration Examples</title>
+    <!-- Your existing styles -->
+    <link rel="stylesheet" href="./index.css">
+    <!-- Tailwind CSS (choose one) -->
+    <!-- Option 1: CDN (current) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main-color': '#0a174e',
+                        'text-color': '#0a174e',
+                        'bg-color': '#ffffff',
+                        'secondary-color': '#133b7a'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Option 2: Compiled CSS (for production) -->
+    <!-- <link rel="stylesheet" href="./dist/output.css"> -->
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="bg-gradient-to-br from-main-color via-secondary-color to-main-color min-h-screen">
+
+    <!-- Tailwind CSS Examples -->
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-white mb-8 text-center">
+            Tailwind CSS Integration Examples
+        </h1>
+
+        <!-- Navigation Example -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-white mb-4">Navigation with Tailwind</h2>
+            <nav class="backdrop-blur-glass bg-white/10 border border-white/20 rounded-xl p-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <i class='bx bx-code-alt text-white text-2xl'></i>
+                        <span class="text-white font-semibold">Portfolio</span>
+                    </div>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="#" class="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-lg transition-all duration-300">
+                            <i class='bx bx-home-alt mr-1'></i>Home
+                        </a>
+                        <a href="#" class="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-lg transition-all duration-300">
+                            <i class='bx bx-user mr-1'></i>About
+                        </a>
+                        <a href="#" class="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-lg transition-all duration-300">
+                            <i class='bx bx-briefcase mr-1'></i>Portfolio
+                        </a>
+                        <a href="#" class="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-lg transition-all duration-300">
+                            <i class='bx bx-envelope mr-1'></i>Contact
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </section>
+
+        <!-- Cards Example -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-white mb-6">Glass Morphism Cards</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="backdrop-blur-md bg-white/10 border border-white/20 rounded-xl p-6 hover:bg-white/15 transition-all duration-300 hover:-translate-y-2">
+                    <div class="flex items-center mb-4">
+                        <i class='bx bx-code-alt text-white text-3xl mr-3'></i>
+                        <h3 class="text-xl font-semibold text-white">Web Development</h3>
+                    </div>
+                    <p class="text-white/80 text-sm">
+                        Modern web applications using React, Node.js, and the latest technologies.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="backdrop-blur-md bg-white/10 border border-white/20 rounded-xl p-6 hover:bg-white/15 transition-all duration-300 hover:-translate-y-2">
+                    <div class="flex items-center mb-4">
+                        <i class='bx bx-mobile-alt text-white text-3xl mr-3'></i>
+                        <h3 class="text-xl font-semibold text-white">Mobile Apps</h3>
+                    </div>
+                    <p class="text-white/80 text-sm">
+                        Cross-platform mobile applications with React Native and Flutter.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="backdrop-blur-md bg-white/10 border border-white/20 rounded-xl p-6 hover:bg-white/15 transition-all duration-300 hover:-translate-y-2">
+                    <div class="flex items-center mb-4">
+                        <i class='bx bx-server text-white text-3xl mr-3'></i>
+                        <h3 class="text-xl font-semibold text-white">Backend Systems</h3>
+                    </div>
+                    <p class="text-white/80 text-sm">
+                        Scalable backend systems with Node.js, Python, and cloud services.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buttons Example -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-white mb-6">Button Styles</h2>
+            <div class="flex flex-wrap gap-4">
+                <!-- Primary Button -->
+                <button class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-main-color to-blue-600 text-white font-semibold rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <i class='bx bx-download'></i>
+                    Download CV
+                </button>
+
+                <!-- Secondary Button -->
+                <button class="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white border-2 border-white/30 rounded-2xl transition-all duration-300 hover:bg-white/10 hover:border-white hover:-translate-y-1">
+                    <i class='bx bx-envelope'></i>
+                    Get In Touch
+                </button>
+
+                <!-- Icon Button -->
+                <button class="w-12 h-12 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all duration-300 hover:scale-110 flex items-center justify-center">
+                    <i class='bx bx-heart text-lg'></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Form Example -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-white mb-6">Contact Form</h2>
+            <div class="max-w-md mx-auto backdrop-blur-md bg-white/10 border border-white/20 rounded-xl p-8">
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-white/90 text-sm font-medium mb-2">Name</label>
+                        <input type="text" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label class="block text-white/90 text-sm font-medium mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent" placeholder="your@email.com">
+                    </div>
+                    <div>
+                        <label class="block text-white/90 text-sm font-medium mb-2">Message</label>
+                        <textarea rows="4" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent resize-none" placeholder="Your message..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-gradient-to-r from-main-color to-blue-600 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Responsive Grid Example -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-white mb-6">Responsive Grid</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <div class="aspect-square bg-white/10 rounded-lg flex items-center justify-center text-white font-semibold">1</div>
+                <div class="aspect-square bg-white/10 rounded-lg flex items-center justify-center text-white font-semibold">2</div>
+                <div class="aspect-square bg-white/10 rounded-lg flex items-center justify-center text-white font-semibold">3</div>
+                <div class="aspect-square bg-white/10 rounded-lg flex items-center justify-center text-white font-semibold">4</div>
+                <div class="aspect-square bg-white/10 rounded-lg flex items-center justify-center text-white font-semibold">5</div>
+                <div class="aspect-square bg-white/10 rounded-lg flex items-center justify-center text-white font-semibold">6</div>
+            </div>
+        </section>
+
+        <!-- Typography Example -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-white mb-6">Typography</h2>
+            <div class="space-y-4">
+                <h1 class="text-5xl font-bold text-white">Heading 1</h1>
+                <h2 class="text-4xl font-semibold text-white">Heading 2</h2>
+                <h3 class="text-3xl font-medium text-white">Heading 3</h3>
+                <p class="text-lg text-white/90 leading-relaxed">
+                    This is a paragraph with Tailwind CSS. Notice how we can control text size, color, opacity, and line height with simple utility classes.
+                </p>
+                <p class="text-sm text-white/70">
+                    Smaller text with reduced opacity for subtle information.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Add some basic interactivity
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', () => {
+                console.log('Button clicked!');
+            });
+        });
+    </script>
+</body>
+</html>

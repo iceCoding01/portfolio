@@ -1,0 +1,26 @@
+{
+  "name": "henry-mfodwo-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website for Henry Mfodwo - Software Engineer",
+  "main": "index.html",
+  "scripts": {
+    "build-css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build-css-prod": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "dev": "live-server --port=3000 --open=index.html",
+    "start": "npm run dev"
+  },
+  "keywords": [
+    "portfolio",
+    "software-engineer",
+    "full-stack",
+    "tailwind-css",
+    "responsive-design"
+  ],
+  "author": "Henry Mfodwo",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1",
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {}
+}
