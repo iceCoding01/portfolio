@@ -521,10 +521,10 @@ section {
     left: 0;
     min-width: 180px;
     background: linear-gradient(135deg,
-      rgba(10, 23, 78, 0.95) 0%,
-      rgba(19, 59, 122, 0.93) 100%);
+      rgba(10, 23, 78, 0.98) 0%,
+      rgba(19, 59, 122, 0.96) 100%);
     backdrop-filter: blur(25px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 1.2rem;
     padding: 0.5rem;
     opacity: 0;
@@ -532,21 +532,25 @@ section {
     pointer-events: none;
     transform: translateY(-10px) scale(0.95);
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-    box-shadow: 0 8px 32px rgba(10, 23, 78, 0.3),
-                0 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 32px rgba(10, 23, 78, 0.4),
+                0 4px 16px rgba(0, 0, 0, 0.3);
     z-index: 100000;
-  }  .nav-dropdown:hover .nav-dropdown-menu,
+  }
+  
+  .nav-dropdown:hover .nav-dropdown-menu,
   .nav-dropdown.active .nav-dropdown-menu {
     opacity: 1 !important;
     visibility: visible !important;
     transform: translateY(0) scale(1) !important;
     pointer-events: auto !important;
-  }/* Dropdown Items */
+  }
+  
+  /* Dropdown Items */
 .nav-dropdown-item {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.95) !important;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
@@ -556,6 +560,7 @@ section {
   margin: 0.1rem 0;
   position: relative;
   overflow: hidden;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .nav-dropdown-item::before {
@@ -579,8 +584,10 @@ section {
 }
 
 .nav-dropdown-item:hover {
-  color: #fff;
+  color: #fff !important;
   transform: translateX(3px);
+  background: rgba(255, 255, 255, 0.1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .nav-dropdown-item i {
@@ -662,7 +669,7 @@ section {
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.95) !important;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
@@ -675,6 +682,7 @@ section {
   white-space: nowrap;
   flex-shrink: 0;
   min-width: fit-content;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .nav-link::before, .nav-dropdown-toggle::before {
@@ -735,25 +743,23 @@ section {
 }
 
 .nav-link:hover, .nav-dropdown-toggle:hover {
-  color: #fff;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.15) 0%, 
-    rgba(255, 255, 255, 0.08) 100%);
+  color: #fff !important;
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.15) 100%);
   transform: translateY(-1px) scale(1.02);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
               0 2px 4px rgba(255, 255, 255, 0.1) inset;
-}
-
-.nav-link.active, .nav-dropdown-toggle.active {
-  color: #fff;
-  background: linear-gradient(135deg, 
-    var(--main-color) 0%, 
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}.nav-link.active, .nav-dropdown-toggle.active {
+  color: #fff !important;
+  background: linear-gradient(135deg,
+    var(--main-color) 0%,
     #0066cc 100%);
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3),
               0 2px 4px rgba(255, 255, 255, 0.1) inset;
-}
-
-.nav-link:hover i,
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}.nav-link:hover i,
 .nav-link.active i {
   color: #fff;
   transform: scale(1.1);
@@ -1575,6 +1581,8 @@ section {
     gap: 0;
     justify-content: center;
     min-width: 2.8rem;
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   }
   
   .nav-link span, .nav-dropdown-toggle span {
@@ -1615,10 +1623,10 @@ section {
   
   .nav-dropdown:hover .nav-dropdown-menu,
   .nav-dropdown.active .nav-dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0) scale(1);
-    pointer-events: auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-50%) translateY(0) scale(1) !important;
+    pointer-events: auto !important;
   }
 }
 
@@ -2396,11 +2404,35 @@ section {
     color: white;
 }
 
-.portfolio-layer a:hover{ 
+  .portfolio-layer a:hover{
     background-color: rgba(255, 255, 255, 0.418);
+  }
+
+/* --- Color Visibility Enhancements --- */
+/* Ensure all navigation text is always highly visible */
+.header .nav-link,
+.header .nav-dropdown-toggle,
+.header .nav-dropdown-item {
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* --- Modern Contact Section --- */
+.header .nav-link:hover,
+.header .nav-dropdown-toggle:hover,
+.header .nav-dropdown-item:hover {
+  color: #fff !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Enhanced contrast for dropdowns */
+.nav-dropdown-menu {
+  background: linear-gradient(135deg,
+    rgba(10, 23, 78, 0.98) 0%,
+    rgba(19, 59, 122, 0.96) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 8px 32px rgba(10, 23, 78, 0.4),
+              0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}/* --- Modern Contact Section --- */
 .contact {
   background: var(--secondary-bg);
   border-radius: 1.5rem;
