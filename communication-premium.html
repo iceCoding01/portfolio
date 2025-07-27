@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Skills - Henry Mfodwo</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main-color': '#0a174e',
+                        'secondary-color': '#133b7a',
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .communication-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: linear-gradient(135deg, #000, #1a1a2e);
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+        }
+        
+        .skill-metric {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-metric:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.12));
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .communication-card {
+            backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .communication-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(2deg); }
+            66% { transform: translateY(-25px) rotate(-2deg); }
+        }
+        
+        /* Premium mobile optimizations */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.5rem !important;
+                line-height: 1.1;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.125rem !important;
+                line-height: 1.4;
+            }
+            
+            .section-title {
+                font-size: 2.25rem !important;
+                line-height: 1.2;
+            }
+            
+            .card-padding {
+                padding: 1.5rem !important;
+            }
+            
+            .metric-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+            }
+            
+            .navigation-mobile {
+                flex-direction: column;
+                gap: 0.5rem !important;
+            }
+        }
+        
+        /* Tablet optimizations */
+        @media (max-width: 1024px) and (min-width: 641px) {
+            .hero-content {
+                text-align: center;
+            }
+        }
+        
+        /* Glass morphism navigation */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Interactive elements */
+        .interactive-hover {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .interactive-hover:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Premium buttons */
+        .btn-premium {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Loading animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Chat bubble animations */
+        .chat-bubble {
+            animation: bubbleFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes bubbleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-poppins">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-3 text-white font-bold text-xl interactive-hover">
+                    <i class='bx bx-arrow-left text-2xl'></i>
+                    <span class="hidden sm:inline">Back to Portfolio</span>
+                    <span class="sm:hidden">Back</span>
+                </a>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#overview" class="text-white/80 hover:text-white transition-colors interactive-hover">Overview</a>
+                    <a href="#skills" class="text-white/80 hover:text-white transition-colors interactive-hover">Skills</a>
+                    <a href="#examples" class="text-white/80 hover:text-white transition-colors interactive-hover">Examples</a>
+                    <a href="#testimonials" class="text-white/80 hover:text-white transition-colors interactive-hover">Testimonials</a>
+                </div>
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-white text-2xl interactive-hover" onclick="toggleMobileMenu()">
+                    <i class='bx bx-menu'></i>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4 navigation-mobile">
+                <a href="#overview" class="block text-white/80 hover:text-white py-2 transition-colors">Overview</a>
+                <a href="#skills" class="block text-white/80 hover:text-white py-2 transition-colors">Skills</a>
+                <a href="#examples" class="block text-white/80 hover:text-white py-2 transition-colors">Examples</a>
+                <a href="#testimonials" class="block text-white/80 hover:text-white py-2 transition-colors">Testimonials</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="communication-hero min-h-screen flex items-center relative overflow-hidden fade-in" id="overview">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-1/4 left-1/4 w-72 h-72 sm:w-96 sm:h-96 bg-white rounded-full blur-3xl floating-element"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-80 sm:h-80 bg-purple-300 rounded-full blur-3xl floating-element" style="animation-delay: -3s;"></div>
+            <div class="absolute top-1/2 right-1/3 w-48 h-48 bg-blue-300 rounded-full blur-3xl floating-element" style="animation-delay: -1.5s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="text-white hero-content">
+                    <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-4 sm:px-6 py-3 mb-6 sm:mb-8">
+                        <i class='bx bx-chat text-blue-400 text-xl'></i>
+                        <span class="font-medium text-sm sm:text-base">Communication Excellence</span>
+                    </div>
+                    
+                    <h1 class="hero-title text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+                        Effective <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Communication</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle text-lg sm:text-xl text-white/90 leading-relaxed mb-6 sm:mb-8 max-w-2xl">
+                        Bridging technical complexity with clear, compelling communication across diverse 
+                        audiences and platforms.
+                    </p>
+                    
+                    <!-- Key Metrics -->
+                    <div class="metric-grid grid grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                        <div class="skill-metric rounded-2xl p-4 sm:p-6 text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-blue-400 mb-2">100+</div>
+                            <div class="text-white/80 text-xs sm:text-sm">Presentations</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-4 sm:p-6 text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-green-400 mb-2">25+</div>
+                            <div class="text-white/80 text-xs sm:text-sm">Client Projects</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-4 sm:p-6 text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-purple-400 mb-2">95%</div>
+                            <div class="text-white/80 text-xs sm:text-sm">Stakeholder Satisfaction</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-4 sm:p-6 text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-yellow-400 mb-2">5+</div>
+                            <div class="text-white/80 text-xs sm:text-sm">Languages</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Video -->
+                <div class="relative mt-8 lg:mt-0">
+                    <div class="communication-card rounded-3xl p-6 sm:p-8 text-center">
+                        <div class="video-container mb-4 sm:mb-6">
+                            <video controls poster="./img/communication-poster.jpg" class="rounded-lg">
+                                <source src="./videos/communication-intro.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Communication Style</h3>
+                        <p class="text-white/80 text-sm sm:text-base">Watch my approach to clear, effective communication</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Communication Skills Section -->
+    <section class="py-16 sm:py-20 lg:py-24 bg-white fade-in" id="skills">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16">
+                <div class="inline-flex items-center gap-3 bg-main-color/10 rounded-2xl px-4 sm:px-6 py-3 mb-6 sm:mb-8">
+                    <i class='bx bx-microphone text-main-color text-xl'></i>
+                    <span class="text-main-color font-medium text-sm sm:text-base">Core Competencies</span>
+                </div>
+                <h2 class="section-title text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
+                    Communication <span class="text-main-color">Skills</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Multi-faceted communication abilities spanning technical documentation, client relations, and visual storytelling
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Technical Communication -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl p-6 sm:p-8 interactive-hover">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-code-alt text-2xl text-white'></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Technical Communication</h3>
+                    <p class="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+                        Translating complex technical concepts into clear, actionable documentation and presentations for both technical and non-technical audiences.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                            <i class='bx bx-check-circle text-blue-500'></i>
+                            API Documentation
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                            <i class='bx bx-check-circle text-blue-500'></i>
+                            Technical Specifications
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                            <i class='bx bx-check-circle text-blue-500'></i>
+                            Code Reviews & Comments
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Client Communication -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-3xl p-6 sm:p-8 interactive-hover">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-user-voice text-2xl text-white'></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Client Relations</h3>
+                    <p class="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+                        Building strong client relationships through clear expectations, regular updates, and proactive communication throughout project lifecycles.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Stakeholder Presentations
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Progress Reporting
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                            <i class='bx bx-check-circle text-green-500'></i>
+                            Requirement Gathering
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Visual Communication -->
+                <div class="bg-gradient-to-br from-purple-50 to-violet-100 rounded-3xl p-6 sm:p-8 interactive-hover md:col-span-2 lg:col-span-1">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-palette text-2xl text-white'></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Visual Communication</h3>
+                    <p class="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+                        Creating compelling visual narratives through diagrams, prototypes, and interactive demonstrations that enhance understanding.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                            <i class='bx bx-check-circle text-purple-500'></i>
+                            Wireframes & Mockups
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                            <i class='bx bx-check-circle text-purple-500'></i>
+                            System Diagrams
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                            <i class='bx bx-check-circle text-purple-500'></i>
+                            Interactive Prototypes
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section class="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50 fade-in" id="examples">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16">
+                <div class="inline-flex items-center gap-3 bg-blue-500/10 rounded-2xl px-4 sm:px-6 py-3 mb-6 sm:mb-8">
+                    <i class='bx bx-folder-open text-blue-600 text-xl'></i>
+                    <span class="text-blue-600 font-medium text-sm sm:text-base">Portfolio Examples</span>
+                </div>
+                <h2 class="section-title text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
+                    Communication in <span class="text-blue-600">Action</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Real examples showcasing different communication styles and methodologies across various project contexts
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+                <!-- Technical Documentation Example -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                            <i class='bx bx-file-doc text-white text-xl'></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900">API Documentation</h3>
+                            <p class="text-gray-600 text-sm sm:text-base">RESTful API Guide</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-900 rounded-2xl p-4 sm:p-6 mb-6 overflow-x-auto">
+                        <pre class="text-green-400 text-xs sm:text-sm"><code>/**
+ * User Authentication Endpoint
+ * @route POST /api/auth/login
+ * @desc Authenticate user and return JWT token
+ * @access Public
+ * @param {string} email - User email address
+ * @param {string} password - User password
+ * @returns {Object} Authentication response
+ * @example
+ * // Request
+ * {
+ *   "email": "user@example.com",
+ *   "password": "securePassword123"
+ * }
+ * 
+ * // Response
+ * {
+ *   "success": true,
+ *   "token": "eyJhbGciOiJIUzI1NiIs...",
+ *   "user": {
+ *     "id": "12345",
+ *     "email": "user@example.com",
+ *     "role": "user"
+ *   }
+ * }
+ */</code></pre>
+                    </div>
+                    
+                    <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                        Comprehensive API documentation with clear examples, parameter descriptions, and expected responses. 
+                        Includes error handling and authentication flows for seamless developer integration.
+                    </p>
+                </div>
+
+                <!-- Client Presentation Example -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                            <i class='bx bx-presentation text-white text-xl'></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900">Client Presentation</h3>
+                            <p class="text-gray-600 text-sm sm:text-base">Project Milestone Review</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-container mb-6">
+                        <video controls poster="./img/client-presentation-poster.jpg">
+                            <source src="./videos/client-presentation.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    
+                    <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                        Strategic client presentation showcasing project progress, key achievements, and next steps. 
+                        Balances technical details with business impact for stakeholder alignment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-main-color via-secondary-color to-blue-900 fade-in" id="testimonials">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16">
+                <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-4 sm:px-6 py-3 mb-6 sm:mb-8">
+                    <i class='bx bx-chat-heart text-red-400 text-xl'></i>
+                    <span class="text-white font-medium text-sm sm:text-base">Client Feedback</span>
+                </div>
+                <h2 class="section-title text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
+                    What <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Clients Say</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                    Testimonials highlighting communication effectiveness and collaboration success
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                <!-- Testimonial 1 -->
+                <div class="communication-card rounded-3xl p-6 sm:p-8 card-padding">
+                    <div class="flex items-start gap-4 mb-6">
+                        <img src="./img/clients/david-smith.jpg" alt="David Smith" class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover">
+                        <div class="flex-1">
+                            <h4 class="text-lg sm:text-xl font-bold text-white mb-2">David Smith</h4>
+                            <p class="text-white/70 mb-4 text-sm sm:text-base">CTO, TechCorp</p>
+                            <div class="flex gap-1 mb-4">
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                            </div>
+                            <blockquote class="text-white/90 italic text-sm sm:text-base leading-relaxed">
+                                "Henry's ability to translate complex technical requirements into clear, actionable plans 
+                                was instrumental in our project success. His communication bridged the gap between our 
+                                technical team and business stakeholders perfectly."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="communication-card rounded-3xl p-6 sm:p-8 card-padding">
+                    <div class="flex items-start gap-4 mb-6">
+                        <img src="./img/clients/maria-gonzalez.jpg" alt="Maria Gonzalez" class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover">
+                        <div class="flex-1">
+                            <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Maria Gonzalez</h4>
+                            <p class="text-white/70 mb-4 text-sm sm:text-base">Product Manager, StartupXYZ</p>
+                            <div class="flex gap-1 mb-4">
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                            </div>
+                            <blockquote class="text-white/90 italic text-sm sm:text-base leading-relaxed">
+                                "Exceptional communication skills! Henry's regular updates and clear documentation 
+                                kept everyone aligned throughout our 6-month project. His presentation style made 
+                                complex data accessible to all stakeholders."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+                Let's Communicate Effectively
+            </h2>
+            <p class="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed">
+                Ready to bring clear, compelling communication to your next project?
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html#contact" class="btn-premium inline-flex items-center justify-center gap-2 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 interactive-hover">
+                    <i class='bx bx-envelope'></i>
+                    Start Conversation
+                </a>
+                <a href="index.html" class="inline-flex items-center justify-center gap-2 bg-transparent text-white border-2 border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white interactive-hover">
+                    <i class='bx bx-arrow-left'></i>
+                    Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6 sm:py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-sm sm:text-base">&copy; 2024 Henry Mfodwo. All rights reserved.</p>
+                <p class="text-gray-400 mt-2 text-sm">Communication Skills Portfolio</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+    <script>
+        // Mobile menu toggle function
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Add intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

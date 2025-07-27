@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Solving - Henry Mfodwo</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main-color': '#0a174e',
+                        'secondary-color': '#133b7a',
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .problemsolving-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%, #06d6a0 150%);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: linear-gradient(135deg, #000, #1a1a2e);
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+        }
+        
+        .skill-metric {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-metric:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.12));
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .problemsolving-card {
+            backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .problemsolving-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(2deg); }
+            66% { transform: translateY(-25px) rotate(-2deg); }
+        }
+        
+        .step-card {
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .complexity-bar {
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .complexity-fill {
+            height: 100%;
+            transition: width 1s ease-in-out;
+        }
+        
+        /* Step reveal animation */
+        .step-reveal {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+        
+        .step-reveal.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Premium mobile optimizations */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.5rem !important;
+                line-height: 1.1;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.125rem !important;
+                line-height: 1.4;
+            }
+            
+            .section-title {
+                font-size: 2.25rem !important;
+                line-height: 1.2;
+            }
+            
+            .card-padding {
+                padding: 1.5rem !important;
+            }
+            
+            .metric-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+            }
+            
+            .navigation-mobile {
+                flex-direction: column;
+                gap: 0.5rem !important;
+            }
+        }
+        
+        /* Glass morphism navigation */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Interactive elements */
+        .interactive-hover {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .interactive-hover:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Premium buttons */
+        .btn-premium {
+            background: linear-gradient(135deg, #06d6a0 0%, #667eea 100%);
+            border: none;
+            box-shadow: 0 10px 20px rgba(6, 214, 160, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(6, 214, 160, 0.4);
+        }
+        
+        /* Loading animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-poppins">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-3 text-white font-bold text-xl interactive-hover">
+                    <i class='bx bx-arrow-left text-2xl'></i>
+                    <span class="hidden sm:inline">Back to Portfolio</span>
+                    <span class="sm:hidden">Back</span>
+                </a>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#overview" class="text-white/80 hover:text-white transition-colors interactive-hover">Overview</a>
+                    <a href="#methodology" class="text-white/80 hover:text-white transition-colors interactive-hover">Methodology</a>
+                    <a href="#case-studies" class="text-white/80 hover:text-white transition-colors interactive-hover">Case Studies</a>
+                    <a href="#testimonials" class="text-white/80 hover:text-white transition-colors interactive-hover">Testimonials</a>
+                </div>
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-white text-2xl interactive-hover" onclick="toggleMobileMenu()">
+                    <i class='bx bx-menu'></i>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4 navigation-mobile">
+                <a href="#overview" class="block text-white/80 hover:text-white py-2 transition-colors">Overview</a>
+                <a href="#methodology" class="block text-white/80 hover:text-white py-2 transition-colors">Methodology</a>
+                <a href="#case-studies" class="block text-white/80 hover:text-white py-2 transition-colors">Case Studies</a>
+                <a href="#testimonials" class="block text-white/80 hover:text-white py-2 transition-colors">Testimonials</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="problemsolving-hero min-h-screen flex items-center relative overflow-hidden fade-in" id="overview">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-1/4 left-1/4 w-72 h-72 sm:w-96 sm:h-96 bg-white rounded-full blur-3xl floating-element"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-80 sm:h-80 bg-green-300 rounded-full blur-3xl floating-element" style="animation-delay: -3s;"></div>
+            <div class="absolute top-1/2 right-1/3 w-48 h-48 bg-blue-300 rounded-full blur-3xl floating-element" style="animation-delay: -1.5s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="text-white hero-content">
+                    <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-4 sm:px-6 py-3 mb-6 sm:mb-8">
+                        <i class='bx bx-cog text-green-400 text-xl'></i>
+                        <span class="font-medium text-sm sm:text-base">Solution Architecture</span>
+                    </div>
+                    
+                    <h1 class="hero-title text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+                        Problem <span class="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Solving</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle text-lg sm:text-xl text-white/90 leading-relaxed mb-6 sm:mb-8 max-w-2xl">
+                        Systematic approach to identifying, analyzing, and solving complex technical challenges 
+                        with creative and efficient solutions.
+                    </p>
+                    
+                    <!-- Key Metrics -->
+                    <div class="metric-grid grid grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                        <div class="skill-metric rounded-2xl p-4 sm:p-6 text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-green-400 mb-2">50+</div>
+                            <div class="text-white/80 text-xs sm:text-sm">Problems Solved</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-4 sm:p-6 text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-blue-400 mb-2">85%</div>
+                            <div class="text-white/80 text-xs sm:text-sm">Efficiency Improvement</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-4 sm:p-6 text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-purple-400 mb-2">24hr</div>
+                            <div class="text-white/80 text-xs sm:text-sm">Average Resolution</div>
+                        </div>
+                        <div class="skill-metric rounded-2xl p-4 sm:p-6 text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-yellow-400 mb-2">3+</div>
+                            <div class="text-white/80 text-xs sm:text-sm">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Video -->
+                <div class="relative mt-8 lg:mt-0">
+                    <div class="problemsolving-card rounded-3xl p-6 sm:p-8 text-center">
+                        <div class="video-container mb-4 sm:mb-6">
+                            <video controls poster="./img/problemsolving-poster.jpg" class="rounded-lg">
+                                <source src="./videos/problemsolving-intro.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Problem-Solving Approach</h3>
+                        <p class="text-white/80 text-sm sm:text-base">Watch my systematic methodology in action</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="py-16 sm:py-20 lg:py-24 bg-white fade-in" id="methodology">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16">
+                <div class="inline-flex items-center gap-3 bg-main-color/10 rounded-2xl px-4 sm:px-6 py-3 mb-6 sm:mb-8">
+                    <i class='bx bx-brain text-main-color text-xl'></i>
+                    <span class="text-main-color font-medium text-sm sm:text-base">Strategic Process</span>
+                </div>
+                <h2 class="section-title text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
+                    Problem-Solving <span class="text-main-color">Methodology</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    A proven 5-step framework for tackling complex technical challenges systematically and effectively
+                </p>
+            </div>
+
+            <div class="space-y-8 sm:space-y-12">
+                <!-- Step 1 -->
+                <div class="step-reveal flex flex-col lg:flex-row items-center gap-8 lg:gap-12" data-step="1">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
+                        <div class="step-card bg-gradient-to-br from-red-50 to-pink-100 rounded-3xl p-6 sm:p-8">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">1</div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900">Understand & Define</h3>
+                            </div>
+                            <p class="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+                                Thoroughly analyze the problem scope, gather stakeholder requirements, and clearly define success criteria 
+                                to ensure we're solving the right problem.
+                            </p>
+                            <ul class="space-y-2">
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-red-500'></i>
+                                    Stakeholder interviews
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-red-500'></i>
+                                    Problem statement creation
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-red-500'></i>
+                                    Success metrics definition
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 order-1 lg:order-2">
+                        <div class="video-container">
+                            <video controls poster="./img/step1-poster.jpg">
+                                <source src="./videos/step1-understand.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-reveal flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-12" data-step="2">
+                    <div class="lg:w-1/2">
+                        <div class="step-card bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl p-6 sm:p-8">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">2</div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900">Research & Analyze</h3>
+                            </div>
+                            <p class="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+                                Deep dive into existing solutions, analyze patterns, and conduct thorough research 
+                                to understand all variables affecting the problem.
+                            </p>
+                            <ul class="space-y-2">
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-blue-500'></i>
+                                    Technical research
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-blue-500'></i>
+                                    Data pattern analysis
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-blue-500'></i>
+                                    Root cause identification
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                            <h4 class="text-lg font-bold text-gray-900 mb-4">Analysis Tools</h4>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-600 text-sm sm:text-base">Data Mining</span>
+                                    <span class="text-blue-600 font-semibold">Expert</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-600 text-sm sm:text-base">System Architecture Review</span>
+                                    <span class="text-blue-600 font-semibold">Advanced</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-600 text-sm sm:text-base">Performance Profiling</span>
+                                    <span class="text-blue-600 font-semibold">Expert</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-reveal flex flex-col lg:flex-row items-center gap-8 lg:gap-12" data-step="3">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
+                        <div class="step-card bg-gradient-to-br from-green-50 to-emerald-100 rounded-3xl p-6 sm:p-8">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">3</div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900">Ideate & Design</h3>
+                            </div>
+                            <p class="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+                                Generate multiple solution approaches, evaluate trade-offs, and design 
+                                the optimal solution architecture with scalability in mind.
+                            </p>
+                            <ul class="space-y-2">
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Brainstorming sessions
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Solution architecture
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-green-500'></i>
+                                    Prototype development
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 order-1 lg:order-2">
+                        <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                            <h4 class="text-lg font-bold text-gray-900 mb-4">Design Process</h4>
+                            <div class="space-y-4">
+                                <div class="bg-gray-100 rounded-xl p-4">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <i class='bx bx-bulb text-yellow-500 text-xl'></i>
+                                        <span class="font-semibold text-gray-900 text-sm sm:text-base">Ideation</span>
+                                    </div>
+                                    <p class="text-gray-600 text-xs sm:text-sm">Generate multiple creative solutions</p>
+                                </div>
+                                <div class="bg-gray-100 rounded-xl p-4">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <i class='bx bx-bar-chart-alt-2 text-blue-500 text-xl'></i>
+                                        <span class="font-semibold text-gray-900 text-sm sm:text-base">Evaluation</span>
+                                    </div>
+                                    <p class="text-gray-600 text-xs sm:text-sm">Assess feasibility and impact</p>
+                                </div>
+                                <div class="bg-gray-100 rounded-xl p-4">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <i class='bx bx-diamond text-purple-500 text-xl'></i>
+                                        <span class="font-semibold text-gray-900 text-sm sm:text-base">Selection</span>
+                                    </div>
+                                    <p class="text-gray-600 text-xs sm:text-sm">Choose optimal solution approach</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step-reveal flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-12" data-step="4">
+                    <div class="lg:w-1/2">
+                        <div class="step-card bg-gradient-to-br from-purple-50 to-violet-100 rounded-3xl p-6 sm:p-8">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">4</div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900">Implement & Test</h3>
+                            </div>
+                            <p class="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+                                Execute the solution with careful attention to quality, performance, and maintainability. 
+                                Rigorous testing ensures reliability and effectiveness.
+                            </p>
+                            <ul class="space-y-2">
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-purple-500'></i>
+                                    Agile development
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-purple-500'></i>
+                                    Comprehensive testing
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-purple-500'></i>
+                                    Performance optimization
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <div class="video-container">
+                            <video controls poster="./img/step4-poster.jpg">
+                                <source src="./videos/step4-implement.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="step-reveal flex flex-col lg:flex-row items-center gap-8 lg:gap-12" data-step="5">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
+                        <div class="step-card bg-gradient-to-br from-orange-50 to-amber-100 rounded-3xl p-6 sm:p-8">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">5</div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900">Evaluate & Improve</h3>
+                            </div>
+                            <p class="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+                                Monitor solution performance, gather feedback, and continuously refine the approach. 
+                                Document lessons learned for future problem-solving initiatives.
+                            </p>
+                            <ul class="space-y-2">
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-orange-500'></i>
+                                    Performance monitoring
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-orange-500'></i>
+                                    Feedback collection
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle text-orange-500'></i>
+                                    Continuous improvement
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 order-1 lg:order-2">
+                        <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                            <h4 class="text-lg font-bold text-gray-900 mb-4">Success Metrics</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-600 text-sm sm:text-base">Problem Resolution Rate</span>
+                                        <span class="text-green-600 font-semibold">98%</span>
+                                    </div>
+                                    <div class="complexity-bar">
+                                        <div class="complexity-fill bg-gradient-to-r from-green-500 to-emerald-500" style="width: 98%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-600 text-sm sm:text-base">Client Satisfaction</span>
+                                        <span class="text-blue-600 font-semibold">95%</span>
+                                    </div>
+                                    <div class="complexity-bar">
+                                        <div class="complexity-fill bg-gradient-to-r from-blue-500 to-indigo-500" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-600 text-sm sm:text-base">Time to Resolution</span>
+                                        <span class="text-purple-600 font-semibold">Fast</span>
+                                    </div>
+                                    <div class="complexity-bar">
+                                        <div class="complexity-fill bg-gradient-to-r from-purple-500 to-violet-500" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50 fade-in" id="case-studies">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16">
+                <div class="inline-flex items-center gap-3 bg-green-500/10 rounded-2xl px-4 sm:px-6 py-3 mb-6 sm:mb-8">
+                    <i class='bx bx-trophy text-green-600 text-xl'></i>
+                    <span class="text-green-600 font-medium text-sm sm:text-base">Success Stories</span>
+                </div>
+                <h2 class="section-title text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
+                    Case <span class="text-green-600">Studies</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Real-world examples of complex problems solved using systematic approaches and innovative thinking
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+                <!-- Case Study 1 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl interactive-hover">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center">
+                            <i class='bx bx-error text-white text-xl'></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900">Performance Crisis Resolution</h3>
+                            <p class="text-gray-600 text-sm sm:text-base">E-commerce Platform Optimization</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Complexity Level</h4>
+                        <div class="complexity-bar">
+                            <div class="complexity-fill bg-gradient-to-r from-red-500 to-orange-500" style="width: 90%"></div>
+                        </div>
+                        <span class="text-red-600 font-semibold text-xs sm:text-sm">High Complexity</span>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Problem</h4>
+                            <p class="text-gray-600 text-sm sm:text-base">E-commerce platform experiencing 70% slowdown during peak traffic, causing significant revenue loss and customer churn.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Solution</h4>
+                            <p class="text-gray-600 text-sm sm:text-base">Implemented database optimization, caching layer, and load balancing. Redesigned critical user flows for better performance.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Results</h4>
+                            <ul class="space-y-1">
+                                <li class="flex items-center gap-2 text-green-600 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle'></i>
+                                    85% performance improvement
+                                </li>
+                                <li class="flex items-center gap-2 text-green-600 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle'></i>
+                                    $2M revenue recovery
+                                </li>
+                                <li class="flex items-center gap-2 text-green-600 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle'></i>
+                                    Zero downtime deployment
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="video-container">
+                        <video controls poster="./img/case-study-1-poster.jpg">
+                            <source src="./videos/case-study-performance.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl interactive-hover">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                            <i class='bx bx-shield text-white text-xl'></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900">Security Vulnerability Fix</h3>
+                            <p class="text-gray-600 text-sm sm:text-base">Financial API Security Enhancement</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Complexity Level</h4>
+                        <div class="complexity-bar">
+                            <div class="complexity-fill bg-gradient-to-r from-blue-500 to-purple-500" style="width: 75%"></div>
+                        </div>
+                        <span class="text-blue-600 font-semibold text-xs sm:text-sm">Medium-High Complexity</span>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Problem</h4>
+                            <p class="text-gray-600 text-sm sm:text-base">Critical security vulnerabilities discovered in financial API endpoints, exposing sensitive customer data and transaction information.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Solution</h4>
+                            <p class="text-gray-600 text-sm sm:text-base">Implemented comprehensive security audit, upgraded authentication protocols, and added encryption layers for all data transmission.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Results</h4>
+                            <ul class="space-y-1">
+                                <li class="flex items-center gap-2 text-green-600 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle'></i>
+                                    100% vulnerabilities patched
+                                </li>
+                                <li class="flex items-center gap-2 text-green-600 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle'></i>
+                                    SOC 2 compliance achieved
+                                </li>
+                                <li class="flex items-center gap-2 text-green-600 text-sm sm:text-base">
+                                    <i class='bx bx-check-circle'></i>
+                                    24hr resolution time
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-900 rounded-2xl p-4 overflow-x-auto">
+                        <pre class="text-green-400 text-xs sm:text-sm"><code>// Enhanced Security Implementation
+const secureAPI = {
+  authentication: 'JWT + 2FA',
+  encryption: 'AES-256',
+  rateLimit: '100 req/min',
+  monitoring: 'Real-time',
+  compliance: 'SOC 2 Type II'
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-main-color via-secondary-color to-green-900 fade-in" id="testimonials">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16">
+                <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-4 sm:px-6 py-3 mb-6 sm:mb-8">
+                    <i class='bx bx-medal text-yellow-400 text-xl'></i>
+                    <span class="text-white font-medium text-sm sm:text-base">Recognition</span>
+                </div>
+                <h2 class="section-title text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
+                    Problem-Solving <span class="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Recognition</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                    Feedback from colleagues and clients on problem-solving effectiveness and innovative approaches
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                <!-- Testimonial 1 -->
+                <div class="problemsolving-card rounded-3xl p-6 sm:p-8 card-padding">
+                    <div class="flex items-start gap-4 mb-6">
+                        <img src="./img/clients/robert-kim.jpg" alt="Robert Kim" class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover">
+                        <div class="flex-1">
+                            <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Robert Kim</h4>
+                            <p class="text-white/70 mb-4 text-sm sm:text-base">VP Engineering, DataFlow Inc</p>
+                            <div class="flex gap-1 mb-4">
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                            </div>
+                            <blockquote class="text-white/90 italic text-sm sm:text-base leading-relaxed">
+                                "Henry's systematic approach to problem-solving is remarkable. He tackled our most 
+                                complex performance issues with a methodology that impressed our entire engineering team. 
+                                His solutions are not just effective but elegant and maintainable."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="problemsolving-card rounded-3xl p-6 sm:p-8 card-padding">
+                    <div class="flex items-start gap-4 mb-6">
+                        <img src="./img/clients/lisa-thompson.jpg" alt="Lisa Thompson" class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover">
+                        <div class="flex-1">
+                            <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Lisa Thompson</h4>
+                            <p class="text-white/70 mb-4 text-sm sm:text-base">CTO, SecureBank</p>
+                            <div class="flex gap-1 mb-4">
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                                <i class='bx bxs-star text-yellow-400'></i>
+                            </div>
+                            <blockquote class="text-white/90 italic text-sm sm:text-base leading-relaxed">
+                                "When we faced critical security vulnerabilities, Henry's problem-solving expertise 
+                                saved us from potential disaster. His thorough analysis and swift implementation 
+                                of solutions demonstrated exceptional technical judgment and crisis management skills."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-12 sm:py-16 bg-gradient-to-r from-green-600 to-blue-600">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+                Ready to Solve Complex Challenges?
+            </h2>
+            <p class="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed">
+                Let's work together to tackle your most challenging technical problems
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html#contact" class="btn-premium inline-flex items-center justify-center gap-2 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 interactive-hover">
+                    <i class='bx bx-wrench'></i>
+                    Discuss Your Challenge
+                </a>
+                <a href="index.html" class="inline-flex items-center justify-center gap-2 bg-transparent text-white border-2 border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white interactive-hover">
+                    <i class='bx bx-arrow-left'></i>
+                    Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6 sm:py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-sm sm:text-base">&copy; 2024 Henry Mfodwo. All rights reserved.</p>
+                <p class="text-gray-400 mt-2 text-sm">Problem Solving Portfolio</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+    <script>
+        // Mobile menu toggle function
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Step reveal animation on scroll
+        const stepObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.step-reveal').forEach(step => {
+            stepObserver.observe(step);
+        });
+
+        // Add intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate complexity bars on scroll
+        const complexityObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bars = entry.target.querySelectorAll('.complexity-fill');
+                    bars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 300);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.complexity-bar').forEach(bar => {
+            complexityObserver.observe(bar.parentElement);
+        });
+    </script>
+</body>
+</html>
