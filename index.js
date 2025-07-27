@@ -1,4 +1,48 @@
 // Enhanced Premium Navbar Functionality
+// Mobile touch interaction for portfolio cards
+document.addEventListener('DOMContentLoaded', function() {
+    const portfolioBoxes = document.querySelectorAll('.portfolio-box');
+    
+    portfolioBoxes.forEach(box => {
+        // Add touch event listeners for mobile
+        box.addEventListener('touchstart', function() {
+            this.classList.add('touched');
+        });
+        
+        box.addEventListener('touchend', function() {
+            // Keep the overlay visible for a moment after touch
+            setTimeout(() => {
+                this.classList.remove('touched');
+            }, 3000); // 3 seconds
+        });
+        
+        // Handle click/tap
+        box.addEventListener('click', function(e) {
+            // On mobile, toggle the overlay
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                this.classList.toggle('touched');
+                
+                // Remove touched class from other boxes
+                portfolioBoxes.forEach(otherBox => {
+                    if (otherBox !== this) {
+                        otherBox.classList.remove('touched');
+                    }
+                });
+            }
+        });
+    });
+    
+    // Remove touched class when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.portfolio-box')) {
+            portfolioBoxes.forEach(box => {
+                box.classList.remove('touched');
+            });
+        }
+    });
+});
+
 let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 let header = document.querySelector('.header');
