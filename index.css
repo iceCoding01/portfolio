@@ -422,7 +422,556 @@ body {
   text-decoration: none;
 }
 
-/* Mobile Menu Specific Styles */
+/* Mobile First Responsive Design Enhancements */
+
+/* 1. Base Responsive Settings */
+@media (max-width: 1200px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .services-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .skills-categories .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* 2. Tablet Responsive (768px - 1024px) */
+@media (max-width: 1024px) {
+  .hero-title-line {
+    font-size: 3.5rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.8rem !important;
+  }
+  
+  .section-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .services-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .portfolio-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .skills-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* 3. Mobile Large (640px - 768px) */
+@media (max-width: 768px) {
+  /* Header & Navigation */
+  .desktop-nav {
+    display: none !important;
+  }
+  
+  .mobile-nav-trigger {
+    display: flex !important;
+  }
+  
+  /* Hero Section */
+  .hero {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+  
+  .hero-container {
+    gap: 1.5rem;
+  }
+  
+  .hero-title-line {
+    font-size: 2.8rem !important;
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem !important;
+  }
+  
+  .hero-description {
+    font-size: 1rem !important;
+    line-height: 1.6;
+  }
+  
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem;
+  }
+  
+  /* Skills Section */
+  .skills-categories .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  .skill-card {
+    padding: 1.5rem !important;
+  }
+  
+  .skill-icon {
+    width: 4rem !important;
+    height: 4rem !important;
+  }
+  
+  .skill-icon i {
+    font-size: 1.8rem !important;
+  }
+  
+  .skill-card h4 {
+    font-size: 1.1rem !important;
+  }
+  
+  .tech-badge {
+    padding: 1rem !important;
+  }
+  
+  .tech-badge i {
+    font-size: 2rem !important;
+  }
+  
+  /* Portfolio */
+  .portfolio-container {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* Services */
+  .services-container {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  .services-box {
+    padding: 1.5rem !important;
+  }
+  
+  /* Contact */
+  .contact-form {
+    padding: 1.5rem !important;
+  }
+  
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    text-align: center;
+  }
+}
+
+/* 4. Mobile Medium (480px - 640px) */
+@media (max-width: 640px) {
+  /* Typography */
+  html {
+    font-size: 55% !important;
+  }
+  
+  .section-title {
+    font-size: 2rem !important;
+  }
+  
+  .hero-title-line {
+    font-size: 2.4rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem !important;
+  }
+  
+  /* Layout Adjustments */
+  section {
+    padding: 3rem 1rem !important;
+  }
+  
+  .section-spacing {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  
+  /* Skills Responsive */
+  .skills-stats {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .category-header h3 {
+    font-size: 1.3rem !important;
+  }
+  
+  .soft-skill-card {
+    padding: 1rem !important;
+  }
+  
+  /* Hero Adjustments */
+  .hero-tech-stack {
+    flex-wrap: wrap;
+    gap: 0.5rem !important;
+    justify-content: center;
+  }
+  
+  .tech-item {
+    font-size: 0.875rem !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+  
+  /* Buttons */
+  .btn {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* 5. Mobile Small (320px - 480px) */
+@media (max-width: 480px) {
+  /* Base Font Size */
+  html {
+    font-size: 50% !important;
+  }
+  
+  /* Container Padding */
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Hero Extreme Mobile */
+  .hero-title-line {
+    font-size: 2rem !important;
+    line-height: 1.1;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem !important;
+  }
+  
+  .hero-description {
+    font-size: 0.9rem !important;
+  }
+  
+  /* Skills Extra Small */
+  .skill-card {
+    padding: 1rem !important;
+  }
+  
+  .skill-icon {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+  
+  .skill-icon i {
+    font-size: 1.5rem !important;
+  }
+  
+  .tech-badge {
+    padding: 0.75rem !important;
+  }
+  
+  .tech-badge i {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Navigation Mobile */
+  .mobile-nav-overlay {
+    padding: 1rem !important;
+  }
+  
+  /* Stats Grid */
+  .stat {
+    padding: 0.75rem !important;
+  }
+  
+  .stat h3 {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Form Elements */
+  input, textarea {
+    font-size: 1rem !important;
+    padding: 0.75rem !important;
+  }
+  
+  /* Buttons Small */
+  .btn {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+/* 6. Mobile Extra Small (less than 320px) */
+@media (max-width: 320px) {
+  .hero-title-line {
+    font-size: 1.8rem !important;
+  }
+  
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .skill-card h4 {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* 7. Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .skill-card:hover {
+    transform: none !important;
+  }
+  
+  .btn:hover {
+    transform: none !important;
+  }
+  
+  /* Increase touch targets */
+  .nav-link {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+  
+  .btn {
+    min-height: 44px !important;
+  }
+  
+  /* Better tap handling */
+  .skill-card,
+  .services-box,
+  .portfolio-box {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* 8. Landscape Mobile Optimizations */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+    padding: 1rem;
+  }
+  
+  .hero-container {
+    gap: 1rem;
+  }
+  
+  .hero-title-line {
+    font-size: 2.5rem !important;
+  }
+  
+  .section-spacing {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+/* 9. High DPI Display Support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .skill-icon,
+  .services-box i {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* 10. Enhanced Mobile Navigation */
+@media (max-width: 768px) {
+  .mobile-nav-overlay {
+    background: rgba(10, 23, 78, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+  }
+  
+  .mobile-nav-link {
+    padding: 1rem !important;
+    margin: 0.5rem 0 !important;
+    border-radius: 0.75rem !important;
+  }
+  
+  .mobile-nav-link:active {
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+/* 11. Performance Optimizations for Mobile */
+@media (max-width: 768px) {
+  .hero-pattern,
+  .animated-bg {
+    animation: none !important;
+  }
+  
+  .skill-card,
+  .services-box {
+    will-change: auto !important;
+  }
+}
+
+/* 12. Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 13. Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  /* Already handled by existing dark theme */
+}
+
+/* Enhanced Mobile Utility Classes */
+.container-mobile {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Mobile Grid Debug and Enhancement */
+@media (max-width: 768px) {
+  .tech-badge {
+    display: block !important;
+    width: 100% !important;
+    min-height: 120px !important;
+  }
+  
+  /* Force grid display on mobile for Tools section */
+  .skill-category .grid {
+    display: grid !important;
+  }
+  
+  .skill-category .grid[class*="grid-cols-2"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Ensure tech badges are visible and properly sized */
+  .tech-badge {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 1rem !important;
+    padding: 1rem !important;
+    text-align: center !important;
+  }
+}
+
+/* Force grid layout for the specific Tools section */
+.tools-grid-mobile {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0.75rem !important;
+}
+
+@media (min-width: 640px) {
+  .tools-grid-mobile {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .tools-grid-mobile {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tools-grid-mobile {
+    grid-template-columns: repeat(6, 1fr) !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .container-mobile {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-mobile {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Mobile Text Scaling */
+.text-responsive-xs {
+  font-size: 0.75rem;
+}
+
+.text-responsive-sm {
+  font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .text-responsive-xs {
+    font-size: 0.875rem;
+  }
+  
+  .text-responsive-sm {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .text-responsive-xs {
+    font-size: 1rem;
+  }
+  
+  .text-responsive-sm {
+    font-size: 1.125rem;
+  }
+}
+
+/* Flexbox Mobile Utilities */
+.flex-mobile-col {
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .flex-mobile-col {
+    flex-direction: row;
+  }
+}
+
+/* Grid Mobile Utilities */
+.grid-mobile-1 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .grid-mobile-1 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-mobile-1 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Safe Area Support for Mobile */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-left {
+  padding-left: env(safe-area-inset-left);
+}
+
+.safe-area-right {
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Original responsive styles maintained below... */
 .mobile-menu-overlay {
   position: fixed;
   top: 0;
@@ -1088,4 +1637,26 @@ section:not(.hero) {
   .hero-container {
     padding: 0 1rem;
   }
+}
+
+
+/* Clean grid layout for Tools & Technologies */
+.tools-grid-mobile {
+    display: grid !important;
+}
+
+/* Mobile: 2 columns */
+@media (max-width: 1023px) {
+    .tools-grid-mobile {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+}
+
+/* Large screens: 4 columns */
+@media (min-width: 1024px) {
+    .tools-grid-mobile {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1.5rem !important;
+    }
 }
