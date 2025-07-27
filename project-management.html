@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Management - Henry Mfodwo</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,6 +16,9 @@
                     colors: {
                         'main-color': '#0a174e',
                         'secondary-color': '#133b7a',
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
                     }
                 }
             }
@@ -20,18 +26,24 @@
     </script>
     <link rel="stylesheet" href="index.css">
     <style>
-        .project-management-hero {
-            background: linear-gradient(135deg, #0a174e 0%, #133b7a 50%, #7c3aed 100%);
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .pm-hero {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%);
         }
         
         .video-container {
             position: relative;
-            padding-bottom: 56.25%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
             height: 0;
             overflow: hidden;
             max-width: 100%;
-            background: #000;
+            background: linear-gradient(135deg, #000, #1a1a2e);
             border-radius: 1rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
         
         .video-container iframe,
@@ -41,164 +53,308 @@
             left: 0;
             width: 100%;
             height: 100%;
-        }
-        
-        .project-card {
-            backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
         }
         
         .skill-metric {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
         }
-
+        
+        .skill-metric:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.12));
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pm-card {
+            backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .pm-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
         .floating-element {
             animation: float 6s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(2deg); }
+            66% { transform: translateY(-25px) rotate(-2deg); }
         }
-
-        .timeline-item {
-            opacity: 0;
-            transform: translateX(-20px);
-            animation: slideIn 0.6s ease-out forwards;
-        }
-
-        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-        .timeline-item:nth-child(3) { animation-delay: 0.4s; }
-        .timeline-item:nth-child(4) { animation-delay: 0.6s; }
-
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .progress-bar {
-            background: linear-gradient(to right, #ef4444, #f59e0b, #10b981);
-            height: 6px;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 3px;
-            transition: width 2s ease-out;
-        }
-
-        .methodology-card {
-            transition: all 0.3s ease;
-        }
-
-        .methodology-card:hover {
-            transform: translateY(-10px) scale(1.02);
-        }
-
+        
         .kanban-board {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
-
+        
+        @media (max-width: 640px) {
+            .kanban-board {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+        
         .kanban-column {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: white;
             border-radius: 1rem;
-            padding: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            min-height: 400px;
         }
-
-        .kanban-task {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-            margin-bottom: 0.5rem;
+        
+        .kanban-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .kanban-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-fill {
+            height: 100%;
+            transition: width 1s ease-in-out;
+        }
+        
+        /* Premium mobile optimizations */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.5rem !important;
+                line-height: 1.1;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.125rem !important;
+                line-height: 1.4;
+            }
+            
+            .section-title {
+                font-size: 2.25rem !important;
+                line-height: 1.2;
+            }
+            
+            .card-padding {
+                padding: 1.5rem !important;
+            }
+            
+            .metric-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+            }
+            
+            .navigation-mobile {
+                flex-direction: column;
+                gap: 0.5rem !important;
+            }
+        }
+        
+        /* Glass morphism navigation */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Interactive elements */
+        .interactive-hover {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .interactive-hover:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Premium buttons */
+        .btn-premium {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            border: none;
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
+        }
+        
+        /* Loading animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Account for fixed navigation */
+        }
+        
+        body {
+            scroll-behavior: smooth;
+        }
+        
+        /* Timeline styles */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px white, 0 0 0 6px #ff6b6b;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1.5rem;
+            width: 2px;
+            height: calc(100% + 1rem);
+            background: linear-gradient(to bottom, #ff6b6b, #feca57);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 font-poppins">
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <a href="index.html" class="flex items-center gap-3 text-white font-bold text-xl">
-                    <i class='bx bx-arrow-left'></i>
-                    Back to Portfolio
+                <a href="index.html" class="flex items-center gap-3 text-white font-bold text-xl interactive-hover">
+                    <i class='bx bx-arrow-left text-2xl'></i>
+                    <span class="hidden sm:inline">Back to Portfolio</span>
+                    <span class="sm:hidden">Back</span>
                 </a>
-                <div class="flex items-center gap-6">
-                    <a href="#overview" class="text-white/80 hover:text-white transition-colors">Overview</a>
-                    <a href="#methodologies" class="text-white/80 hover:text-white transition-colors">Methodologies</a>
-                    <a href="#projects" class="text-white/80 hover:text-white transition-colors">Projects</a>
-                    <a href="#testimonials" class="text-white/80 hover:text-white transition-colors">Testimonials</a>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#overview" class="text-white/80 hover:text-white transition-colors interactive-hover">Overview</a>
+                    <a href="#methodologies" class="text-white/80 hover:text-white transition-colors interactive-hover">Methodologies</a>
+                    <a href="#demo" class="text-white/80 hover:text-white transition-colors interactive-hover">Live Demo</a>
+                    <a href="#projects" class="text-white/80 hover:text-white transition-colors interactive-hover">Projects</a>
+                    <a href="#testimonials" class="text-white/80 hover:text-white transition-colors interactive-hover">Testimonials</a>
                 </div>
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-white text-2xl interactive-hover" onclick="toggleMobileMenu()">
+                    <i class='bx bx-menu'></i>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4 navigation-mobile">
+                <a href="#overview" class="block text-white/80 hover:text-white py-2 transition-colors">Overview</a>
+                <a href="#methodologies" class="block text-white/80 hover:text-white py-2 transition-colors">Methodologies</a>
+                <a href="#demo" class="block text-white/80 hover:text-white py-2 transition-colors">Live Demo</a>
+                <a href="#projects" class="block text-white/80 hover:text-white py-2 transition-colors">Projects</a>
+                <a href="#testimonials" class="block text-white/80 hover:text-white py-2 transition-colors">Testimonials</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="project-management-hero min-h-screen flex items-center relative overflow-hidden" id="overview">
+    <section class="pm-hero min-h-screen flex items-center relative overflow-hidden fade-in" id="overview">
+        <!-- Background Elements -->
         <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl floating-element"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-300 rounded-full blur-3xl floating-element" style="animation-delay: -3s;"></div>
+            <div class="absolute top-1/4 left-1/4 w-72 h-72 sm:w-96 sm:h-96 bg-white rounded-full blur-3xl floating-element"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-80 sm:h-80 bg-yellow-300 rounded-full blur-3xl floating-element" style="animation-delay: -3s;"></div>
+            <div class="absolute top-1/2 right-1/3 w-48 h-48 bg-blue-300 rounded-full blur-3xl floating-element" style="animation-delay: -1.5s;"></div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="text-white">
-                    <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-6 py-3 mb-8">
-                        <i class='bx bx-time text-purple-400 text-xl'></i>
-                        <span class="font-medium">Delivery Excellence</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="text-white hero-content">
+                    <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-4 sm:px-6 py-3 mb-6 sm:mb-8">
+                        <i class='bx bx-time text-yellow-400 text-xl'></i>
+                        <span class="font-medium text-sm sm:text-base">Delivery Excellence</span>
                     </div>
                     
-                    <h1 class="text-5xl lg:text-7xl font-bold mb-6">
-                        Project <span class="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Management</span>
+                    <h1 class="hero-title text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+                        Project <span class="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Management</span>
                     </h1>
                     
-                    <p class="text-xl text-white/90 leading-relaxed mb-8">
-                        Delivering projects on time, within budget, and exceeding expectations through 
-                        proven agile methodologies, effective team coordination, and strategic planning.
+                    <p class="hero-subtitle text-lg sm:text-xl text-white/90 leading-relaxed mb-6 sm:mb-8 max-w-2xl">
+                        Orchestrating successful project delivery through proven methodologies, effective communication, 
+                        and strategic resource management.
                     </p>
                     
-                    <div class="grid grid-cols-2 gap-6 mb-8">
-                        <div class="skill-metric rounded-2xl p-6 text-center">
-                            <div class="text-3xl font-bold text-purple-400 mb-2">50+</div>
-                            <div class="text-white/80 text-sm">Projects Delivered</div>
+                    <!-- Key Metrics -->
+                    <div class="metric-grid grid grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                        <div class="skill-metric rounded-2xl p-4 sm:p-6 text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-yellow-400 mb-2">30+</div>
+                            <div class="text-white/80 text-xs sm:text-sm">Projects Delivered</div>
                         </div>
-                        <div class="skill-metric rounded-2xl p-6 text-center">
-                            <div class="text-3xl font-bold text-blue-400 mb-2">98%</div>
-                            <div class="text-white/80 text-sm">On-Time Delivery</div>
+                        <div class="skill-metric rounded-2xl p-4 sm:p-6 text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-green-400 mb-2">98%</div>
+                            <div class="text-white/80 text-xs sm:text-sm">On-Time Delivery</div>
                         </div>
-                        <div class="skill-metric rounded-2xl p-6 text-center">
-                            <div class="text-3xl font-bold text-green-400 mb-2">15%</div>
-                            <div class="text-white/80 text-sm">Under Budget Avg</div>
+                        <div class="skill-metric rounded-2xl p-4 sm:p-6 text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-blue-400 mb-2">$5M+</div>
+                            <div class="text-white/80 text-xs sm:text-sm">Budget Managed</div>
                         </div>
-                        <div class="skill-metric rounded-2xl p-6 text-center">
-                            <div class="text-3xl font-bold text-yellow-400 mb-2">$5M+</div>
-                            <div class="text-white/80 text-sm">Projects Managed</div>
+                        <div class="skill-metric rounded-2xl p-4 sm:p-6 text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-purple-400 mb-2">4+</div>
+                            <div class="text-white/80 text-xs sm:text-sm">Years Experience</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="relative">
-                    <div class="project-card rounded-3xl p-8 text-center">
-                        <div class="video-container mb-6">
-                            <video controls poster="./img/project-management/agile-poster.jpg" class="rounded-lg">
-                                <source src="./videos/project-management-demo.mp4" type="video/mp4">
+                <!-- Hero Video -->
+                <div class="relative mt-8 lg:mt-0">
+                    <div class="pm-card rounded-3xl p-6 sm:p-8 text-center">
+                        <div class="video-container mb-4 sm:mb-6">
+                            <video controls poster="./img/pm-poster.jpg" class="rounded-lg">
+                                <source src="./videos/pm-intro.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Agile Leadership in Action</h3>
-                        <p class="text-white/80">Watch how I facilitate sprint planning and team coordination</p>
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Management Philosophy</h3>
+                        <p class="text-white/80 text-sm sm:text-base">Watch my approach to successful project delivery</p>
                     </div>
                 </div>
             </div>
@@ -206,216 +362,141 @@
     </section>
 
     <!-- Methodologies Section -->
-    <section class="py-24 bg-white" id="methodologies">
+    <section class="py-16 sm:py-20 lg:py-24 bg-white fade-in" id="methodologies">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <div class="inline-flex items-center gap-3 bg-main-color/10 rounded-2xl px-4 sm:px-6 py-3 mb-6 sm:mb-8">
+                    <i class='bx bx-sitemap text-main-color text-xl'></i>
+                    <span class="text-main-color font-medium text-sm sm:text-base">Framework Expertise</span>
+                </div>
+                <h2 class="section-title text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
                     Project <span class="text-main-color">Methodologies</span>
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Leveraging proven frameworks and methodologies to ensure project success
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Expertise across multiple project management frameworks, adapted to fit unique project requirements and team dynamics
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 <!-- Agile/Scrum -->
-                <div class="methodology-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 shadow-lg">
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl p-6 sm:p-8 interactive-hover">
                     <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6">
                         <i class='bx bx-refresh text-2xl text-white'></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Agile / Scrum</h3>
-                    <p class="text-gray-600 mb-6">Iterative development with 2-week sprints, daily standups, and continuous feedback loops.</p>
-                    
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Agile/Scrum</h3>
+                    <p class="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+                        Iterative development with regular sprint cycles, daily standups, and continuous feedback loops.
+                    </p>
                     <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Sprint Planning</span>
-                            <span class="text-sm font-medium text-blue-600">95%</span>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 text-xs sm:text-sm font-medium">Sprint Planning</span>
+                                <span class="text-blue-600 text-xs sm:text-sm font-semibold">Expert</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-gradient-to-r from-blue-500 to-indigo-500" style="width: 95%"></div>
+                            </div>
                         </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 95%;"></div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Velocity Tracking</span>
-                            <span class="text-sm font-medium text-blue-600">90%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 90%;"></div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Retrospectives</span>
-                            <span class="text-sm font-medium text-blue-600">98%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 98%;"></div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 text-xs sm:text-sm font-medium">Backlog Management</span>
+                                <span class="text-blue-600 text-xs sm:text-sm font-semibold">Expert</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-gradient-to-r from-blue-500 to-indigo-500" style="width: 90%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Waterfall -->
-                <div class="methodology-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 shadow-lg">
+                <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-3xl p-6 sm:p-8 interactive-hover">
                     <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
-                        <i class='bx bx-sort-down text-2xl text-white'></i>
+                        <i class='bx bx-trending-down text-2xl text-white'></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Waterfall</h3>
-                    <p class="text-gray-600 mb-6">Sequential project phases with detailed documentation and milestone-based delivery.</p>
-                    
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Waterfall</h3>
+                    <p class="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+                        Sequential phases with detailed documentation and milestone-based delivery for large-scale projects.
+                    </p>
                     <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Requirements Analysis</span>
-                            <span class="text-sm font-medium text-green-600">100%</span>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 text-xs sm:text-sm font-medium">Phase Management</span>
+                                <span class="text-green-600 text-xs sm:text-sm font-semibold">Advanced</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-gradient-to-r from-green-500 to-emerald-500" style="width: 85%"></div>
+                            </div>
                         </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 100%;"></div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Documentation</span>
-                            <span class="text-sm font-medium text-green-600">95%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 95%;"></div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Milestone Delivery</span>
-                            <span class="text-sm font-medium text-green-600">92%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 92%;"></div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 text-xs sm:text-sm font-medium">Documentation</span>
+                                <span class="text-green-600 text-xs sm:text-sm font-semibold">Expert</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-gradient-to-r from-green-500 to-emerald-500" style="width: 95%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Kanban -->
-                <div class="methodology-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8 shadow-lg">
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6">
-                        <i class='bx bx-columns text-2xl text-white'></i>
+                <div class="bg-gradient-to-br from-purple-50 to-violet-100 rounded-3xl p-6 sm:p-8 interactive-hover">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-grid-alt text-2xl text-white'></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Kanban</h3>
-                    <p class="text-gray-600 mb-6">Visual workflow management with continuous delivery and work-in-progress limits.</p>
-                    
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Kanban</h3>
+                    <p class="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+                        Visual workflow management with continuous delivery and work-in-progress limits for optimal flow.
+                    </p>
                     <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Flow Efficiency</span>
-                            <span class="text-sm font-medium text-purple-600">88%</span>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 text-xs sm:text-sm font-medium">Flow Optimization</span>
+                                <span class="text-purple-600 text-xs sm:text-sm font-semibold">Expert</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-gradient-to-r from-purple-500 to-violet-500" style="width: 92%"></div>
+                            </div>
                         </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 88%;"></div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">WIP Management</span>
-                            <span class="text-sm font-medium text-purple-600">93%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 93%;"></div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Continuous Delivery</span>
-                            <span class="text-sm font-medium text-purple-600">85%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 85%;"></div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 text-xs sm:text-sm font-medium">WIP Management</span>
+                                <span class="text-purple-600 text-xs sm:text-sm font-semibold">Advanced</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-gradient-to-r from-purple-500 to-violet-500" style="width: 88%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Live Kanban Demo -->
-            <div class="mt-16">
-                <h3 class="text-3xl font-bold text-gray-900 text-center mb-8">Live Project Board Example</h3>
-                <div class="bg-gradient-to-br from-main-color via-secondary-color to-purple-600 rounded-3xl p-8">
-                    <div class="kanban-board">
-                        <div class="kanban-column">
-                            <h4 class="text-white font-bold mb-4 flex items-center gap-2">
-                                <i class='bx bx-time'></i>
-                                Backlog (5)
-                            </h4>
-                            <div class="kanban-task">
-                                <h5 class="text-white font-medium mb-1">User Authentication</h5>
-                                <p class="text-white/70 text-sm">Epic: Security</p>
-                                <div class="flex items-center gap-2 mt-2">
-                                    <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">High</span>
-                                    <span class="text-white/60 text-xs">8 SP</span>
-                                </div>
+                <!-- Hybrid Approach -->
+                <div class="bg-gradient-to-br from-orange-50 to-red-100 rounded-3xl p-6 sm:p-8 interactive-hover">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-merge text-2xl text-white'></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Hybrid</h3>
+                    <p class="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
+                        Custom methodologies combining the best practices from multiple frameworks for optimal results.
+                    </p>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 text-xs sm:text-sm font-medium">Methodology Design</span>
+                                <span class="text-orange-600 text-xs sm:text-sm font-semibold">Expert</span>
                             </div>
-                            <div class="kanban-task">
-                                <h5 class="text-white font-medium mb-1">Payment Gateway</h5>
-                                <p class="text-white/70 text-sm">Epic: E-commerce</p>
-                                <div class="flex items-center gap-2 mt-2">
-                                    <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">Medium</span>
-                                    <span class="text-white/60 text-xs">13 SP</span>
-                                </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-gradient-to-r from-orange-500 to-red-500" style="width: 90%"></div>
                             </div>
                         </div>
-
-                        <div class="kanban-column">
-                            <h4 class="text-white font-bold mb-4 flex items-center gap-2">
-                                <i class='bx bx-play'></i>
-                                In Progress (3)
-                            </h4>
-                            <div class="kanban-task">
-                                <h5 class="text-white font-medium mb-1">API Documentation</h5>
-                                <p class="text-white/70 text-sm">Assigned: Sarah</p>
-                                <div class="flex items-center gap-2 mt-2">
-                                    <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded">In Progress</span>
-                                    <span class="text-white/60 text-xs">5 SP</span>
-                                </div>
-                                <div class="progress-bar mt-2">
-                                    <div class="progress-fill" style="width: 60%;"></div>
-                                </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 text-xs sm:text-sm font-medium">Adaptation</span>
+                                <span class="text-orange-600 text-xs sm:text-sm font-semibold">Expert</span>
                             </div>
-                            <div class="kanban-task">
-                                <h5 class="text-white font-medium mb-1">Database Migration</h5>
-                                <p class="text-white/70 text-sm">Assigned: Mike</p>
-                                <div class="flex items-center gap-2 mt-2">
-                                    <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded">In Progress</span>
-                                    <span class="text-white/60 text-xs">8 SP</span>
-                                </div>
-                                <div class="progress-bar mt-2">
-                                    <div class="progress-fill" style="width: 80%;"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="kanban-column">
-                            <h4 class="text-white font-bold mb-4 flex items-center gap-2">
-                                <i class='bx bx-search'></i>
-                                Review (2)
-                            </h4>
-                            <div class="kanban-task">
-                                <h5 class="text-white font-medium mb-1">Landing Page Design</h5>
-                                <p class="text-white/70 text-sm">Awaiting approval</p>
-                                <div class="flex items-center gap-2 mt-2">
-                                    <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded">Review</span>
-                                    <span class="text-white/60 text-xs">3 SP</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="kanban-column">
-                            <h4 class="text-white font-bold mb-4 flex items-center gap-2">
-                                <i class='bx bx-check'></i>
-                                Done (8)
-                            </h4>
-                            <div class="kanban-task">
-                                <h5 class="text-white font-medium mb-1">Project Setup</h5>
-                                <p class="text-white/70 text-sm">Completed</p>
-                                <div class="flex items-center gap-2 mt-2">
-                                    <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">Done</span>
-                                    <span class="text-white/60 text-xs">2 SP</span>
-                                </div>
-                            </div>
-                            <div class="kanban-task">
-                                <h5 class="text-white font-medium mb-1">CI/CD Pipeline</h5>
-                                <p class="text-white/70 text-sm">Deployed</p>
-                                <div class="flex items-center gap-2 mt-2">
-                                    <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">Done</span>
-                                    <span class="text-white/60 text-xs">5 SP</span>
-                                </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-gradient-to-r from-orange-500 to-red-500" style="width: 93%"></div>
                             </div>
                         </div>
                     </div>
@@ -424,64 +505,225 @@
         </div>
     </section>
 
-    <!-- Project Timeline -->
-    <section class="py-24 bg-gradient-to-br from-gray-50 to-purple-50" id="projects">
+    <!-- Live Kanban Demo Section -->
+    <section class="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50 fade-in" id="demo">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
-                    Project <span class="text-main-color">Success Stories</span>
+            <div class="text-center mb-12 sm:mb-16">
+                <div class="inline-flex items-center gap-3 bg-blue-500/10 rounded-2xl px-4 sm:px-6 py-3 mb-6 sm:mb-8">
+                    <i class='bx bx-play-circle text-blue-600 text-xl'></i>
+                    <span class="text-blue-600 font-medium text-sm sm:text-base">Interactive Demo</span>
+                </div>
+                <h2 class="section-title text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
+                    Live Kanban <span class="text-blue-600">Board</span>
                 </h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Experience real-time project management with an interactive Kanban board showcasing current workflow and task management
+                </p>
             </div>
 
-            <div class="space-y-12">
-                <!-- Project 1 -->
-                <div class="timeline-item flex flex-col lg:flex-row items-center gap-8 bg-white rounded-3xl p-8 shadow-lg">
-                    <div class="lg:w-1/2">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
-                                <i class='bx bx-shopping-bag text-white text-xl'></i>
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-gray-900">E-commerce Platform Redesign</h3>
-                                <p class="text-gray-600">6 months • $2.5M budget • 12 team members</p>
-                            </div>
+            <div class="kanban-board">
+                <!-- To Do Column -->
+                <div class="kanban-column">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-4 h-4 bg-red-500 rounded-full"></div>
+                        <h3 class="text-xl font-bold text-gray-900">To Do</h3>
+                        <span class="bg-red-100 text-red-800 text-sm font-medium px-2 py-1 rounded-full">3</span>
+                    </div>
+                    
+                    <div class="kanban-card" style="border-left-color: #ef4444;">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-gray-900">UI/UX Design</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">High</span>
                         </div>
-                        
-                        <div class="space-y-4">
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">Challenge:</h4>
-                                <p class="text-gray-600">Legacy platform with poor performance, high bounce rates, and outdated user experience.</p>
-                            </div>
-                            
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">Approach:</h4>
-                                <p class="text-gray-600">Agile methodology with 3-week sprints, continuous user testing, and phased rollout strategy.</p>
-                            </div>
-                            
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">Results:</h4>
-                                <ul class="space-y-1 text-gray-600">
-                                    <li class="flex items-center gap-2">
-                                        <i class='bx bx-check-circle text-green-500'></i>
-                                        Delivered 2 weeks early
-                                    </li>
-                                    <li class="flex items-center gap-2">
-                                        <i class='bx bx-check-circle text-green-500'></i>
-                                        15% under budget
-                                    </li>
-                                    <li class="flex items-center gap-2">
-                                        <i class='bx bx-check-circle text-green-500'></i>
-                                        40% increase in conversions
-                                    </li>
-                                </ul>
-                            </div>
+                        <p class="text-gray-600 text-sm mb-3">Design new user interface for mobile app</p>
+                        <div class="flex items-center gap-2">
+                            <img src="./img/team/designer.jpg" alt="Designer" class="w-6 h-6 rounded-full">
+                            <span class="text-xs text-gray-500">Due: Jan 15</span>
                         </div>
                     </div>
                     
-                    <div class="lg:w-1/2">
+                    <div class="kanban-card" style="border-left-color: #ef4444;">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-gray-900">API Integration</span>
+                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Medium</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Integrate payment gateway APIs</p>
+                        <div class="flex items-center gap-2">
+                            <img src="./img/team/backend-dev.jpg" alt="Backend Dev" class="w-6 h-6 rounded-full">
+                            <span class="text-xs text-gray-500">Due: Jan 20</span>
+                        </div>
+                    </div>
+                    
+                    <div class="kanban-card" style="border-left-color: #ef4444;">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-gray-900">Database Schema</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Low</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Design database schema for new features</p>
+                        <div class="flex items-center gap-2">
+                            <img src="./img/team/dba.jpg" alt="DBA" class="w-6 h-6 rounded-full">
+                            <span class="text-xs text-gray-500">Due: Jan 25</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- In Progress Column -->
+                <div class="kanban-column">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                        <h3 class="text-xl font-bold text-gray-900">In Progress</h3>
+                        <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-2 py-1 rounded-full">2</span>
+                    </div>
+                    
+                    <div class="kanban-card" style="border-left-color: #eab308;">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-gray-900">Authentication Module</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">High</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Implement user authentication system</p>
+                        <div class="progress-bar mb-3">
+                            <div class="progress-fill bg-gradient-to-r from-yellow-500 to-orange-500" style="width: 65%"></div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <img src="./img/team/frontend-dev.jpg" alt="Frontend Dev" class="w-6 h-6 rounded-full">
+                            <span class="text-xs text-gray-500">65% Complete</span>
+                        </div>
+                    </div>
+                    
+                    <div class="kanban-card" style="border-left-color: #eab308;">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-gray-900">Testing Framework</span>
+                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Medium</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Set up automated testing pipeline</p>
+                        <div class="progress-bar mb-3">
+                            <div class="progress-fill bg-gradient-to-r from-yellow-500 to-orange-500" style="width: 40%"></div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <img src="./img/team/qa-engineer.jpg" alt="QA Engineer" class="w-6 h-6 rounded-full">
+                            <span class="text-xs text-gray-500">40% Complete</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Column -->
+                <div class="kanban-column">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                        <h3 class="text-xl font-bold text-gray-900">Review</h3>
+                        <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2 py-1 rounded-full">2</span>
+                    </div>
+                    
+                    <div class="kanban-card" style="border-left-color: #3b82f6;">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-gray-900">User Dashboard</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">High</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Complete user dashboard implementation</p>
+                        <div class="flex items-center gap-2">
+                            <img src="./img/team/frontend-dev.jpg" alt="Frontend Dev" class="w-6 h-6 rounded-full">
+                            <span class="text-xs text-gray-500">Ready for review</span>
+                        </div>
+                    </div>
+                    
+                    <div class="kanban-card" style="border-left-color: #3b82f6;">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-gray-900">Performance Optimization</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Low</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Optimize application performance</p>
+                        <div class="flex items-center gap-2">
+                            <img src="./img/team/backend-dev.jpg" alt="Backend Dev" class="w-6 h-6 rounded-full">
+                            <span class="text-xs text-gray-500">Code review needed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Done Column -->
+                <div class="kanban-column">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                        <h3 class="text-xl font-bold text-gray-900">Done</h3>
+                        <span class="bg-green-100 text-green-800 text-sm font-medium px-2 py-1 rounded-full">4</span>
+                    </div>
+                    
+                    <div class="kanban-card" style="border-left-color: #22c55e;">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-gray-900">Project Setup</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Completed</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Initial project structure and configuration</p>
+                        <div class="flex items-center gap-2">
+                            <img src="./img/team/tech-lead.jpg" alt="Tech Lead" class="w-6 h-6 rounded-full">
+                            <span class="text-xs text-green-600">✓ Completed</span>
+                        </div>
+                    </div>
+                    
+                    <div class="kanban-card" style="border-left-color: #22c55e;">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-gray-900">Landing Page</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Deployed</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Design and develop landing page</p>
+                        <div class="flex items-center gap-2">
+                            <img src="./img/team/frontend-dev.jpg" alt="Frontend Dev" class="w-6 h-6 rounded-full">
+                            <span class="text-xs text-green-600">✓ Live</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Timeline Section -->
+    <section class="py-16 sm:py-20 lg:py-24 bg-white fade-in" id="projects">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16">
+                <div class="inline-flex items-center gap-3 bg-main-color/10 rounded-2xl px-4 sm:px-6 py-3 mb-6 sm:mb-8">
+                    <i class='bx bx-time-five text-main-color text-xl'></i>
+                    <span class="text-main-color font-medium text-sm sm:text-base">Project History</span>
+                </div>
+                <h2 class="section-title text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
+                    Project <span class="text-main-color">Timeline</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    A chronological view of successfully delivered projects showcasing diverse industry experience and scalability
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <!-- Project 1 -->
+                <div class="timeline-item">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2 md:mb-0">E-commerce Platform Redesign</h3>
+                            <span class="text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">2023 - 2024</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm sm:text-base leading-relaxed">
+                            Led complete platform modernization for a major retail client, managing a cross-functional team of 15 members 
+                            across design, development, and DevOps disciplines.
+                        </p>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                            <div class="text-center">
+                                <div class="text-lg sm:text-xl font-bold text-blue-600">6 months</div>
+                                <div class="text-gray-500 text-xs sm:text-sm">Duration</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg sm:text-xl font-bold text-green-600">$2.5M</div>
+                                <div class="text-gray-500 text-xs sm:text-sm">Budget</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg sm:text-xl font-bold text-purple-600">15</div>
+                                <div class="text-gray-500 text-xs sm:text-sm">Team Size</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg sm:text-xl font-bold text-orange-600">40%</div>
+                                <div class="text-gray-500 text-xs sm:text-sm">Revenue Increase</div>
+                            </div>
+                        </div>
                         <div class="video-container">
-                            <video controls poster="./img/projects/ecommerce-project-poster.jpg">
-                                <source src="./videos/ecommerce-project.mp4" type="video/mp4">
+                            <video controls poster="./img/project-ecommerce-poster.jpg">
+                                <source src="./videos/project-ecommerce.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -489,73 +731,110 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="timeline-item flex flex-col lg:flex-row-reverse items-center gap-8 bg-white rounded-3xl p-8 shadow-lg">
-                    <div class="lg:w-1/2">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
-                                <i class='bx bx-health text-white text-xl'></i>
+                <div class="timeline-item">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2 md:mb-0">Healthcare Management System</h3>
+                            <span class="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">2022 - 2023</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm sm:text-base leading-relaxed">
+                            Managed development of HIPAA-compliant patient management system for healthcare network, 
+                            coordinating with medical professionals and ensuring regulatory compliance.
+                        </p>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                            <div class="text-center">
+                                <div class="text-lg sm:text-xl font-bold text-blue-600">8 months</div>
+                                <div class="text-gray-500 text-xs sm:text-sm">Duration</div>
                             </div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-gray-900">Healthcare Management System</h3>
-                                <p class="text-gray-600">8 months • $1.8M budget • 15 team members</p>
+                            <div class="text-center">
+                                <div class="text-lg sm:text-xl font-bold text-green-600">$1.8M</div>
+                                <div class="text-gray-500 text-xs sm:text-sm">Budget</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg sm:text-xl font-bold text-purple-600">12</div>
+                                <div class="text-gray-500 text-xs sm:text-sm">Team Size</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg sm:text-xl font-bold text-orange-600">60%</div>
+                                <div class="text-gray-500 text-xs sm:text-sm">Efficiency Gain</div>
                             </div>
                         </div>
-                        
-                        <div class="space-y-4">
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">Challenge:</h4>
-                                <p class="text-gray-600">HIPAA-compliant system for 50K+ patients with strict security requirements and zero downtime tolerance.</p>
-                            </div>
-                            
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">Approach:</h4>
-                                <p class="text-gray-600">Waterfall methodology with extensive documentation, security audits, and staged deployment.</p>
-                            </div>
-                            
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">Results:</h4>
-                                <ul class="space-y-1 text-gray-600">
-                                    <li class="flex items-center gap-2">
-                                        <i class='bx bx-check-circle text-green-500'></i>
-                                        100% HIPAA compliance
-                                    </li>
-                                    <li class="flex items-center gap-2">
-                                        <i class='bx bx-check-circle text-green-500'></i>
-                                        Zero security incidents
-                                    </li>
-                                    <li class="flex items-center gap-2">
-                                        <i class='bx bx-check-circle text-green-500'></i>
-                                        99.9% uptime achieved
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                <i class='bx bx-check-circle text-green-500'></i>
+                                HIPAA Compliance Achieved
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                <i class='bx bx-check-circle text-green-500'></i>
+                                50,000+ Patient Records Migrated
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-700 text-sm sm:text-base">
+                                <i class='bx bx-check-circle text-green-500'></i>
+                                Zero Data Breaches
+                            </li>
+                        </ul>
                     </div>
-                    
-                    <div class="lg:w-1/2">
-                        <img src="./img/projects/healthcare-dashboard.jpg" alt="Healthcare Management Dashboard" class="w-full h-64 object-cover rounded-2xl shadow-lg">
+                </div>
+
+                <!-- Project 3 -->
+                <div class="timeline-item">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2 md:mb-0">Financial Trading Platform</h3>
+                            <span class="text-sm bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-medium">2021 - 2022</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm sm:text-base leading-relaxed">
+                            Delivered high-frequency trading platform with microsecond latency requirements, 
+                            managing complex integrations with multiple financial data providers.
+                        </p>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="text-center">
+                                <div class="text-lg sm:text-xl font-bold text-blue-600">10 months</div>
+                                <div class="text-gray-500 text-xs sm:text-sm">Duration</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg sm:text-xl font-bold text-green-600">$3.2M</div>
+                                <div class="text-gray-500 text-xs sm:text-sm">Budget</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg sm:text-xl font-bold text-purple-600">20</div>
+                                <div class="text-gray-500 text-xs sm:text-sm">Team Size</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg sm:text-xl font-bold text-orange-600">&lt;1ms</div>
+                                <div class="text-gray-500 text-xs sm:text-sm">Latency</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-24 bg-gradient-to-br from-main-color via-secondary-color to-purple-600" id="testimonials">
+    <!-- Testimonials Section -->
+    <section class="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-main-color via-secondary-color to-yellow-900 fade-in" id="testimonials">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-6xl font-bold text-white mb-6">
-                    Project <span class="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Success</span>
+            <div class="text-center mb-12 sm:mb-16">
+                <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-4 sm:px-6 py-3 mb-6 sm:mb-8">
+                    <i class='bx bx-star text-yellow-400 text-xl'></i>
+                    <span class="text-white font-medium text-sm sm:text-base">Success Stories</span>
+                </div>
+                <h2 class="section-title text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
+                    Client <span class="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Success</span>
                 </h2>
+                <p class="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                    Testimonials from clients and stakeholders highlighting project management effectiveness and delivery excellence
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="project-card rounded-3xl p-8">
-                    <div class="flex items-start gap-4">
-                        <img src="./img/clients/jennifer-martinez.jpg" alt="Jennifer Martinez" class="w-16 h-16 rounded-full object-cover">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                <!-- Testimonial 1 -->
+                <div class="pm-card rounded-3xl p-6 sm:p-8 card-padding">
+                    <div class="flex items-start gap-4 mb-6">
+                        <img src="./img/clients/jennifer-martinez.jpg" alt="Jennifer Martinez" class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover">
                         <div class="flex-1">
-                            <h4 class="text-xl font-bold text-white mb-2">Jennifer Martinez</h4>
-                            <p class="text-white/70 mb-4">VP of Engineering, RetailTech</p>
+                            <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Jennifer Martinez</h4>
+                            <p class="text-white/70 mb-4 text-sm sm:text-base">VP of Operations, RetailCorp</p>
                             <div class="flex gap-1 mb-4">
                                 <i class='bx bxs-star text-yellow-400'></i>
                                 <i class='bx bxs-star text-yellow-400'></i>
@@ -563,21 +842,22 @@
                                 <i class='bx bxs-star text-yellow-400'></i>
                                 <i class='bx bxs-star text-yellow-400'></i>
                             </div>
-                            <blockquote class="text-white/90 italic">
-                                "Henry's project management skills are exceptional. He delivered our e-commerce 
-                                redesign ahead of schedule and under budget. His agile approach and clear 
-                                communication kept everyone aligned throughout the entire process."
+                            <blockquote class="text-white/90 italic text-sm sm:text-base leading-relaxed">
+                                "Henry's project management expertise transformed our e-commerce operations. His systematic 
+                                approach and proactive communication kept our complex 6-month project on track and under budget. 
+                                The 40% revenue increase post-launch exceeded all expectations."
                             </blockquote>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card rounded-3xl p-8">
-                    <div class="flex items-start gap-4">
-                        <img src="./img/clients/thomas-wright.jpg" alt="Thomas Wright" class="w-16 h-16 rounded-full object-cover">
+                <!-- Testimonial 2 -->
+                <div class="pm-card rounded-3xl p-6 sm:p-8 card-padding">
+                    <div class="flex items-start gap-4 mb-6">
+                        <img src="./img/clients/dr-thomas-wright.jpg" alt="Dr. Thomas Wright" class="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover">
                         <div class="flex-1">
-                            <h4 class="text-xl font-bold text-white mb-2">Dr. Thomas Wright</h4>
-                            <p class="text-white/70 mb-4">Chief Medical Officer, HealthSystem+</p>
+                            <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Dr. Thomas Wright</h4>
+                            <p class="text-white/70 mb-4 text-sm sm:text-base">Chief Medical Officer, HealthFirst</p>
                             <div class="flex gap-1 mb-4">
                                 <i class='bx bxs-star text-yellow-400'></i>
                                 <i class='bx bxs-star text-yellow-400'></i>
@@ -585,10 +865,10 @@
                                 <i class='bx bxs-star text-yellow-400'></i>
                                 <i class='bx bxs-star text-yellow-400'></i>
                             </div>
-                            <blockquote class="text-white/90 italic">
-                                "Managing a healthcare IT project requires precision and compliance expertise. 
-                                Henry navigated complex regulations while delivering a system that improved 
-                                our patient care efficiency by 30%."
+                            <blockquote class="text-white/90 italic text-sm sm:text-base leading-relaxed">
+                                "Managing healthcare technology projects requires exceptional attention to compliance and detail. 
+                                Henry delivered our patient management system flawlessly, achieving HIPAA compliance while 
+                                improving our operational efficiency by 60%. Outstanding project leadership."
                             </blockquote>
                         </div>
                     </div>
@@ -598,20 +878,20 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="py-16 bg-gradient-to-r from-main-color to-purple-600">
+    <section class="py-12 sm:py-16 bg-gradient-to-r from-orange-600 to-red-600">
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
-                Ready to Launch Your Next Project?
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+                Ready to Deliver Excellence?
             </h2>
-            <p class="text-xl text-white/90 mb-8">
-                Let's discuss how I can help deliver your project on time and within budget
+            <p class="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed">
+                Let's collaborate to bring your next project to successful completion
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="index.html#contact" class="inline-flex items-center gap-2 bg-white text-main-color px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-gray-100 hover:-translate-y-1">
-                    <i class='bx bx-envelope'></i>
-                    Start Your Project
+                <a href="index.html#contact" class="btn-premium inline-flex items-center justify-center gap-2 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 interactive-hover">
+                    <i class='bx bx-calendar'></i>
+                    Plan Your Project
                 </a>
-                <a href="index.html" class="inline-flex items-center gap-2 bg-transparent text-white border-2 border-white/30 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white">
+                <a href="index.html" class="inline-flex items-center justify-center gap-2 bg-transparent text-white border-2 border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white interactive-hover">
                     <i class='bx bx-arrow-left'></i>
                     Back to Portfolio
                 </a>
@@ -619,15 +899,111 @@
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-8">
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6 sm:py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <p>&copy; 2024 Henry Mfodwo. All rights reserved.</p>
-                <p class="text-gray-400 mt-2">Project Management Portfolio</p>
+                <p class="text-sm sm:text-base">&copy; 2024 Henry Mfodwo. All rights reserved.</p>
+                <p class="text-gray-400 mt-2 text-sm">Project Management Portfolio</p>
             </div>
         </div>
     </footer>
 
     <script src="index.js"></script>
+    <script>
+        // Mobile menu toggle function
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Add intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    // Calculate offset for fixed navigation
+                    const headerHeight = 80;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animate progress bars on scroll
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bars = entry.target.querySelectorAll('.progress-fill');
+                    bars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 300);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.progress-bar').forEach(bar => {
+            progressObserver.observe(bar.parentElement);
+        });
+
+        // Interactive Kanban card animations
+        document.querySelectorAll('.kanban-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px) scale(1.02)';
+                this.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+            });
+        });
+    </script>
 </body>
 </html>
