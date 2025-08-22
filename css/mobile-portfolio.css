@@ -1,0 +1,99 @@
+/* Mobile and touch-specific portfolio styles */
+
+/* Base styles for touch devices */
+.touch-device .portfolio-box .portfolio-layer {
+    /* Always show a slightly visible gradient at the bottom for context */
+    opacity: 0.1 !important;
+    transition: opacity 0.3s ease;
+}
+
+/* When touched or active, show the full overlay */
+.touch-device .portfolio-box.touched .portfolio-layer,
+.touch-device .portfolio-box:active .portfolio-layer {
+    opacity: 1 !important;
+}
+
+/* Ensure text is visible and readable */
+.touch-device .portfolio-box .portfolio-layer {
+    background: linear-gradient(to top, rgba(10, 23, 78, 0.95), rgba(10, 23, 78, 0.7) 70%, transparent) !important;
+    padding-top: 50% !important; /* Gradient starts higher up */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* Make sure links are tap-friendly */
+.touch-device .portfolio-box .portfolio-links a {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Add a visual indicator that the item is tappable */
+.touch-device .portfolio-box::after {
+    content: "";
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M12 16a1 1 0 0 1-.64-.23l-6-5a1 1 0 1 1 1.28-1.54L12 13.71l5.36-4.32a1 1 0 0 1 1.41.15 1 1 0 0 1-.14 1.46l-6 4.83A1 1 0 0 1 12 16z'/%3E%3C/svg%3E");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+/* Hide the indicator when the item is touched */
+.touch-device .portfolio-box.touched::after {
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* Ensure text has good contrast */
+.touch-device .portfolio-box .portfolio-layer h4 {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.touch-device .portfolio-box .portfolio-layer p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Additional mobile-specific adjustments */
+@media (max-width: 768px) {
+    .portfolio-box {
+        margin-bottom: 1.5rem;
+    }
+    
+    .portfolio-box img {
+        height: 220px !important;
+    }
+    
+    /* Ensure the layer covers the entire box */
+    .portfolio-box .portfolio-layer {
+        inset: 0 !important;
+    }
+    
+    /* Add some animation for feedback */
+    .portfolio-box.touched {
+        transform: scale(0.98);
+        transition: transform 0.3s ease;
+    }
+}
