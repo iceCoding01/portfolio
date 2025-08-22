@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="Component System Test Page - Henry Mfodwo's Portfolio">
+    <title>Component System Test - Henry Mfodwo</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main-color': '#0a174e',
+                        'secondary-color': '#133b7a',
+                    },
+                    backdropBlur: {
+                        'glass': '10px',
+                        'navbar': '12px',
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                        'premium': '0 20px 50px -10px rgba(0, 0, 0, 0.3)',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Component loading system -->
+    <script src="./js/components.js"></script>
+    <!-- Portfolio functionality -->
+    <script src="./js/portfolio-filter.js"></script>
+    
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./index.css">
+    
+    <style>
+        body, html {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .test-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .test-header {
+            background: linear-gradient(to right, #0a174e, #133b7a);
+            color: white;
+            padding: 100px 24px 24px;
+            margin-bottom: 48px;
+            border-radius: 0 0 30px 30px;
+        }
+        
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 16px 0;
+        }
+        
+        .demo-section {
+            margin: 48px 0;
+            padding: 24px;
+            border-radius: 12px;
+            background-color: #fff;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Test Page Header -->
+    <header class="test-header">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex items-center justify-between mb-6">
+                <a href="index.html" class="text-white flex items-center gap-2 bg-white/10 backdrop-blur-sm py-2 px-4 rounded-full hover:bg-white/20 transition-all duration-300">
+                    <i class='bx bx-left-arrow-alt'></i>
+                    <span>Back to Portfolio</span>
+                </a>
+            </div>
+            <h1 class="text-4xl lg:text-6xl font-bold mb-4">Component System Test</h1>
+            <p class="text-xl lg:text-2xl text-white/80 max-w-3xl">Demonstrating how the modular component system works across multiple pages</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto max-w-6xl px-4 py-12">
+        <!-- Introduction -->
+        <section class="test-card">
+            <h2 class="text-3xl font-bold mb-4 text-main-color">Introduction</h2>
+            <p class="mb-4">This page demonstrates how the component system works in the portfolio. Components are reusable HTML sections that can be included in multiple pages, making it easier to maintain and update the site.</p>
+            
+            <div class="code-block">
+                <pre>&lt;div data-component="./components/component-name.html"&gt;
+    &lt;!-- Loading indicator (optional) --&gt;
+    &lt;div class="loading-component"&gt;
+        &lt;div class="w-full h-40 flex items-center justify-center"&gt;
+            &lt;div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+        </section>
+
+        <!-- Services Component Demo -->
+        <section class="demo-section bg-gradient-to-br from-main-color via-secondary-color to-main-color">
+            <h2 class="text-3xl font-bold mb-8 text-white text-center">Services Component Demo</h2>
+            
+            <!-- Include services component -->
+            <div data-component="./components/services.html">
+                <div class="loading-component">
+                    <div class="w-full h-40 flex items-center justify-center">
+                        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Components Demo -->
+        <section class="demo-section bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+            <h2 class="text-3xl font-bold mb-8 text-main-color text-center">Portfolio Components Demo</h2>
+            
+            <!-- Background Decorative Elements -->
+            <div class="absolute inset-0 opacity-30">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-100 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-100 rounded-full blur-3xl animate-pulse delay-150"></div>
+            </div>
+            
+            <!-- Include portfolio header component -->
+            <div data-component="./components/portfolio-header.html">
+                <div class="loading-component">
+                    <div class="w-full h-40 flex items-center justify-center">
+                        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Include portfolio filter component -->
+            <div data-component="./components/portfolio-filter.html">
+                <div class="loading-component">
+                    <div class="w-full h-20 flex items-center justify-center">
+                        <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Include portfolio grid component -->
+            <div data-component="./components/portfolio-grid.html">
+                <div class="loading-component">
+                    <div class="w-full h-60 flex items-center justify-center">
+                        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="test-card">
+            <h2 class="text-3xl font-bold mb-4 text-main-color">How It Works</h2>
+            <p class="mb-4">The component system uses JavaScript to fetch and inject HTML components into the page. Here's how it works:</p>
+            
+            <ol class="list-decimal list-inside space-y-4 mb-6">
+                <li>The system looks for all elements with the <code class="bg-gray-100 px-2 py-1 rounded">data-component</code> attribute.</li>
+                <li>It fetches the HTML content from the specified path.</li>
+                <li>It replaces the element's content with the fetched HTML.</li>
+                <li>It dispatches a <code class="bg-gray-100 px-2 py-1 rounded">componentLoaded</code> event when the component is loaded.</li>
+            </ol>
+            
+            <p class="mb-4">Here's the code for the component loading system:</p>
+            
+            <div class="code-block">
+                <pre>// This script helps load HTML components across the site
+document.addEventListener('DOMContentLoaded', function() {
+    // Find all elements with data-component attribute
+    const componentElements = document.querySelectorAll('[data-component]');
+    
+    // Load each component
+    componentElements.forEach(element => {
+        const componentPath = element.getAttribute('data-component');
+        
+        fetch(componentPath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load component: ${componentPath}`);
+                }
+                return response.text();
+            })
+            .then(html => {
+                element.innerHTML = html;
+                
+                // Dispatch event to notify that component was loaded
+                const event = new CustomEvent('componentLoaded', { 
+                    detail: { 
+                        componentPath: componentPath,
+                        element: element 
+                    } 
+                });
+                document.dispatchEvent(event);
+            })
+            .catch(error => {
+                console.error('Error loading component:', error);
+                element.innerHTML = `<div class="component-error">Failed to load component: ${componentPath}</div>`;
+            });
+    });
+});</pre>
+            </div>
+        </section>
+
+        <!-- Benefits of Components -->
+        <section class="test-card">
+            <h2 class="text-3xl font-bold mb-4 text-main-color">Benefits of Using Components</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-6 rounded-xl bg-blue-50 border border-blue-100">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl">
+                            <i class='bx bx-revision'></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-main-color">Reusability</h3>
+                    </div>
+                    <p>Components can be reused across multiple pages, ensuring consistency throughout the site.</p>
+                </div>
+                
+                <div class="p-6 rounded-xl bg-green-50 border border-green-100">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl">
+                            <i class='bx bx-edit'></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-main-color">Maintainability</h3>
+                    </div>
+                    <p>Make changes in one place and see them reflected across all pages that use the component.</p>
+                </div>
+                
+                <div class="p-6 rounded-xl bg-purple-50 border border-purple-100">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white text-xl">
+                            <i class='bx bx-code-block'></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-main-color">Clean Code</h3>
+                    </div>
+                    <p>Keeps your HTML files cleaner and more organized, with smaller, more focused files.</p>
+                </div>
+                
+                <div class="p-6 rounded-xl bg-yellow-50 border border-yellow-100">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white text-xl">
+                            <i class='bx bx-expand'></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-main-color">Scalability</h3>
+                    </div>
+                    <p>Makes it easier to add new pages and features by reusing existing components.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Steps -->
+        <section class="test-card">
+            <h2 class="text-3xl font-bold mb-4 text-main-color">Next Steps</h2>
+            <p class="mb-4">Now that we have a working component system, here are some recommendations for further modularization:</p>
+            
+            <ul class="list-disc list-inside space-y-2 mb-6">
+                <li>Extract the header/navigation as a component</li>
+                <li>Extract the footer as a component</li>
+                <li>Create smaller, reusable UI components (buttons, cards, sections)</li>
+                <li>Consider using a templating system for more complex components</li>
+            </ul>
+            
+            <div class="flex justify-center mt-8">
+                <a href="index.html" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/25 hover:-translate-y-1 transform">
+                    Return to Portfolio
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto max-w-6xl px-4">
+            <div class="text-center">
+                <p>&copy; 2025 Henry Mfodwo. All rights reserved.</p>
+                <p class="mt-2 text-gray-400">Component System Test Page</p>
+                <div class="mt-6 flex justify-center gap-4">
+                    <a href="https://github.com/henrymfodwo" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition-all duration-300">
+                        <i class='bx bxl-github'></i>
+                    </a>
+                    <a href="https://linkedin.com/in/henrymfodwo" target="_blank" class="w-10 h-10 bg-blue-700 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300">
+                        <i class='bx bxl-linkedin'></i>
+                    </a>
+                    <a href="mailto:contact@henrymfodwo.com" class="w-10 h-10 bg-red-600 hover:bg-red-500 rounded-full flex items-center justify-center transition-all duration-300">
+                        <i class='bx bx-envelope'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add debug logging for component system
+        document.addEventListener('componentLoaded', function(e) {
+            console.log('Component loaded:', e.detail.componentPath);
+        });
+    </script>
+</body>
+</html>

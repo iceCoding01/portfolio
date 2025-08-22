@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="My Design Style - Henry Mfodwo's Portfolio">
+    <title>My Design Style - Henry Mfodwo</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main-color': '#0a174e',
+                        'secondary-color': '#133b7a',
+                    },
+                    backdropBlur: {
+                        'glass': '10px',
+                        'navbar': '12px',
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                        'premium': '0 20px 50px -10px rgba(0, 0, 0, 0.3)',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Component loading system -->
+    <script src="./js/components.js"></script>
+    
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="relative min-h-screen bg-gradient-to-br from-main-color via-secondary-color to-main-color flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 opacity-30 bg-gradient-radial from-white/10 via-transparent to-transparent"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div class="space-y-6 lg:space-y-8 text-center lg:text-left">
+                <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-4 lg:px-6 py-2 lg:py-3">
+                    <i class='bx bx-palette text-green-500 text-xl'></i>
+                    <span class="text-white font-medium">My Design Philosophy</span>
+                </div>
+                
+                <h1 class="space-y-2">
+                    <span class="block text-4xl md:text-6xl font-bold text-white">Design Style &</span>
+                    <span class="block text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">Creative Direction</span>
+                </h1>
+                
+                <p class="text-xl text-white/90 font-medium">Creating beautiful, functional experiences</p>
+                
+                <p class="text-lg text-white/80 leading-relaxed max-w-2xl">
+                    My approach to design combines minimalist aesthetics with functional innovation.
+                    I believe that good design should be both beautiful and purposeful, creating
+                    experiences that delight users while solving real problems.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                    <a href="index.html" class="btn inline-flex items-center gap-2 bg-white/90 hover:bg-white text-main-color px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:shadow-xl hover:-translate-y-1 transform">
+                        <i class='bx bx-home'></i>
+                        <span>Back to Portfolio</span>
+                    </a>
+                    <a href="#services" class="btn inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:-translate-y-1 transform">
+                        <i class='bx bx-palette'></i>
+                        <span>View Services</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hidden lg:block">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl transform rotate-6 scale-105"></div>
+                    <div class="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 transform hover:rotate-2 transition-all duration-500">
+                        <img src="./img/img2/how-to-be-a-gentleman-a-begginers-guide.png" alt="Design Process" class="w-full h-auto rounded-xl">
+                        <div class="mt-6 space-y-4">
+                            <h3 class="text-xl font-bold text-white">Design Thinking Process</h3>
+                            <div class="flex justify-between">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white text-xl mx-auto">
+                                        <i class='bx bx-search-alt'></i>
+                                    </div>
+                                    <p class="text-white/80 text-sm mt-2">Research</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white text-xl mx-auto">
+                                        <i class='bx bx-bulb'></i>
+                                    </div>
+                                    <p class="text-white/80 text-sm mt-2">Ideate</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white text-xl mx-auto">
+                                        <i class='bx bx-palette'></i>
+                                    </div>
+                                    <p class="text-white/80 text-sm mt-2">Design</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white text-xl mx-auto">
+                                        <i class='bx bx-check-circle'></i>
+                                    </div>
+                                    <p class="text-white/80 text-sm mt-2">Test</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Design Principles Section -->
+    <section class="py-24 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-main-color mb-16">Design <span class="text-blue-600">Principles</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-3xl mb-6">
+                        <i class='bx bx-grid-alt'></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Simplicity</h3>
+                    <p class="text-gray-600">Design should be simple, clean, and intuitive, focusing on what's essential and removing clutter.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 text-3xl mb-6">
+                        <i class='bx bx-user'></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">User-Centered</h3>
+                    <p class="text-gray-600">Putting users' needs, goals, and preferences at the center of every design decision.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 text-3xl mb-6">
+                        <i class='bx bx-accessibility'></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Accessibility</h3>
+                    <p class="text-gray-600">Creating inclusive designs that can be used by everyone, regardless of abilities or disabilities.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center text-yellow-600 text-3xl mb-6">
+                        <i class='bx bx-devices'></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Responsive</h3>
+                    <p class="text-gray-600">Designs that work flawlessly across all devices, providing optimal experiences everywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section with Component -->
+    <section class="services pt-32 pb-20 px-4 lg:px-8 bg-gradient-to-br from-main-color via-secondary-color to-main-color" id="services">
+        <div class="mb-16 text-center">
+            <h2 class="heading text-4xl lg:text-5xl font-bold text-center text-white mb-6">My Design <span class="text-blue-400">Services</span></h2>
+            <p class="text-xl text-white/80 max-w-3xl mx-auto">
+                Leveraging modern technologies and design principles to create stunning digital experiences
+            </p>
+        </div>
+        
+        <!-- Include services component using the component system -->
+        <div data-component="./components/services.html">
+            <div class="loading-component">
+                <div class="w-full h-40 flex items-center justify-center">
+                    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Projects Section -->
+    <section class="py-24 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-main-color mb-6">Recent <span class="text-blue-600">Projects</span></h2>
+            <p class="text-xl text-gray-600 text-center max-w-3xl mx-auto mb-16">
+                A selection of my latest design work, showcasing my approach and capabilities
+            </p>
+            
+            <!-- Include portfolio grid component -->
+            <div data-component="./components/portfolio-grid.html">
+                <div class="loading-component">
+                    <div class="w-full h-60 flex items-center justify-center">
+                        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Process Section -->
+    <section class="py-24 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center text-main-color mb-16">My Design <span class="text-blue-600">Process</span></h2>
+            
+            <div class="relative">
+                <!-- Process Timeline -->
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-blue-100 transform -translate-x-1/2"></div>
+                
+                <div class="space-y-24">
+                    <!-- Step 1 -->
+                    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="md:text-right">
+                            <div class="bg-blue-50 p-8 rounded-2xl border border-blue-100 relative">
+                                <h3 class="text-2xl font-bold text-main-color mb-4">1. Discovery & Research</h3>
+                                <p class="text-gray-600 mb-4">I start by understanding your business goals, target audience, and industry landscape through in-depth research and interviews.</p>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-center justify-end gap-2">
+                                        <span>User Interviews</span>
+                                        <i class='bx bx-user-voice text-blue-500'></i>
+                                    </li>
+                                    <li class="flex items-center justify-end gap-2">
+                                        <span>Competitive Analysis</span>
+                                        <i class='bx bx-line-chart text-blue-500'></i>
+                                    </li>
+                                    <li class="flex items-center justify-end gap-2">
+                                        <span>Market Research</span>
+                                        <i class='bx bx-globe text-blue-500'></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="hidden md:block"></div>
+                        
+                        <!-- Timeline Node -->
+                        <div class="hidden md:flex absolute left-1/2 top-1/3 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-blue-500 rounded-full items-center justify-center text-white">
+                            <span>1</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="hidden md:block"></div>
+                        
+                        <div>
+                            <div class="bg-green-50 p-8 rounded-2xl border border-green-100 relative">
+                                <h3 class="text-2xl font-bold text-main-color mb-4">2. Strategy & Wireframing</h3>
+                                <p class="text-gray-600 mb-4">Developing a comprehensive strategy and creating wireframes to establish the structure and user flow of the design.</p>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-center gap-2">
+                                        <i class='bx bx-sitemap text-green-500'></i>
+                                        <span>Information Architecture</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i class='bx bx-grid text-green-500'></i>
+                                        <span>Wireframing</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i class='bx bx-user-pin text-green-500'></i>
+                                        <span>User Flow Mapping</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Node -->
+                        <div class="hidden md:flex absolute left-1/2 top-1/3 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-green-500 rounded-full items-center justify-center text-white">
+                            <span>2</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="md:text-right">
+                            <div class="bg-purple-50 p-8 rounded-2xl border border-purple-100 relative">
+                                <h3 class="text-2xl font-bold text-main-color mb-4">3. Visual Design</h3>
+                                <p class="text-gray-600 mb-4">Creating the visual elements of the design, including color schemes, typography, imagery, and interactive components.</p>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-center justify-end gap-2">
+                                        <span>UI Design</span>
+                                        <i class='bx bx-palette text-purple-500'></i>
+                                    </li>
+                                    <li class="flex items-center justify-end gap-2">
+                                        <span>Prototyping</span>
+                                        <i class='bx bx-duplicate text-purple-500'></i>
+                                    </li>
+                                    <li class="flex items-center justify-end gap-2">
+                                        <span>Animation & Interaction</span>
+                                        <i class='bx bx-movie-play text-purple-500'></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="hidden md:block"></div>
+                        
+                        <!-- Timeline Node -->
+                        <div class="hidden md:flex absolute left-1/2 top-1/3 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-purple-500 rounded-full items-center justify-center text-white">
+                            <span>3</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="hidden md:block"></div>
+                        
+                        <div>
+                            <div class="bg-yellow-50 p-8 rounded-2xl border border-yellow-100 relative">
+                                <h3 class="text-2xl font-bold text-main-color mb-4">4. Testing & Refinement</h3>
+                                <p class="text-gray-600 mb-4">Conducting usability testing and gathering feedback to refine the design and ensure it meets user needs and business goals.</p>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-center gap-2">
+                                        <i class='bx bx-test-tube text-yellow-600'></i>
+                                        <span>Usability Testing</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i class='bx bx-edit-alt text-yellow-600'></i>
+                                        <span>Iterative Refinement</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i class='bx bx-check-shield text-yellow-600'></i>
+                                        <span>Accessibility Validation</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Node -->
+                        <div class="hidden md:flex absolute left-1/2 top-1/3 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-yellow-500 rounded-full items-center justify-center text-white">
+                            <span>4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-24 px-4 bg-gradient-to-br from-main-color via-secondary-color to-main-color text-white">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-4xl lg:text-6xl font-bold mb-8">Ready to transform your digital presence?</h2>
+            <p class="text-xl text-white/80 mb-12 max-w-3xl mx-auto">
+                Let's collaborate on creating designs that not only look stunning but also drive results for your business.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="index.html#contact" class="btn inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-main-color px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:shadow-xl hover:-translate-y-1 transform">
+                    <i class='bx bx-message-rounded'></i>
+                    <span>Contact Me</span>
+                </a>
+                <a href="component-test.html" class="btn inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:-translate-y-1 transform">
+                    <i class='bx bx-code-block'></i>
+                    <span>Component Test Page</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto max-w-7xl px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-6">Henry Mfodwo</h3>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Designer and developer focused on creating beautiful, functional digital experiences that delight users and drive business growth.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/henrymfodwo" target="_blank"
+                           class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                            <i class='bx bxl-github'></i>
+                        </a>
+                        <a href="https://linkedin.com/in/henrymfodwo" target="_blank"
+                           class="w-10 h-10 bg-blue-700 hover:bg-blue-600 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                            <i class='bx bxl-linkedin'></i>
+                        </a>
+                        <a href="https://twitter.com/mfodwo_1" target="_blank"
+                           class="w-10 h-10 bg-blue-500 hover:bg-blue-400 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110">
+                            <i class='bx bxl-twitter'></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-2 inline-block">Home</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-2 inline-block">About</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-2 inline-block">Services</a></li>
+                        <li><a href="index.html#portfolio" class="text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-2 inline-block">Portfolio</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-2 inline-block">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-6">Contact</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-envelope text-blue-400'></i>
+                            <a href="mailto:contact@henrymfodwo.com" class="hover:text-white transition-colors duration-300">
+                                contact@henrymfodwo.com
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class='bx bx-map text-green-400'></i>
+                            <span>Accra, Ghana</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-400 text-center md:text-left">&copy; 2025 Henry Mfodwo. All rights reserved.</p>
+                <a href="#" class="back-to-top w-12 h-12 bg-main-color hover:bg-blue-700 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+                    <i class="bx bx-up-arrow-alt text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Smooth scroll and other scripts -->
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href').substring(1);
+                if (!targetId) return;
+                
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Back to top
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Component loaded logging
+        document.addEventListener('componentLoaded', function(e) {
+            console.log('Component loaded:', e.detail.componentPath);
+        });
+    </script>
+</body>
+</html>
