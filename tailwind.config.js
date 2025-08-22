@@ -8,14 +8,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'main-color': '#0a174e',
-        'text-color': '#0a174e', 
-        'bg-color': '#ffffff',
-        'secondary-color': '#133b7a',
-        'accent': '#0066cc',
+        'main-color': '#0F766E',      /* Deep teal - primary brand color */
+        'secondary-color': '#F97316', /* Vibrant orange - accent color */
+        'text-color': '#0F172A',      /* Deep slate - for text */
+        'bg-color': '#F8FAFC',        /* Off-white - background */
+        'surface-color': '#FFFFFF',   /* Pure white - for cards */
+        'dark-color': '#134E4A',      /* Darker teal - for emphasis */
+        'light-color': '#ECFDF5',     /* Light teal - for highlighting */
+        'accent': '#F97316',          /* Same as secondary for consistency */
         'glass': {
-          'primary': 'rgba(10, 23, 78, 0.97)',
-          'secondary': 'rgba(19, 59, 122, 0.95)',
+          'primary': 'rgba(15, 118, 110, 0.97)',
+          'secondary': 'rgba(19, 78, 74, 0.95)',
           'light': 'rgba(255, 255, 255, 0.1)',
           'border': 'rgba(255, 255, 255, 0.2)'
         }
@@ -76,8 +79,8 @@ module.exports = {
         }
       },
       boxShadow: {
-        'glass': '0 8px 32px rgba(10, 23, 78, 0.3)',
-        'glass-hover': '0 12px 48px rgba(10, 23, 78, 0.4)',
+        'glass': '0 8px 32px rgba(15, 118, 110, 0.3)',
+        'glass-hover': '0 12px 48px rgba(15, 118, 110, 0.4)',
         'premium': '0 4px 20px rgba(0, 0, 0, 0.1)',
         'premium-hover': '0 8px 25px rgba(0, 0, 0, 0.15)'
       },

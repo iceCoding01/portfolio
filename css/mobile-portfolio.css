@@ -15,7 +15,7 @@
 
 /* Ensure text is visible and readable */
 .touch-device .portfolio-box .portfolio-layer {
-    background: linear-gradient(to top, rgba(10, 23, 78, 0.95), rgba(10, 23, 78, 0.7) 70%, transparent) !important;
+    background: linear-gradient(to top, rgba(15, 118, 110, 0.95), rgba(15, 118, 110, 0.7) 70%, transparent) !important;
     padding-top: 50% !important; /* Gradient starts higher up */
     display: flex;
     flex-direction: column;

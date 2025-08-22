@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Color Scheme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #0F766E;      /* Deep teal - primary brand color */
+            --secondary-color: #F97316; /* Vibrant orange - accent color */
+            --text-color: #0F172A;      /* Deep slate - for text */
+            --bg-color: #F8FAFC;        /* Off-white - background */
+            --surface-color: #FFFFFF;   /* Pure white - for cards */
+            --dark-color: #134E4A;      /* Darker teal - for emphasis */
+            --light-color: #ECFDF5;     /* Light teal - for highlighting */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 40px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--main-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .color-section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--main-color);
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .color-box {
+            border-radius: 12px;
+            padding: 20px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .color-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .color-hex {
+            font-family: monospace;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-top: 8px;
+            display: inline-block;
+        }
+        
+        .color-description {
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+        
+        .ui-example {
+            margin-top: 3rem;
+            padding: 30px;
+            background: var(--surface-color);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ui-title {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: var(--main-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(15, 118, 110, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #EA580C;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--main-color);
+            color: var(--main-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--light-color);
+            transform: translateY(-3px);
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: var(--surface-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-header {
+            background-color: var(--main-color);
+            color: white;
+            padding: 20px;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        
+        .card-text {
+            color: #64748B;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .accent-text {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .badge-primary {
+            background-color: var(--light-color);
+            color: var(--main-color);
+        }
+        
+        .badge-secondary {
+            background-color: #FFF7ED;
+            color: var(--secondary-color);
+        }
+        
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: #64748B;
+            font-size: 0.9rem;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Portfolio Color Scheme</h1>
+        <p>A professional, clean, and accessible color palette for your portfolio project</p>
+        
+        <div class="color-section">
+            <h2>Primary Colors</h2>
+            <div class="color-grid">
+                <div class="color-box" style="background-color: #0F766E; color: white;">
+                    <div>
+                        <div class="color-name">Main Color</div>
+                        <div class="color-hex">#0F766E</div>
+                        <div class="color-description">Deep teal - primary brand color</div>
+                    </div>
+                    <div>Primary buttons, headers, main branding</div>
+                </div>
+                
+                <div class="color-box" style="background-color: #F97316; color: white;">
+                    <div>
+                        <div class="color-name">Secondary Color</div>
+                        <div class="color-hex">#F97316</div>
+                        <div class="color-description">Vibrant orange - accent color</div>
+                    </div>
+                    <div>Call-to-actions, highlights, important elements</div>
+                </div>
+                
+                <div class="color-box" style="background-color: #134E4A; color: white;">
+                    <div>
+                        <div class="color-name">Dark Color</div>
+                        <div class="color-hex">#134E4A</div>
+                        <div class="color-description">Darker teal - for emphasis</div>
+                    </div>
+                    <div>Hover states, emphasized elements, gradients</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="color-section">
+            <h2>Background & Text Colors</h2>
+            <div class="color-grid">
+                <div class="color-box" style="background-color: #F8FAFC; color: #0F172A; border: 1px solid #E2E8F0;">
+                    <div>
+                        <div class="color-name">Background Color</div>
+                        <div class="color-hex">#F8FAFC</div>
+                        <div class="color-description">Off-white - main background</div>
+                    </div>
+                    <div>Page backgrounds, reduces eye strain</div>
+                </div>
+                
+                <div class="color-box" style="background-color: #FFFFFF; color: #0F172A; border: 1px solid #E2E8F0;">
+                    <div>
+                        <div class="color-name">Surface Color</div>
+                        <div class="color-hex">#FFFFFF</div>
+                        <div class="color-description">Pure white - for cards & surfaces</div>
+                    </div>
+                    <div>Cards, content backgrounds, contrast</div>
+                </div>
+                
+                <div class="color-box" style="background-color: #0F172A; color: white;">
+                    <div>
+                        <div class="color-name">Text Color</div>
+                        <div class="color-hex">#0F172A</div>
+                        <div class="color-description">Deep slate - for text</div>
+                    </div>
+                    <div>Primary text, improved readability</div>
+                </div>
+                
+                <div class="color-box" style="background-color: #ECFDF5; color: #0F766E; border: 1px solid #E2E8F0;">
+                    <div>
+                        <div class="color-name">Light Color</div>
+                        <div class="color-hex">#ECFDF5</div>
+                        <div class="color-description">Light teal - for highlighting</div>
+                    </div>
+                    <div>Subtle highlights, backgrounds, hover states</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ui-example">
+            <h3 class="ui-title">UI Component Examples</h3>
+            
+            <h4 style="margin-bottom: 1rem;">Buttons</h4>
+            <div class="button-grid">
+                <div class="btn btn-primary">Primary Button</div>
+                <div class="btn btn-secondary">Secondary Button</div>
+                <div class="btn btn-outline">Outline Button</div>
+            </div>
+            
+            <h4 style="margin-bottom: 1rem; margin-top: 2rem;">Cards</h4>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 style="font-size: 1.1rem;">Full-Stack Development</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">Web Application Solutions</div>
+                        <p class="card-text">Complete end-to-end web applications using modern frameworks and <span class="accent-text">cloud infrastructure</span>.</p>
+                        <div class="badge badge-primary">Tailwind CSS</div>
+                        <div class="badge badge-secondary">React</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header" style="background-color: var(--dark-color);">
+                        <h5 style="font-size: 1.1rem;">Process Automation</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">Business Automation</div>
+                        <p class="card-text">Streamline operations with intelligent solutions that <span class="accent-text">reduce manual work</span> by 80%.</p>
+                        <div class="badge badge-primary">API Integration</div>
+                        <div class="badge badge-secondary">Workflow</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            Created for Henry Mfodwo's Portfolio - August 2025
+        </footer>
+    </div>
+</body>
+</html>
