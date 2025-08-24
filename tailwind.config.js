@@ -9,13 +9,13 @@ module.exports = {
     extend: {
       colors: {
         'main-color': '#0F766E',      /* Deep teal - primary brand color */
-        'secondary-color': '#F97316', /* Vibrant orange - accent color */
-        'text-color': '#0F172A',      /* Deep slate - for text */
-        'bg-color': '#F8FAFC',        /* Off-white - background */
-        'surface-color': '#FFFFFF',   /* Pure white - for cards */
+        'secondary-color': '#7E57C2', /* Mid-tone purple - accent color */
+        'text-color': '#FFFFFF',      /* White - for text on dark background */
+        'bg-color': '#020B1A',        /* Blue-black - solid background */
+        'surface-color': '#0B1529',   /* Slightly lighter blue-black - for cards */
         'dark-color': '#134E4A',      /* Darker teal - for emphasis */
         'light-color': '#ECFDF5',     /* Light teal - for highlighting */
-        'accent': '#F97316',          /* Same as secondary for consistency */
+        'accent': '#7E57C2',          /* Same as secondary for consistency */
         'glass': {
           'primary': 'rgba(15, 118, 110, 0.97)',
           'secondary': 'rgba(19, 78, 74, 0.95)',
