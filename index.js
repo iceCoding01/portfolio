@@ -198,6 +198,11 @@ function openMobileMenu() {
     if (mobileMenuOverlay && mobileMenu) {
         mobileMenuOverlay.classList.add('active');
         mobileMenu.classList.add('active');
+        console.log('Added active classes to mobile menu elements');
+        console.log('Mobile menu overlay classes:', mobileMenuOverlay.className);
+        console.log('Mobile menu classes:', mobileMenu.className);
+    } else {
+        console.error('Mobile menu elements not found:', { mobileMenuOverlay, mobileMenu });
     }
     if (menuIcon) {
         menuIcon.classList.add('active');
@@ -670,19 +675,8 @@ ScrollReveal().reveal('.hero-image, .services-container, .portfolio-box, .contac
 ScrollReveal().reveal('.about-content, .testimonial-card', { origin: 'left' });
 ScrollReveal().reveal('.about-img, .contact-info', { origin: 'right' });
 
-// Typed.js for hero subtitle (optional enhancement)
-const typed = new Typed('.hero-subtitle', {
-    strings: [
-        "Software Engineer & Full-Stack Developer",
-        "Problem Solver & Innovation Enthusiast",
-        "Passionate About Clean Code & User Experience"
-    ],
-    typeSpeed: 50,
-    backSpeed: 30,
-    backDelay: 2000,
-    loop: true,
-    showCursor: false
-});
+// Hero subtitle animation removed as per request
+// Animation code was here but has been removed
 
 // Smooth scroll to top
 document.querySelector('.back-to-top').addEventListener('click', (e) => {
