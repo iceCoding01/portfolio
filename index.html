@@ -28,7 +28,9 @@
                     colors: {
                         'main-color': '#0F766E',      /* Deep teal - primary brand color */
                         'secondary-color': '#7E57C2', /* Mid-tone purple - accent color */
-                        'text-color': '#FFFFFF',      /* White - for text on dark background */
+                        'text-color': '#111827',      /* Dark gray - for text on white background */
+                        'bg-color': '#FFFFFF',        /* White - solid background */
+                        'surface-color': '#F8FAFC',   /* Light gray - for cards */
                         'bg-color': '#0F172A',        /* Deep slate - solid background */
                         'surface-color': '#1E293B',   /* Slightly lighter slate - for cards */
                         'dark-color': '#134E4A',      /* Darker teal - for emphasis */
@@ -151,50 +153,50 @@
     <title>Henry Mfodwo - Software Engineer & Full-Stack Developer</title>
 </head>
 <body>
-    <header class="header fixed top-0 left-0 w-full bg-gradient-to-r from-main-color/97 via-secondary-color/95 to-main-color/97 backdrop-blur-glass border-b border-white/15 shadow-glass z-10000 transition-all duration-500">
+    <header class="header fixed top-0 left-0 w-full bg-white shadow-md border-b border-gray-200 z-10000 transition-all duration-500">
         <div class="header-container flex items-center justify-between py-3 px-8 max-w-7xl mx-auto">
             <div class="logo-container">
                 <a class="logo flex items-center gap-3 text-decoration-none group transition-all duration-300 hover:scale-105" href="#home">
-                    <div class="logo-icon w-10 h-10 bg-gradient-to-br from-white/25 to-white/15 border-2 border-white/30 rounded-xl flex items-center justify-center text-xl text-white/90 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-white/35 group-hover:to-white/25 group-hover:scale-110 group-hover:rotate-2">
+                    <div class="logo-icon w-10 h-10 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-xl text-white transition-all duration-300 group-hover:scale-110 group-hover:rotate-2">
                         <i class='bx bx-terminal'></i>
                     </div>
                     <div class="logo-text">
-                        <span class="logo-name block text-lg font-bold leading-tight bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">Henry Mfodwo</span>
-                        <span class="logo-tagline block text-sm text-white/75 font-medium">Software Engineer</span>
+                        <span class="logo-name block text-lg font-bold leading-tight bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Henry Mfodwo</span>
+                        <span class="logo-tagline block text-sm text-gray-500 font-medium">Software Engineer</span>
                     </div>
                 </a>
             </div>
             
-            <nav class="navbar hidden lg:flex items-center gap-6 bg-white/12 backdrop-blur-navbar border border-white/15 rounded-2xl py-1.5 px-4">
-                <a href="#home" class="nav-link flex items-center gap-2 text-white/95 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-white/25 hover:to-white/15 hover:text-white active bg-gradient-to-r from-main-color to-dark-color">
-                    <i class='bx bx-home-alt text-lg'></i>
-                    <span>Home</span>
+            <nav class="navbar hidden lg:flex items-center gap-6 bg-gray-50 border border-gray-200 rounded-2xl py-1.5 px-4">
+                <a href="#home" class="nav-link flex items-center gap-2 text-gray-700 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 hover:text-main-color active bg-gradient-to-r from-main-color to-secondary-color">
+                    <i class='bx bx-home-alt text-lg text-white'></i>
+                    <span class="text-white">Home</span>
                 </a>
                 
-                <a href="#about" class="nav-link flex items-center gap-2 text-white/95 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-white/25 hover:to-white/15 hover:text-white">
+                <a href="#about" class="nav-link flex items-center gap-2 text-gray-700 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 hover:text-main-color">
                     <i class='bx bx-user text-lg'></i>
                     <span>About</span>
                 </a>
-                <a href="#myskills" class="nav-link flex items-center gap-2 text-white/95 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-white/25 hover:to-white/15 hover:text-white">
+                <a href="#myskills" class="nav-link flex items-center gap-2 text-gray-700 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 hover:text-main-color">
                     <i class='bx bx-brain text-lg'></i>
                     <span>Skills</span>
                 </a>
                 
-                <a href="#contact" class="nav-link flex items-center gap-2 text-white/95 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-white/25 hover:to-white/15 hover:text-white">
+                <a href="#contact" class="nav-link flex items-center gap-2 text-gray-700 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 hover:text-main-color">
                     <i class='bx bx-envelope text-lg'></i>
                     <span>Contact</span>
                 </a>
             </nav>
             
             <div class="header-actions flex items-center gap-4">
-                <a href="#contact" class="cta-button hidden md:flex items-center gap-2 bg-gradient-to-r from-white/95 to-white/85 text-main-color px-6 py-3 rounded-2xl font-semibold transition-all duration-400 hover:shadow-premium">
+                <a href="#contact" class="cta-button hidden md:flex items-center gap-2 bg-gradient-to-r from-main-color to-secondary-color text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-400 hover:shadow-lg">
                     <i class='bx bx-message-rounded text-lg'></i>
                     <span>Get In Touch</span>
                 </a>
-                <button class="menu-toggle lg:hidden w-10 h-10 bg-gradient-to-br from-white/15 to-white/8 border-2 border-white/25 rounded-lg flex flex-col items-center justify-center gap-1 transition-all duration-400 hover:bg-gradient-to-br hover:from-white/25 hover:to-white/15 hover:border-white/40" id="menu-icon" aria-label="Toggle navigation menu">
-                    <span class="menu-line w-5 h-0.5 bg-gradient-to-r from-white to-white/80 rounded transition-all duration-400"></span>
-                    <span class="menu-line w-5 h-0.5 bg-gradient-to-r from-white to-white/80 rounded transition-all duration-400"></span>
-                    <span class="menu-line w-5 h-0.5 bg-gradient-to-r from-white to-white/80 rounded transition-all duration-400"></span>
+                <button class="menu-toggle lg:hidden w-10 h-10 bg-gray-100 border-2 border-gray-200 rounded-lg flex flex-col items-center justify-center gap-1 transition-all duration-400 hover:bg-gray-200" id="menu-icon" aria-label="Toggle navigation menu">
+                    <span class="menu-line w-5 h-0.5 bg-gray-700 rounded transition-all duration-400"></span>
+                    <span class="menu-line w-5 h-0.5 bg-gray-700 rounded transition-all duration-400"></span>
+                    <span class="menu-line w-5 h-0.5 bg-gray-700 rounded transition-all duration-400"></span>
                 </button>
             </div>
         </div>
@@ -203,20 +205,20 @@
     <!-- Dedicated Mobile Menu -->
     <div class="mobile-menu-overlay" id="mobile-menu-overlay">
         <nav class="mobile-menu" id="mobile-menu">
-            <div class="mobile-menu-header flex items-center justify-between px-4 py-3 bg-gradient-to-br from-white/10 to-white/5 border-b border-white/20">
-    <div class="mobile-menu-logo flex items-center gap-3">
-        <div class="w-9 h-9 bg-gradient-to-br from-white/25 to-white/15 border-2 border-white/30 rounded-xl flex items-center justify-center text-white/90 text-lg">
-            <i class='bx bx-terminal'></i>
-        </div>
-        <div class="text">
-            <span class="block text-base font-bold leading-tight bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">Henry Mfodwo</span>
-            <span class="block text-xs text-white/60 font-medium -mt-1">Software Engineer</span>
-        </div>
-    </div>
-    <button class="mobile-menu-close text-white/70 hover:text-white text-2xl transition duration-200" id="mobile-menu-close" aria-label="Close mobile menu">
-        <i class='bx bx-x'></i>
-    </button>
-</div>
+            <div class="mobile-menu-header flex items-center justify-between px-4 py-3 bg-white border-b border-gray-200">
+                <div class="mobile-menu-logo flex items-center gap-3">
+                    <div class="w-9 h-9 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-white text-lg">
+                        <i class='bx bx-terminal'></i>
+                    </div>
+                    <div class="text">
+                        <span class="block text-base font-bold leading-tight bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Henry Mfodwo</span>
+                        <span class="block text-xs text-gray-500 font-medium -mt-1">Software Engineer</span>
+                    </div>
+                </div>
+                <button class="mobile-menu-close text-gray-600 hover:text-gray-800 text-2xl transition duration-200" id="mobile-menu-close" aria-label="Close mobile menu">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
 
             
             <div class="mobile-menu-content">
@@ -346,59 +348,59 @@
     </div>
 
     <!-- Premium Hero Section -->
-    <section class="hero relative min-h-screen bg-gradient-to-br from-main-color via-secondary-color to-main-color flex items-center justify-center overflow-hidden" id="home">
+    <section class="hero relative min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center overflow-hidden" id="home">
         <div class="hero-background absolute inset-0">
-            <div class="hero-pattern absolute inset-0 opacity-30 bg-gradient-radial from-white/10 via-transparent to-transparent"></div>
+            <div class="hero-pattern absolute inset-0 opacity-10 bg-gradient-radial from-main-color/20 via-transparent to-transparent"></div>
             <div class="hero-gradient absolute inset-0"></div>
         </div>
         
         <div class="hero-container relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div class="hero-content space-y-6 lg:space-y-8 text-center lg:text-left">
-                <div class="hero-badge mt-8 lg:mt-16 inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-4 lg:px-6 py-2 lg:py-3">
-<i class='bx bx-badge-check text-secondary-color text-xl'></i>
-                    <span class="text-white font-medium">Available for new opportunities</span>
+                <div class="hero-badge mt-8 lg:mt-16 inline-flex items-center gap-3 bg-main-color/15 backdrop-blur-md border border-main-color/20 rounded-2xl px-4 lg:px-6 py-2 lg:py-3">
+                    <i class='bx bx-badge-check text-secondary-color text-xl'></i>
+                    <span class="text-main-color font-medium">Available for new opportunities</span>
                 </div>
                 
               <h1 class="hero-title space-y-2">
-                    <span class="hero-title-line block text-4xl md:text-6xl font-bold text-white">Designing With Purpose.</span>
-                    <span class="hero-title-line highlight block text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">Delivering With Impact.</span>
+                    <span class="hero-title-line block text-4xl md:text-6xl font-bold text-gray-800">Designing With Purpose.</span>
+                    <span class="hero-title-line highlight block text-4xl md:text-6xl font-bold bg-gradient-to-r from-main-color to-secondary-color bg-clip-text text-transparent">Delivering With Impact.</span>
               </h1>
 
                 
-                <p class="hero-subtitle text-2xl text-white/90 font-medium">Software Engineer & Full-Stack Developer</p>
+                <p class="hero-subtitle text-2xl text-gray-700 font-medium">Software Engineer & Full-Stack Developer</p>
                 
-                <p class="hero-description text-lg text-white/80 leading-relaxed max-w-2xl">
+                <p class="hero-description text-lg text-gray-600 leading-relaxed max-w-2xl">
                     I transform complex problems into elegant, scalable solutions. 
                     Specializing in modern web applications that deliver measurable business impact 
                     and exceptional user experiences.
                 </p>
                 
                 <div class="hero-stats grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div class="stat flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
-                        <div class="stat-icon w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center text-2xl text-white">
+                    <div class="stat flex items-center gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="stat-icon w-16 h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-2xl text-white">
                             <i class='bx bx-rocket'></i>
                         </div>
                         <div class="stat-content">
-                            <span class="stat-number block text-2xl font-bold text-white">50+</span>
-                            <span class="stat-label block text-sm text-white/80 font-medium">Projects Delivered</span>
+                            <span class="stat-number block text-2xl font-bold text-gray-800">50+</span>
+                            <span class="stat-label block text-sm text-gray-600 font-medium">Projects Delivered</span>
                         </div>
                     </div>
-                    <div class="stat flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
-                        <div class="stat-icon w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center text-2xl text-white">
+                    <div class="stat flex items-center gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="stat-icon w-16 h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-2xl text-white">
                             <i class='bx bx-time'></i>
                         </div>
                         <div class="stat-content">
-                            <span class="stat-number block text-2xl font-bold text-white">3+</span>
-                            <span class="stat-label block text-sm text-white/80 font-medium">Years Experience</span>
+                            <span class="stat-number block text-2xl font-bold text-gray-800">3+</span>
+                            <span class="stat-label block text-sm text-gray-600 font-medium">Years Experience</span>
                         </div>
                     </div>
-                    <div class="stat flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
-                        <div class="stat-icon w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center text-2xl text-white">
+                    <div class="stat flex items-center gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="stat-icon w-16 h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-2xl text-white">
                             <i class='bx bx-heart'></i>
                         </div>
                         <div class="stat-content">
-                            <span class="stat-number block text-2xl font-bold text-white">100%</span>
-                            <span class="stat-label block text-sm text-white/80 font-medium">Client Satisfaction</span>
+                            <span class="stat-number block text-2xl font-bold text-gray-800">100%</span>
+                            <span class="stat-label block text-sm text-gray-600 font-medium">Client Satisfaction</span>
                         </div>
                     </div>
                 </div>
@@ -408,25 +410,25 @@
                         <span>View My Work</span>
                         <i class='bx bx-arrow-right text-lg'></i>
                     </a>
-                    <a href="#contact" class="btn btn-secondary inline-flex items-center gap-2 bg-transparent text-white border-2 border-white/30 px-6 py-3 rounded-2xl font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white justify-center">
+                    <a href="#contact" class="btn btn-secondary inline-flex items-center gap-2 bg-gray-100 text-gray-700 border-2 border-gray-300 px-6 py-3 rounded-2xl font-semibold transition-all duration-300 hover:bg-gray-200 hover:border-gray-400 justify-center">
                         <span>Let's Talk</span>
                         <i class='bx bx-message-rounded text-lg'></i>
                     </a>
                 </div>
                 
                 <div class="hero-social flex flex-col sm:flex-row sm:items-center gap-4">
-                    <span class="social-label text-lg text-white/70 font-medium">Connect with me</span>
+                    <span class="social-label text-lg text-gray-600 font-medium">Connect with me</span>
                     <div class="social-links flex gap-4">
-                        <a href="https://www.linkedin.com/in/henry-mfodwo-26904b255/" target="_blank" aria-label="LinkedIn" class="social-link w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/15 rounded-full flex items-center justify-center text-white/80 hover:text-white transition-all duration-300">
+                        <a href="https://www.linkedin.com/in/henry-mfodwo-26904b255/" target="_blank" aria-label="LinkedIn" class="social-link w-12 h-12 bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-main-color transition-all duration-300">
                             <i class='bx bxl-linkedin text-xl'></i>
                         </a>
-                        <a href="https://github.com/henrymfodwo" target="_blank" aria-label="GitHub" class="social-link w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/15 rounded-full flex items-center justify-center text-white/80 hover:text-white transition-all duration-300">
+                        <a href="https://github.com/henrymfodwo" target="_blank" aria-label="GitHub" class="social-link w-12 h-12 bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-main-color transition-all duration-300">
                             <i class='bx bxl-github text-xl'></i>
                         </a>
-                        <a href="https://twitter.com/mfodwo_1" target="_blank" aria-label="Twitter" class="social-link w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/15 rounded-full flex items-center justify-center text-white/80 hover:text-white transition-all duration-300">
+                        <a href="https://twitter.com/mfodwo_1" target="_blank" aria-label="Twitter" class="social-link w-12 h-12 bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-main-color transition-all duration-300">
                             <i class='bx bxl-twitter text-xl'></i>
                         </a>
-                        <a href="mailto:henrydeiceberg@gmail.com" aria-label="Email" class="social-link w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/15 rounded-full flex items-center justify-center text-white/80 hover:text-white transition-all duration-300">
+                        <a href="mailto:henrydeiceberg@gmail.com" aria-label="Email" class="social-link w-12 h-12 bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-main-color transition-all duration-300">
                             <i class='bx bx-envelope text-xl'></i>
                         </a>
                     </div>
@@ -435,30 +437,30 @@
             
             <div class="hero-visual relative">
                 <div class="hero-image-container relative">
-                    <div class="hero-image-frame w-80 h-80 mx-auto bg-gradient-to-br from-white/20 to-white/10 p-2 rounded-full backdrop-blur-md border border-white/20">
-                        <img src="./img/afr_wear.jpg" alt="Henry Mfodwo - Software Engineer" class="hero-image w-full h-full object-cover rounded-full border-4 border-white/30" />
+                    <div class="hero-image-frame w-80 h-80 mx-auto bg-gradient-to-br from-main-color/20 to-secondary-color/20 p-2 rounded-full backdrop-blur-md border border-gray-200 shadow-xl">
+                        <img src="./img/afr_wear.jpg" alt="Henry Mfodwo - Software Engineer" class="hero-image w-full h-full object-cover rounded-full border-4 border-white" />
                     </div>
                 </div>
                 
                 <div class="hero-tech-stack flex justify-center gap-4 mt-8">
-                    <div class="tech-item flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2 hover:bg-white/15 transition-all duration-300">
+                    <div class="tech-item flex items-center gap-2 bg-white shadow-md border border-gray-200 rounded-xl px-4 py-2 hover:shadow-lg transition-all duration-300">
                         <i class='bx bxl-django text-secondary-color text-xl'></i>
-                        <span class="text-white/70 font-medium">Django</span>
+                        <span class="text-gray-700 font-medium">Django</span>
                     </div>
-                    <div class="tech-item flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2 hover:bg-white/15 transition-all duration-300">
-                        <i class='bx bxl-javascript text-yellow-400 text-xl'></i>
-                        <span class="text-white/70 font-medium">JavaScript</span>
+                    <div class="tech-item flex items-center gap-2 bg-white shadow-md border border-gray-200 rounded-xl px-4 py-2 hover:shadow-lg transition-all duration-300">
+                        <i class='bx bxl-javascript text-yellow-500 text-xl'></i>
+                        <span class="text-gray-700 font-medium">JavaScript</span>
                     </div>
                  
-                    <div class="tech-item flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
-                        <i class='bx bxl-aws text-cyan-400 text-xl'></i>
-                        <span class="text-white/70 font-medium">AWS</span>
+                    <div class="tech-item flex items-center gap-2 bg-white shadow-md border border-gray-200 rounded-xl px-4 py-2 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <i class='bx bxl-aws text-cyan-500 text-xl'></i>
+                        <span class="text-gray-700 font-medium">AWS</span>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="hero-scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-white/70 cursor-pointer hover:text-white transition-all duration-300">
+        <div class="hero-scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 cursor-pointer hover:text-main-color transition-all duration-300">
             <span class="text-sm font-medium">Scroll to explore</span>
             <i class='bx bx-chevron-down text-lg animate-bounce'></i>
         </div>
@@ -501,7 +503,7 @@
     </section>
 
     <!-- Enhanced Services Section -->
-    <section class="services pt-32 pb-20 px-4 lg:px-8 bg-gradient-to-br from-main-color via-secondary-color to-main-color" id="services">
+    <section class="services pt-32 pb-20 px-4 lg:px-8 bg-gradient-to-br from-gray-50 to-white" id="services">
         <!-- Include services component using the component system -->
         <div data-component="./components/services.html">
             <!-- Loading state handled by the component system -->
@@ -523,24 +525,24 @@
     </section>
 
     <!-- Premium Testimonials Section -->
-    <section class="pt-32 pb-24 px-4 lg:px-8 bg-gradient-to-br from-main-color via-secondary-color to-main-color overflow-hidden relative" id="testimonials">
+    <section class="pt-32 pb-24 px-4 lg:px-8 bg-gradient-to-br from-gray-50 to-white overflow-hidden relative" id="testimonials">
         <!-- Background Elements -->
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-300 rounded-full blur-3xl animate-pulse delay-150"></div>
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gray-300 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-100 rounded-full blur-3xl animate-pulse delay-150"></div>
         </div>
         
         <div class="max-w-7xl mx-auto relative z-10">
             <!-- Section Header -->
             <div class="text-center mb-20">
-                <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-6 py-3 mb-8">
-                    <i class='bx bx-star text-yellow-400 text-xl'></i>
-                    <span class="text-white font-medium">Client Success Stories</span>
+                <div class="inline-flex items-center gap-3 bg-main-color/10 backdrop-blur-md border border-main-color/20 rounded-2xl px-6 py-3 mb-8">
+                    <i class='bx bx-star text-yellow-500 text-xl'></i>
+                    <span class="text-gray-700 font-medium">Client Success Stories</span>
                 </div>
-                <h2 class="heading text-4xl lg:text-6xl font-bold text-center text-white mb-6">
-                    Client <span class="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Testimonials</span>
+                <h2 class="heading text-4xl lg:text-6xl font-bold text-center text-gray-800 mb-6">
+                    Client <span class="bg-gradient-to-r from-main-color to-secondary-color bg-clip-text text-transparent">Testimonials</span>
                 </h2>
-                <p class="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                     Discover how I've helped businesses transform their digital presence and achieve remarkable results
                 </p>
             </div>
@@ -548,7 +550,7 @@
             <!-- Testimonials Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="testimonial-card group bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/10">
+                <div class="testimonial-card group bg-white border border-gray-200 rounded-3xl p-8 hover:bg-gray-50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
                     <!-- Quote Icon -->
                     <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                         <i class='bx bxs-quote-left text-2xl text-white'></i>
@@ -556,38 +558,38 @@
                     
                     <!-- Testimonial Content -->
                     <div class="testimonial-content mb-8">
-                        <p class="text-white/90 text-lg leading-relaxed font-medium italic">
+                        <p class="text-gray-700 text-lg leading-relaxed font-medium italic">
                             "Henry delivered our e-commerce platform ahead of schedule. His attention to detail and technical expertise exceeded our expectations. The platform now handles 10,000+ daily users seamlessly."
                         </p>
                     </div>
                     
                     <!-- Rating Stars -->
                     <div class="flex gap-1 mb-6">
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
                     </div>
                     
                     <!-- Author Info -->
-                    <div class="testimonial-author flex items-center gap-4 pt-6 border-t border-white/20">
+                    <div class="testimonial-author flex items-center gap-4 pt-6 border-t border-gray-200">
                         <div class="w-16 h-16 bg-gradient-to-br from-main-color to-dark-color rounded-full flex items-center justify-center text-white font-bold text-xl overflow-hidden">
                             <img src="./img/client1.jpg" alt="John Doe" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='JD'">
                         </div>
                         <div>
-                            <h4 class="text-xl font-bold text-white mb-1">John Doe</h4>
-                            <p class="text-white/70 font-medium">CEO, TechStart Inc.</p>
+                            <h4 class="text-xl font-bold text-gray-800 mb-1">John Doe</h4>
+                            <p class="text-gray-600 font-medium">CEO, TechStart Inc.</p>
                             <div class="flex items-center gap-2 mt-1">
                                 <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                                <span class="text-sm text-white/60">Verified Client</span>
+                                <span class="text-sm text-gray-500">Verified Client</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Testimonial 2 -->
-                <div class="testimonial-card group bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/10">
+                <div class="testimonial-card group bg-white border border-gray-200 rounded-3xl p-8 hover:bg-gray-50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
                     <!-- Quote Icon -->
                     <div class="w-16 h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                         <i class='bx bxs-quote-left text-2xl text-white'></i>
@@ -595,38 +597,38 @@
                     
                     <!-- Testimonial Content -->
                     <div class="testimonial-content mb-8">
-                        <p class="text-white/90 text-lg leading-relaxed font-medium italic">
+                        <p class="text-gray-700 text-lg leading-relaxed font-medium italic">
                             "The automation solution Henry built for us reduced our manual processing time by 80%. His understanding of both technical and business requirements made all the difference."
                         </p>
                     </div>
                     
                     <!-- Rating Stars -->
                     <div class="flex gap-1 mb-6">
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
                     </div>
                     
                     <!-- Author Info -->
-                    <div class="testimonial-author flex items-center gap-4 pt-6 border-t border-white/20">
+                    <div class="testimonial-author flex items-center gap-4 pt-6 border-t border-gray-200">
                         <div class="w-16 h-16 bg-gradient-to-br from-secondary-color to-dark-color rounded-full flex items-center justify-center text-white font-bold text-xl overflow-hidden">
                             <img src="./img/client2.jpg" alt="Sarah Johnson" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='SJ'">
                         </div>
                         <div>
-                            <h4 class="text-xl font-bold text-white mb-1">Sarah Johnson</h4>
-                            <p class="text-white/70 font-medium">Operations Manager, DataFlow Corp</p>
+                            <h4 class="text-xl font-bold text-gray-800 mb-1">Sarah Johnson</h4>
+                            <p class="text-gray-600 font-medium">Operations Manager, DataFlow Corp</p>
                             <div class="flex items-center gap-2 mt-1">
                                 <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                                <span class="text-sm text-white/60">Verified Client</span>
+                                <span class="text-sm text-gray-500">Verified Client</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Testimonial 3 -->
-                <div class="testimonial-card group bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/10">
+                <div class="testimonial-card group bg-white shadow-md border border-gray-200 rounded-3xl p-8 hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
                     <!-- Quote Icon -->
                     <div class="w-16 h-16 bg-gradient-to-br from-secondary-color to-main-color rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                         <i class='bx bxs-quote-left text-2xl text-white'></i>
@@ -634,28 +636,28 @@
                     
                     <!-- Testimonial Content -->
                     <div class="testimonial-content mb-8">
-                        <p class="text-white/90 text-lg leading-relaxed font-medium italic">
+                        <p class="text-gray-700 text-lg leading-relaxed font-medium italic">
                             "Working with Henry was a game-changer for our healthcare platform. His security implementations and performance optimizations have made our system more reliable than ever."
                         </p>
                     </div>
                     
                     <!-- Rating Stars -->
                     <div class="flex gap-1 mb-6">
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
-                        <i class='bx bxs-star text-yellow-400 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
                     </div>
                     
                     <!-- Author Info -->
-                    <div class="testimonial-author flex items-center gap-4 pt-6 border-t border-white/20">
+                    <div class="testimonial-author flex items-center gap-4 pt-6 border-t border-gray-200">
                         <div class="w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-xl overflow-hidden">
                             <img src="./img/client3.jpg" alt="Dr. Michael Chen" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='MC'">
                         </div>
                         <div>
-                            <h4 class="text-xl font-bold text-white mb-1">Dr. Michael Chen</h4>
-                            <p class="text-white/70 font-medium">CTO, HealthTech Solutions</p>
+                            <h4 class="text-xl font-bold text-gray-800 mb-1">Dr. Michael Chen</h4>
+                            <p class="text-gray-600 font-medium">CTO, HealthTech Solutions</p>
                             <div class="flex items-center gap-2 mt-1">
                                 <div class="w-2 h-2 bg-green-400 rounded-full"></div>
                                 <span class="text-sm text-white/60">Verified Client</span>
@@ -688,24 +690,24 @@
     </section>
 
     <!-- Premium Technical Skills Section -->
-    <section class="pt-32 pb-24 px-4 lg:px-8 bg-gradient-to-br from-main-color via-secondary-color to-main-color overflow-hidden relative" id="myskills">
+    <section class="pt-32 pb-24 px-4 lg:px-8 bg-gradient-to-br from-gray-50 to-white overflow-hidden relative" id="myskills">
         <!-- Background Elements -->
         <div class="absolute inset-0 opacity-5">
-            <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-gray-300 rounded-full blur-3xl animate-pulse"></div>
             <div class="absolute bottom-1/4 left-1/4 w-80 h-80 bg-blue-300 rounded-full blur-3xl animate-pulse delay-150"></div>
         </div>
         
         <div class="max-w-7xl mx-auto relative z-10">
             <!-- Section Header -->
             <div class="text-center mb-20">
-              <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-6 py-3 mb-8">
+              <div class="inline-flex items-center gap-3 bg-main-color/15 backdrop-blur-md border border-main-color/20 rounded-2xl px-6 py-3 mb-8">
                     <i class='bx bx-code-alt text-secondary-color text-xl'></i>
-                    <span class="text-white font-medium">Technical Expertise</span>
+                    <span class="text-main-color font-medium">Technical Expertise</span>
                 </div> 
-                <h2 class="heading text-4xl lg:text-6xl font-bold text-center text-white mb-6">
+                <h2 class="heading text-4xl lg:text-6xl font-bold text-center text-gray-800 mb-6">
                     Tech <span class="bg-gradient-to-r from-secondary-color to-main-color bg-clip-text text-transparent">Stack</span>
                 </h2>
-                <p class="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+                <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
                     Mastering cutting-edge technologies to build powerful, scalable solutions that drive innovation
                 </p>
             </div>
@@ -715,24 +717,24 @@
                 <!-- Frontend Technologies -->
                 <div class="skill-category">
                     <div class="category-header text-center mb-12">
-                        <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-2 mb-4">
+                        <div class="inline-flex items-center gap-3 bg-main-color/10 backdrop-blur-md border border-main-color/20 rounded-xl px-4 py-2 mb-4">
                             <i class='bx bx-palette text-secondary-color text-lg'></i>
-                            <span class="text-white/90 font-semibold">Frontend Development</span>
+                            <span class="text-gray-800 font-semibold">Frontend Development</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">User Interface & Experience</h3>
-                        <p class="text-white/70">Creating stunning, responsive interfaces that users love</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">User Interface & Experience</h3>
+                        <p class="text-gray-600">Creating stunning, responsive interfaces that users love</p>
                     </div>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-                        <div class="skill-card group bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 lg:p-8 text-center hover:bg-white/15 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-white/10">
+                        <div class="skill-card group bg-white border border-gray-200 rounded-3xl p-6 lg:p-8 text-center hover:bg-gray-50 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-gray-200">
                             <div class="skill-icon w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-secondary-color to-dark-color rounded-2xl flex items-center justify-center mb-4 lg:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                                 <i class='bx bxl-html5 text-2xl lg:text-3xl text-white'></i>
                             </div>
-                            <h4 class="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4">HTML5</h4>
+                            <h4 class="text-lg lg:text-xl font-bold text-gray-800 mb-3 lg:mb-4">HTML5</h4>
                             <div class="skill-progress mb-3 lg:mb-4">
                                
                             </div>
-                            <p class="text-white/70 text-xs lg:text-sm">Semantic markup, accessibility, modern standards</p>
+                            <p class="text-gray-600 text-xs lg:text-sm">Semantic markup, accessibility, modern standards</p>
                         </div>
 
                         <div class="skill-card group bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 lg:p-8 text-center hover:bg-white/15 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-white/10">
@@ -897,37 +899,37 @@
                             </div>
                         </div>
                         
-                        <div class="soft-skill-card bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300 hover:-translate-y-2 cursor-pointer group" onclick="window.location.href='communication.html'">
+                        <div class="soft-skill-card bg-white shadow-md border border-gray-200 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer group" onclick="window.location.href='communication.html'">
                             <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
                                 <i class='bx bx-chat text-2xl text-white'></i>
                             </div>
-                            <h4 class="text-lg font-bold text-white mb-2">Communication</h4>
-                            <p class="text-white/70 text-sm mb-3">Clear technical and client communication</p>
-                            <div class="inline-flex items-center gap-2 text-blue-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Communication</h4>
+                            <p class="text-gray-600 text-sm mb-3">Clear technical and client communication</p>
+                            <div class="inline-flex items-center gap-2 text-blue-500 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <span>View Details</span>
                                 <i class='bx bx-arrow-right'></i>
                             </div>
                         </div>
                         
-                        <div class="soft-skill-card bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300 hover:-translate-y-2 cursor-pointer group" onclick="window.location.href='problem-solving.html'">
+                        <div class="soft-skill-card bg-white shadow-md border border-gray-200 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer group" onclick="window.location.href='problem-solving.html'">
                             <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
                                 <i class='bx bx-cog text-2xl text-white'></i>
                             </div>
-                            <h4 class="text-lg font-bold text-white mb-2">Problem Solving</h4>
-                            <p class="text-white/70 text-sm mb-3">Creative solutions to complex challenges</p>
-                            <div class="inline-flex items-center gap-2 text-green-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Problem Solving</h4>
+                            <p class="text-gray-600 text-sm mb-3">Creative solutions to complex challenges</p>
+                            <div class="inline-flex items-center gap-2 text-green-500 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <span>View Details</span>
                                 <i class='bx bx-arrow-right'></i>
                             </div>
                         </div>
                         
-                        <div class="soft-skill-card bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300 hover:-translate-y-2 cursor-pointer group" onclick="window.location.href='project-management.html'">
+                        <div class="soft-skill-card bg-white shadow-md border border-gray-200 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer group" onclick="window.location.href='project-management.html'">
                             <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
                                 <i class='bx bx-time text-2xl text-white'></i>
                             </div>
-                            <h4 class="text-lg font-bold text-white mb-2">Project Management</h4>
-                            <p class="text-white/70 text-sm mb-3">Agile methodologies and delivery excellence</p>
-                            <div class="inline-flex items-center gap-2 text-yellow-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Project Management</h4>
+                            <p class="text-gray-600 text-sm mb-3">Agile methodologies and delivery excellence</p>
+                            <div class="inline-flex items-center gap-2 text-yellow-500 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <span>View Details</span>
                                 <i class='bx bx-arrow-right'></i>
                             </div>
@@ -937,82 +939,91 @@
             </div>
 
             <!-- Skills Summary Stats -->
-            <div class="skills-stats grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-16 lg:mt-20 pt-12 lg:pt-16 border-t border-white/20">
+            <div class="skills-stats grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-16 lg:mt-20 pt-12 lg:pt-16 border-t border-gray-200">
                 <div class="text-center">
-                    <div class="text-4xl font-bold text-white mb-2">8+</div>
-                    <div class="text-white/70">Programming Languages</div>
+                    <div class="text-4xl font-bold text-gray-800 mb-2">8+</div>
+                    <div class="text-gray-600">Programming Languages</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-4xl font-bold text-white mb-2">15+</div>
-                    <div class="text-white/70">Frameworks & Libraries</div>
+                    <div class="text-4xl font-bold text-gray-800 mb-2">15+</div>
+                    <div class="text-gray-600">Frameworks & Libraries</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-4xl font-bold text-white mb-2">20+</div>
-                    <div class="text-white/70">Development Tools</div>
+                    <div class="text-4xl font-bold text-gray-800 mb-2">20+</div>
+                    <div class="text-gray-600">Development Tools</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-4xl font-bold text-white mb-2">5+</div>
-                    <div class="text-white/70">Cloud Platforms</div>
+                    <div class="text-4xl font-bold text-gray-800 mb-2">5+</div>
+                    <div class="text-gray-600">Cloud Platforms</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Enhanced Contact Section -->
-    <section class="pt-32 pb-20 px-4 lg:px-8 bg-gradient-to-br from-main-color to-secondary-color" id="contact">
+    <section class="pt-32 pb-20 px-4 lg:px-8 bg-gray-50" id="contact">
         <div class="max-w-7xl mx-auto">
-            <h2 class="heading text-4xl lg:text-5xl font-bold text-center text-white mb-16">Get In <span class="text-blue-300">Touch</span></h2>
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-3 bg-main-color/15 backdrop-blur-md border border-main-color/20 rounded-2xl px-6 py-3 mb-8">
+                    <i class='bx bx-envelope text-secondary-color text-xl'></i>
+                    <span class="text-main-color font-medium">Let's Connect</span>
+                </div>
+                <h2 class="heading text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-6">Get In <span class="bg-gradient-to-r from-secondary-color to-main-color bg-clip-text text-transparent">Touch</span></h2>
+                <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                    Have a project in mind or want to discuss a collaboration? I'd love to hear from you!
+                </p>
+            </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div class="contact-info space-y-8">
-                    <div class="contact-item group flex items-center gap-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
-                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform duration-300">
+                    <div class="contact-item group flex items-center gap-6 bg-white shadow-md border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-full flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform duration-300">
                             <i class='bx bx-envelope'></i>
                         </div>
                         <div>
-                            <h4 class="text-xl font-bold text-white mb-2">Email</h4>
-                            <p class="text-white/80">henrydeiceberg@gmail.com</p>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Email</h4>
+                            <p class="text-gray-600">henrydeiceberg@gmail.com</p>
                         </div>
                     </div>
                     
-                    <div class="contact-item group flex items-center gap-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
-                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform duration-300">
+                    <div class="contact-item group flex items-center gap-6 bg-white shadow-md border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-full flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform duration-300">
                             <i class='bx bx-phone'></i>
                         </div>
                         <div>
-                            <h4 class="text-xl font-bold text-white mb-2">Phone</h4>
-                            <p class="text-white/80">+233 54 064 4684</p>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Phone</h4>
+                            <p class="text-gray-600">+233 54 064 4684</p>
                         </div>
                     </div>
                     
-                    <div class="contact-item group flex items-center gap-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
-                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform duration-300">
+                    <div class="contact-item group flex items-center gap-6 bg-white shadow-md border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-full flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform duration-300">
                             <i class='bx bx-map'></i>
                         </div>
                         <div>
-                            <h4 class="text-xl font-bold text-white mb-2">Location</h4>
-                            <p class="text-white/80">Accra, Ghana</p>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Location</h4>
+                            <p class="text-gray-600">Accra, Ghana</p>
                         </div>
                     </div>
                 </div>
 
-                <form class="contact-form bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 space-y-6" id="contactForm">
+                <form class="contact-form bg-white shadow-lg border border-gray-200 rounded-3xl p-8 space-y-6" id="contactForm">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <input type="text" name="name" placeholder="Full Name" required 
-                               class="w-full bg-white/20 border border-white/30 rounded-xl px-4 py-3 text-white placeholder-white/60 focus:bg-white/30 focus:border-white/50 focus:outline-none transition-all duration-300">
+                               class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-500 focus:bg-white focus:border-main-color focus:ring-2 focus:ring-main-color/20 focus:outline-none transition-all duration-300">
                         <input type="email" name="email" placeholder="Email Address" required
-                               class="w-full bg-white/20 border border-white/30 rounded-xl px-4 py-3 text-white placeholder-white/60 focus:bg-white/30 focus:border-white/50 focus:outline-none transition-all duration-300">
+                               class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-500 focus:bg-white focus:border-main-color focus:ring-2 focus:ring-main-color/20 focus:outline-none transition-all duration-300">
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <input type="text" name="subject" placeholder="Subject" required
-                               class="w-full bg-white/20 border border-white/30 rounded-xl px-4 py-3 text-white placeholder-white/60 focus:bg-white/30 focus:border-white/50 focus:outline-none transition-all duration-300">
+                               class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-500 focus:bg-white focus:border-main-color focus:ring-2 focus:ring-main-color/20 focus:outline-none transition-all duration-300">
                         <input type="tel" name="phone" placeholder="Phone Number"
-                               class="w-full bg-white/20 border border-white/30 rounded-xl px-4 py-3 text-white placeholder-white/60 focus:bg-white/30 focus:border-white/50 focus:outline-none transition-all duration-300">
+                               class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-500 focus:bg-white focus:border-main-color focus:ring-2 focus:ring-main-color/20 focus:outline-none transition-all duration-300">
                     </div>
                     <textarea name="message" placeholder="Your Message" rows="6" required
-                              class="w-full bg-white/20 border border-white/30 rounded-xl px-4 py-3 text-white placeholder-white/60 focus:bg-white/30 focus:border-white/50 focus:outline-none transition-all duration-300 resize-none"></textarea>
+                              class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-500 focus:bg-white focus:border-main-color focus:ring-2 focus:ring-main-color/20 focus:outline-none transition-all duration-300 resize-none"></textarea>
                     <button type="submit" 
-                            class="w-full bg-white hover:bg-gray-100 text-main-color font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                            class="w-full bg-gradient-to-r from-main-color to-secondary-color hover:from-secondary-color hover:to-main-color text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg">
                         <span class="btn-text">Send Message</span>
                         <span class="btn-loading hidden">
                             <i class='bx bx-loader-alt bx-spin'></i> Sending...
