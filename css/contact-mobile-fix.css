@@ -1,0 +1,106 @@
+/* Contact Section Mobile Fixes */
+@media (max-width: 640px) {
+    /* Ensure the contact section is displayed */
+    #contact {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        min-height: auto !important;
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+        overflow: visible !important;
+    }
+
+    /* Fix spacing issues */
+    #contact .max-w-7xl {
+        width: 100% !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    /* Improve heading display */
+    #contact .heading {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* Ensure proper form display */
+    #contact .contact-form {
+        padding: 1.5rem !important;
+        margin-top: 1.5rem !important;
+    }
+
+    /* Fix contact info items */
+    #contact .contact-info .contact-item {
+        padding: 1rem !important;
+        gap: 0.75rem !important;
+    }
+
+    #contact .contact-item .w-16 {
+        width: 3rem !important;
+        height: 3rem !important;
+    }
+
+    #contact .contact-item h4 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    #contact .contact-item p {
+        font-size: 0.9rem !important;
+    }
+
+    /* Adjust form input spacing */
+    #contact .space-y-6 {
+        margin-top: 0 !important;
+        gap: 0.75rem !important;
+    }
+
+    #contact input, 
+    #contact textarea {
+        padding: 0.75rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Make sure grid items stack properly */
+    #contact .grid-cols-1 {
+        display: grid !important;
+        gap: 0.75rem !important;
+    }
+
+    /* Fix form button */
+    #contact button[type="submit"] {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 1rem !important;
+        margin-top: 0.5rem !important;
+    }
+
+    /* Ensure form is properly sized */
+    #contact .contact-form {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Fix for z-index and positioning issues */
+    #contact {
+        position: relative !important;
+        z-index: 1 !important;
+    }
+}
+
+/* Additional fixes for larger mobiles */
+@media (min-width: 641px) and (max-width: 768px) {
+    #contact {
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+    }
+
+    #contact .heading {
+        font-size: 2.5rem !important;
+    }
+
+    #contact .contact-form {
+        padding: 2rem !important;
+    }
+}

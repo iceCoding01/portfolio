@@ -24,6 +24,13 @@
     <script>
         tailwind.config = {
             theme: {
+                screens: {
+                    'sm': '640px',
+                    'md': '768px',
+                    'lg': '1024px',
+                    'xl': '1280px',
+                    '2xl': '1536px',
+                },
                 extend: {
                     colors: {
                         'main-color': '#0F766E',      /* Deep teal - primary brand color */
@@ -75,6 +82,11 @@
     </script>
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./css/mobile-portfolio.css">
+    <link rel="stylesheet" href="./css/mobile-fix.css">
+    <link rel="stylesheet" href="./css/mobile-nav.css">
+    <link rel="stylesheet" href="./css/contact-mobile-fix.css">
+    <link rel="stylesheet" href="./css/enhanced-contact-mobile.css">
+    <link rel="stylesheet" href="./css/contact-z-index-fix.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -198,33 +210,32 @@
                     <i class='bx bx-message-rounded text-lg'></i>
                     <span>Get In Touch</span>
                 </a>
-                <button class="menu-toggle lg:hidden w-10 h-10 bg-gray-100 border-2 border-gray-200 rounded-lg flex flex-col items-center justify-center gap-1 transition-all duration-400 hover:bg-gray-200" id="menu-icon" aria-label="Toggle navigation menu">
-                    <span class="menu-line w-5 h-0.5 bg-gray-700 rounded transition-all duration-400"></span>
-                    <span class="menu-line w-5 h-0.5 bg-gray-700 rounded transition-all duration-400"></span>
-                    <span class="menu-line w-5 h-0.5 bg-gray-700 rounded transition-all duration-400"></span>
+                <button class="menu-toggle lg:hidden" id="menu-icon" aria-label="Toggle navigation menu">
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Dedicated Mobile Menu -->
+    <!-- Modern Mobile Navigation Menu -->
     <div class="mobile-menu-overlay" id="mobile-menu-overlay">
         <nav class="mobile-menu" id="mobile-menu">
-            <div class="mobile-menu-header flex items-center justify-between px-4 py-3 bg-white border-b border-gray-200">
-                <div class="mobile-menu-logo flex items-center gap-3">
-                    <div class="w-9 h-9 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-white text-lg">
+            <div class="mobile-menu-header">
+                <div class="mobile-menu-logo">
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white text-lg">
                         <i class='bx bx-terminal'></i>
                     </div>
                     <div class="text">
-                        <span class="block text-base font-bold leading-tight bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Henry Mfodwo</span>
-                        <span class="block text-xs text-gray-500 font-medium -mt-1">Software Engineer</span>
+                        <span class="block text-base font-bold leading-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Henry Mfodwo</span>
+                        <span class="block text-xs text-gray-300 font-medium -mt-1">Software Engineer</span>
                     </div>
                 </div>
-                <button class="mobile-menu-close text-gray-600 hover:text-gray-800 text-2xl transition duration-200" id="mobile-menu-close" aria-label="Close mobile menu">
+                <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close mobile menu">
                     <i class='bx bx-x'></i>
                 </button>
             </div>
-
             
             <div class="mobile-menu-content">
                 <div class="mobile-nav-links">
@@ -335,16 +346,16 @@
                 
                 <div class="mobile-menu-footer">
                     <div class="mobile-social-links">
-                        <a href="https://www.linkedin.com/in/henry-mfodwo-26904b255/" target="_blank" class="mobile-social-link">
+                        <a href="https://www.linkedin.com/in/henry-mfodwo-26904b255/" target="_blank" class="mobile-social-link" aria-label="LinkedIn">
                             <i class='bx bxl-linkedin'></i>
                         </a>
-                        <a href="https://github.com/henrymfodwo" target="_blank" class="mobile-social-link">
+                        <a href="https://github.com/henrymfodwo" target="_blank" class="mobile-social-link" aria-label="GitHub">
                             <i class='bx bxl-github'></i>
                         </a>
-                        <a href="https://twitter.com/mfodwo_1" target="_blank" class="mobile-social-link">
+                        <a href="https://twitter.com/mfodwo_1" target="_blank" class="mobile-social-link" aria-label="Twitter">
                             <i class='bx bxl-twitter'></i>
                         </a>
-                        <a href="mailto:henrydeiceberg@gmail.com" class="mobile-social-link">
+                        <a href="mailto:henrydeiceberg@gmail.com" class="mobile-social-link" aria-label="Email">
                             <i class='bx bx-envelope'></i>
                         </a>
                     </div>
@@ -366,7 +377,7 @@
     </div>
 
     <!-- Premium Hero Section -->
-    <section class="hero relative min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center overflow-hidden" id="home">
+    <section class="hero relative min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center overflow-hidden pt-16 md:pt-0" id="home">
         <div class="hero-background absolute inset-0">
             <div class="hero-pattern absolute inset-0 opacity-10 bg-gradient-radial from-main-color/20 via-transparent to-transparent"></div>
             <div class="hero-gradient absolute inset-0"></div>
@@ -374,77 +385,77 @@
         
         <div class="hero-container relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div class="hero-content space-y-6 lg:space-y-8 text-center lg:text-left">
-                <div class="hero-badge mt-8 lg:mt-16 inline-flex items-center gap-3 bg-main-color/15 backdrop-blur-md border border-main-color/20 rounded-2xl px-4 lg:px-6 py-2 lg:py-3">
-                    <i class='bx bx-badge-check text-secondary-color text-xl'></i>
-                    <span class="text-main-color font-medium">Available for new opportunities</span>
-                </div>
+                {% comment %} <div class="hero-badge mt-6 md:mt-8 lg:mt-16 inline-flex items-center gap-2 md:gap-3 bg-main-color/15 backdrop-blur-md border border-main-color/20 rounded-xl md:rounded-2xl px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3">
+                    <i class='bx bx-badge-check text-secondary-color text-lg md:text-xl'></i>
+                    <span class="text-main-color font-medium text-sm md:text-base">Available for new opportunities</span>
+                </div> {% endcomment %}
                 
-              <h1 class="hero-title space-y-2">
-                    <span class="hero-title-line block text-4xl md:text-6xl font-bold text-gray-800">Designing With Purpose.</span>
-                    <span class="hero-title-line highlight block text-4xl md:text-6xl font-bold bg-gradient-to-r from-main-color to-secondary-color bg-clip-text text-transparent">Delivering With Impact.</span>
+              <h1 class="hero-title space-y-1 md:space-y-2">
+                    <span class="hero-title-line block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">Designing With Purpose.</span>
+                    <span class="hero-title-line highlight block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-main-color to-secondary-color bg-clip-text text-transparent leading-tight">Delivering With Impact.</span>
               </h1>
 
                 
-                <p class="hero-subtitle text-2xl text-gray-700 font-medium">Software Engineer & Full-Stack Developer</p>
+                <p class="hero-subtitle text-xl sm:text-2xl text-gray-700 font-medium">Software Engineer & Full-Stack Developer</p>
                 
-                <p class="hero-description text-lg text-gray-600 leading-relaxed max-w-2xl">
+                <p class="hero-description text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl">
                     I transform complex problems into elegant, scalable solutions. 
                     Specializing in modern web applications that deliver measurable business impact 
                     and exceptional user experiences.
                 </p>
                 
-                <div class="hero-stats grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div class="stat flex items-center gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                        <div class="stat-icon w-16 h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-2xl text-white">
+                <div class="hero-stats grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+                    <div class="stat flex items-center gap-3 md:gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-3 md:p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="stat-icon w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-xl md:text-2xl text-white">
                             <i class='bx bx-rocket'></i>
                         </div>
                         <div class="stat-content">
-                            <span class="stat-number block text-2xl font-bold text-gray-800">50+</span>
-                            <span class="stat-label block text-sm text-gray-600 font-medium">Projects Delivered</span>
+                            <span class="stat-number block text-xl md:text-2xl font-bold text-gray-800">50+</span>
+                            <span class="stat-label block text-xs md:text-sm text-gray-600 font-medium">Projects Delivered</span>
                         </div>
                     </div>
-                    <div class="stat flex items-center gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                        <div class="stat-icon w-16 h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-2xl text-white">
+                    <div class="stat flex items-center gap-3 md:gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-3 md:p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="stat-icon w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-xl md:text-2xl text-white">
                             <i class='bx bx-time'></i>
                         </div>
                         <div class="stat-content">
-                            <span class="stat-number block text-2xl font-bold text-gray-800">3+</span>
-                            <span class="stat-label block text-sm text-gray-600 font-medium">Years Experience</span>
+                            <span class="stat-number block text-xl md:text-2xl font-bold text-gray-800">3+</span>
+                            <span class="stat-label block text-xs md:text-sm text-gray-600 font-medium">Years Experience</span>
                         </div>
                     </div>
-                    <div class="stat flex items-center gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                        <div class="stat-icon w-16 h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-2xl text-white">
+                    <div class="stat flex items-center gap-3 md:gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-3 md:p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="stat-icon w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-xl md:text-2xl text-white">
                             <i class='bx bx-heart'></i>
                         </div>
                         <div class="stat-content">
-                            <span class="stat-number block text-2xl font-bold text-gray-800">100%</span>
-                            <span class="stat-label block text-sm text-gray-600 font-medium">Client Satisfaction</span>
+                            <span class="stat-number block text-xl md:text-2xl font-bold text-gray-800">100%</span>
+                            <span class="stat-label block text-xs md:text-sm text-gray-600 font-medium">Client Satisfaction</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="hero-cta flex flex-col sm:flex-row gap-4">
-                    <a href="#portfolio" class="btn btn-primary inline-flex items-center gap-2 bg-gradient-to-r from-main-color to-dark-color text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:shadow-lg justify-center">
+                <div class="hero-cta flex flex-col sm:flex-row gap-3 md:gap-4">
+                    <a href="#portfolio" class="btn btn-primary inline-flex items-center gap-2 bg-gradient-to-r from-main-color to-dark-color text-white px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl font-semibold transition-all duration-300 hover:shadow-lg justify-center text-sm md:text-base">
                         <span>View My Work</span>
                         <i class='bx bx-arrow-right text-lg'></i>
                     </a>
-                    <a href="#contact" class="btn btn-secondary inline-flex items-center gap-2 bg-gray-100 text-gray-700 border-2 border-gray-300 px-6 py-3 rounded-2xl font-semibold transition-all duration-300 hover:bg-gray-200 hover:border-gray-400 justify-center">
+                    <a href="#contact" class="btn btn-secondary inline-flex items-center gap-2 bg-gray-100 text-gray-700 border-2 border-gray-300 px-4 sm:px-5 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl font-semibold transition-all duration-300 hover:bg-gray-200 hover:border-gray-400 justify-center text-sm md:text-base">
                         <span>Let's Talk</span>
                         <i class='bx bx-message-rounded text-lg'></i>
                     </a>
                 </div>
                 
-                <div class="hero-social flex flex-col sm:flex-row sm:items-center gap-4">
-                    <span class="social-label text-lg text-gray-600 font-medium">Connect with me</span>
-                    <div class="social-links flex gap-4">
-                        <a href="https://www.linkedin.com/in/henry-mfodwo-26904b255/" target="_blank" aria-label="LinkedIn" class="social-link w-12 h-12 bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-main-color transition-all duration-300">
-                            <i class='bx bxl-linkedin text-xl'></i>
+                <div class="hero-social flex flex-col sm:flex-row sm:items-center gap-3 md:gap-4">
+                    <span class="social-label text-base md:text-lg text-gray-600 font-medium">Connect with me</span>
+                    <div class="social-links flex gap-3 md:gap-4">
+                        <a href="https://www.linkedin.com/in/henry-mfodwo-26904b255/" target="_blank" aria-label="LinkedIn" class="social-link w-10 h-10 md:w-12 md:h-12 bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-main-color transition-all duration-300">
+                            <i class='bx bxl-linkedin text-lg md:text-xl'></i>
                         </a>
                         <a href="https://github.com/henrymfodwo" target="_blank" aria-label="GitHub" class="social-link w-12 h-12 bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-main-color transition-all duration-300">
                             <i class='bx bxl-github text-xl'></i>
                         </a>
-                        <a href="https://twitter.com/mfodwo_1" target="_blank" aria-label="Twitter" class="social-link w-12 h-12 bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-main-color transition-all duration-300">
-                            <i class='bx bxl-twitter text-xl'></i>
+                        <a href="https://twitter.com/mfodwo_1" target="_blank" aria-label="Twitter" class="social-link w-10 h-10 md:w-12 md:h-12 bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-main-color transition-all duration-300">
+                            <i class='bx bxl-twitter text-lg md:text-xl'></i>
                         </a>
                         <a href="mailto:henrydeiceberg@gmail.com" aria-label="Email" class="social-link w-12 h-12 bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-main-color transition-all duration-300">
                             <i class='bx bx-envelope text-xl'></i>
@@ -453,26 +464,26 @@
                 </div>
             </div>
             
-            <div class="hero-visual relative">
+            <div class="hero-visual relative mt-4 md:mt-0">
                 <div class="hero-image-container relative">
-                    <div class="hero-image-frame w-80 h-80 mx-auto bg-gradient-to-br from-main-color/20 to-secondary-color/20 p-2 rounded-full backdrop-blur-md border border-gray-200 shadow-xl">
+                    <div class="hero-image-frame w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 mx-auto bg-gradient-to-br from-main-color/20 to-secondary-color/20 p-2 rounded-full backdrop-blur-md border border-gray-200 shadow-xl">
                         <img src="./img/afr_wear.jpg" alt="Henry Mfodwo - Software Engineer" class="hero-image w-full h-full object-cover rounded-full border-4 border-white" />
                     </div>
                 </div>
                 
-                <div class="hero-tech-stack flex justify-center gap-4 mt-8">
-                    <div class="tech-item flex items-center gap-2 bg-white shadow-md border border-gray-200 rounded-xl px-4 py-2 hover:shadow-lg transition-all duration-300">
-                        <i class='bx bxl-django text-secondary-color text-xl'></i>
-                        <span class="text-gray-700 font-medium">Django</span>
+                <div class="hero-tech-stack flex flex-wrap justify-center gap-2 md:gap-4 mt-4 md:mt-8">
+                    <div class="tech-item flex items-center gap-1 md:gap-2 bg-white shadow-md border border-gray-200 rounded-xl px-2 md:px-4 py-1 md:py-2 hover:shadow-lg transition-all duration-300">
+                        <i class='bx bxl-django text-secondary-color text-lg md:text-xl'></i>
+                        <span class="text-gray-700 font-medium text-xs md:text-sm">Django</span>
                     </div>
-                    <div class="tech-item flex items-center gap-2 bg-white shadow-md border border-gray-200 rounded-xl px-4 py-2 hover:shadow-lg transition-all duration-300">
-                        <i class='bx bxl-javascript text-yellow-500 text-xl'></i>
-                        <span class="text-gray-700 font-medium">JavaScript</span>
+                    <div class="tech-item flex items-center gap-1 md:gap-2 bg-white shadow-md border border-gray-200 rounded-xl px-2 md:px-4 py-1 md:py-2 hover:shadow-lg transition-all duration-300">
+                        <i class='bx bxl-javascript text-yellow-500 text-lg md:text-xl'></i>
+                        <span class="text-gray-700 font-medium text-xs md:text-sm">JavaScript</span>
                     </div>
                  
-                    <div class="tech-item flex items-center gap-2 bg-white shadow-md border border-gray-200 rounded-xl px-4 py-2 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                        <i class='bx bxl-aws text-cyan-500 text-xl'></i>
-                        <span class="text-gray-700 font-medium">AWS</span>
+                    <div class="tech-item flex items-center gap-1 md:gap-2 bg-white shadow-md border border-gray-200 rounded-xl px-2 md:px-4 py-1 md:py-2 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <i class='bx bxl-aws text-cyan-500 text-lg md:text-xl'></i>
+                        <span class="text-gray-700 font-medium text-xs md:text-sm">AWS</span>
                     </div>
                 </div>
             </div>
@@ -686,22 +697,22 @@
             </div>
 
             <!-- Trust Indicators -->
-            <div class="mt-12 md:mt-20 pt-10 md:pt-16 border-t border-gray-200">
-                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-                    <div class="text-center bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 hover:border-gray-200 transition-all duration-300 hover:shadow-md">
-                        <div class="text-3xl md:text-4xl font-bold text-gray-800 mb-1">50+</div>
+            <div class="mt-8 md:mt-12 lg:mt-20 pt-6 md:pt-10 lg:pt-16 border-t border-gray-200">
+                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
+                    <div class="text-center bg-white p-2 md:p-3 lg:p-4 rounded-xl shadow-sm border border-gray-100 hover:border-gray-200 transition-all duration-300 hover:shadow-md">
+                        <div class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-0.5 md:mb-1">50+</div>
                         <div class="text-xs md:text-sm lg:text-base text-gray-600">Projects Delivered</div>
                     </div>
-                    <div class="text-center bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 hover:border-gray-200 transition-all duration-300 hover:shadow-md">
-                        <div class="text-3xl md:text-4xl font-bold text-gray-800 mb-1">3+</div>
+                    <div class="text-center bg-white p-2 md:p-3 lg:p-4 rounded-xl shadow-sm border border-gray-100 hover:border-gray-200 transition-all duration-300 hover:shadow-md">
+                        <div class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-0.5 md:mb-1">3+</div>
                         <div class="text-xs md:text-sm lg:text-base text-gray-600">Years Experience</div>
                     </div>
-                    <div class="text-center bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 hover:border-gray-200 transition-all duration-300 hover:shadow-md">
-                        <div class="text-3xl md:text-4xl font-bold text-gray-800 mb-1">100%</div>
+                    <div class="text-center bg-white p-2 md:p-3 lg:p-4 rounded-xl shadow-sm border border-gray-100 hover:border-gray-200 transition-all duration-300 hover:shadow-md">
+                        <div class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-0.5 md:mb-1">100%</div>
                         <div class="text-xs md:text-sm lg:text-base text-gray-600">Client Satisfaction</div>
                     </div>
-                    <div class="text-center bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 hover:border-gray-200 transition-all duration-300 hover:shadow-md">
-                        <div class="text-3xl md:text-4xl font-bold text-gray-800 mb-1">24/7</div>
+                    <div class="text-center bg-white p-2 md:p-3 lg:p-4 rounded-xl shadow-sm border border-gray-100 hover:border-gray-200 transition-all duration-300 hover:shadow-md">
+                        <div class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-0.5 md:mb-1">24/7</div>
                         <div class="text-xs md:text-sm lg:text-base text-gray-600">Support Available</div>
                     </div>
                 </div>
@@ -1236,5 +1247,9 @@
     <!--typed js-->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="./index.js"></script>
+    <script src="./js/mobile-nav.js"></script>
+    <script src="./js/contact-fix.js"></script>
+    <script src="./js/enhanced-contact-fix.js"></script>
+    <script src="./js/contact-link-fix.js"></script>
 </body>
 </html> 

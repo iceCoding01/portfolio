@@ -1,0 +1,158 @@
+/* Enhanced Contact Section Mobile Fixes */
+
+/* Base contact section visibility fixes */
+#contact {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 5 !important;
+    min-height: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    transform: none !important;
+    clip-path: none !important;
+    pointer-events: auto !important;
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 768px) {
+    /* Contact section structure */
+    #contact {
+        padding-top: 4rem !important;
+        padding-bottom: 3rem !important;
+    }
+    
+    #contact .max-w-7xl {
+        width: 100% !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    /* Heading styles */
+    #contact .heading {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    #contact p {
+        font-size: 1rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    /* Fix grid layout for main content */
+    #contact .grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    /* Contact info section */
+    #contact .contact-info {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    #contact .contact-item {
+        padding: 1rem !important;
+        gap: 0.75rem !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    
+    #contact .contact-item .w-16 {
+        width: 3rem !important;
+        height: 3rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    #contact .contact-item h4 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    #contact .contact-item p {
+        font-size: 0.9rem !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Contact form */
+    #contact .contact-form {
+        padding: 1.5rem !important;
+        border-radius: 1rem !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Form grid layout */
+    #contact .contact-form .grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+    }
+    
+    /* Form inputs */
+    #contact input, 
+    #contact textarea {
+        width: 100% !important;
+        padding: 0.75rem !important;
+        font-size: 0.9rem !important;
+        margin-bottom: 0.5rem !important;
+        border-radius: 0.5rem !important;
+    }
+    
+    /* Form spacing */
+    #contact .space-y-6 {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Submit button */
+    #contact button[type="submit"] {
+        width: 100% !important;
+        padding: 0.75rem !important;
+        margin-top: 0.75rem !important;
+        font-size: 1rem !important;
+        border-radius: 0.5rem !important;
+    }
+}
+
+/* Larger mobile devices (480px - 768px) */
+@media (min-width: 480px) and (max-width: 768px) {
+    #contact .contact-form {
+        padding: 1.75rem !important;
+    }
+    
+    #contact .heading {
+        font-size: 2.25rem !important;
+    }
+    
+    /* Adjust form grid for larger mobile screens */
+    #contact .contact-form .grid:first-child {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Fix for fixed header overlap */
+@media (max-width: 768px) {
+    #contact {
+        scroll-margin-top: 70px !important;
+    }
+}
+
+/* Fix for iOS Safari specific issues */
+@supports (-webkit-touch-callout: none) {
+    #contact {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    
+    #contact input,
+    #contact textarea {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+}

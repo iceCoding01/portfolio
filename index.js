@@ -41,7 +41,49 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+    
+    // Contact section visibility fix
+    ensureContactSectionVisibility();
 });
+
+// Function to ensure contact section is visible
+function ensureContactSectionVisibility() {
+    const contactSection = document.getElementById('contact');
+    if (!contactSection) return;
+    
+    // Always ensure the contact section is visible
+    contactSection.style.display = 'block';
+    contactSection.style.visibility = 'visible';
+    contactSection.style.opacity = '1';
+    contactSection.style.zIndex = '5';
+    
+    // If URL contains hash to contact section, scroll to it
+    if (window.location.hash === '#contact') {
+        setTimeout(() => {
+            contactSection.scrollIntoView({behavior: 'smooth'});
+        }, 500);
+    }
+    
+    // Run again after short delay
+    setTimeout(() => {
+        // Ensure contact section is in the right place in DOM
+        const footer = document.querySelector('footer');
+        if (footer && footer.parentNode) {
+            footer.parentNode.insertBefore(contactSection, footer);
+        }
+        
+        // Apply strong overrides for mobile devices
+        if (window.innerWidth <= 768) {
+            contactSection.setAttribute('style', 
+                'display: block !important;' +
+                'visibility: visible !important;' +
+                'opacity: 1 !important;' +
+                'z-index: 50 !important;' +
+                'position: relative !important;'
+            );
+        }
+    }, 1000);
+}
 
 let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
@@ -748,4 +790,29 @@ window.addEventListener('resize', () => {
     setTimeout(() => {
         forceNavbarDisplay();
     }, 100);
+});
+
+// Make sure contact section is visible on page load and after delays
+window.addEventListener('load', function() {
+    ensureContactSectionVisibility();
+    
+    // Run again after short delays
+    setTimeout(ensureContactSectionVisibility, 500);
+    setTimeout(ensureContactSectionVisibility, 1500);
+    setTimeout(ensureContactSectionVisibility, 3000);
+    
+    // Run when scrolling near the contact section
+    window.addEventListener('scroll', function() {
+        const contactSection = document.getElementById('contact');
+        if (!contactSection) return;
+        
+        // Check if we're near the contact section
+        const rect = contactSection.getBoundingClientRect();
+        const viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+        
+        // If contact section is within 1000px of viewport
+        if (!(rect.bottom < 0 || rect.top - viewHeight >= 1000)) {
+            ensureContactSectionVisibility();
+        }
+    });
 });

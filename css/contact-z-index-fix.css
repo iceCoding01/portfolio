@@ -1,0 +1,76 @@
+/* Contact Section Z-Index Fixes */
+
+/* Ensure contact section has appropriate stacking context */
+#contact {
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* Fix for possible z-index conflicts */
+#contact * {
+    z-index: auto;
+}
+
+/* Set explicit z-index for key elements */
+#contact .max-w-7xl {
+    position: relative;
+    z-index: 2;
+}
+
+#contact .contact-form {
+    position: relative;
+    z-index: 3;
+}
+
+#contact .contact-info {
+    position: relative;
+    z-index: 3;
+}
+
+/* Prevent other sections from creating z-index issues */
+section:not(#contact) {
+    z-index: 1;
+}
+
+/* Ensure footer doesn't overlap */
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Additional fixes for mobile */
+@media (max-width: 768px) {
+    /* Force all mobile menu overlays to have higher z-index */
+    .mobile-menu-overlay {
+        z-index: 9999 !important;
+    }
+    
+    .mobile-menu {
+        z-index: 10000 !important;
+    }
+    
+    /* Keep header above all except mobile menu */
+    .header {
+        z-index: 9998 !important;
+    }
+    
+    /* Force contact section visibility */
+    #contact {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Fix common transform issues */
+    #contact {
+        transform: none !important;
+        -webkit-transform: none !important;
+        -ms-transform: none !important;
+    }
+    
+    /* Fix clip-path issues */
+    #contact {
+        clip-path: none !important;
+        -webkit-clip-path: none !important;
+    }
+}
