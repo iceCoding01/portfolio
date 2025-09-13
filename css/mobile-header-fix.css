@@ -1,0 +1,76 @@
+/* Mobile Header Fix CSS - Only applies to mobile devices */
+
+@media (max-width: 767px) {
+    .header {
+        background-color: rgba(15, 23, 42, 0.85) !important;
+        backdrop-filter: blur(10px) !important;
+    }
+    
+    .header .logo-text .logo-name {
+        color: white !important;
+    }
+    
+    .header .logo-text .logo-tagline {
+        color: white !important;
+    }
+    
+    .header .menu-toggle {
+        background-color: rgba(30, 41, 59, 0.5) !important;
+    }
+    
+    .header .menu-line {
+        background-color: white !important;
+    }
+    
+    .navbar {
+        background-color: rgba(30, 41, 59, 0.5) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .navbar .nav-link {
+        color: white !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .header {
+        background-color: white !important;
+        backdrop-filter: none !important;
+        border-bottom: 1px solid #e5e7eb !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    }
+    
+    .header .logo-text .logo-tagline {
+        color: #4b5563 !important;
+    }
+    
+    .header .menu-toggle {
+        background-color: #f3f4f6 !important;
+    }
+    
+    .header .menu-line {
+        background-color: #1f2937 !important;
+    }
+    
+    .navbar {
+        background-color: #f9fafb !important;
+        border: 1px solid #e5e7eb !important;
+    }
+    
+    .navbar .nav-link {
+        color: #374151 !important;
+    }
+    
+    .navbar .nav-link:hover {
+        color: var(--main-color) !important;
+    }
+    
+    .navbar .nav-link.active {
+        background: linear-gradient(45deg, var(--main-color), var(--secondary-color)) !important;
+        color: white !important;
+    }
+    
+    .navbar .nav-link.active i {
+        color: white !important;
+    }
+}

@@ -21,6 +21,8 @@
     <script src="./js/portfolio-filter.js"></script>
     <!-- Portfolio touch functionality for mobile -->
     <script src="./js/portfolio-touch.js"></script>
+    <!-- Disable subtitle animation -->
+    <script src="./js/disable-subtitle-animation.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -87,6 +89,7 @@
     <link rel="stylesheet" href="./css/contact-mobile-fix.css">
     <link rel="stylesheet" href="./css/enhanced-contact-mobile.css">
     <link rel="stylesheet" href="./css/contact-z-index-fix.css">
+    <link rel="stylesheet" href="./css/mobile-header-fix.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -99,37 +102,64 @@
         /* Additional mobile optimizations for premium experience */
         @media (max-width: 640px) {
             .hero-title {
-                font-size: 2.5rem !important;
-                line-height: 1.1;
+                font-size: 2.8rem !important;
+                line-height: 1.2;
+                margin-bottom: 1rem;
             }
             
             .hero-subtitle {
-                font-size: 1.25rem !important;
+                font-size: 1.4rem !important;
                 line-height: 1.4;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-description {
+                font-size: 1.1rem !important;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
             }
             
             .section-title {
-                font-size: 2.25rem !important;
+                font-size: 2.4rem !important;
                 line-height: 1.2;
+                margin-bottom: 1.2rem;
             }
             
             .card-padding {
-                padding: 1.5rem !important;
+                padding: 1.75rem !important;
             }
             
             .metric-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 1rem !important;
+                gap: 1.25rem !important;
             }
             
             .tools-grid-mobile {
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 1rem !important;
+                gap: 1.25rem !important;
             }
             
             .navigation-mobile {
                 flex-direction: column;
-                gap: 0.5rem !important;
+                gap: 0.75rem !important;
+            }
+            
+            /* Improve button and interaction elements */
+            button, a.btn, .cta-button {
+                padding: 0.75rem 1.5rem !important;
+                font-size: 1.1rem !important;
+            }
+            
+            /* Improve spacing between sections */
+            section {
+                padding-top: 4rem !important;
+                padding-bottom: 4rem !important;
+            }
+            
+            /* Improve text readability */
+            p {
+                font-size: 1.05rem !important;
+                line-height: 1.7 !important;
             }
         }
         
@@ -154,11 +184,54 @@
             }
             
             .hero-container {
-                padding-top: 2rem;
+                padding-top: 2.5rem;
+                width: 100%;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
             }
             
             .hero-content {
                 padding-top: 0 !important;
+                margin-bottom: 2rem;
+            }
+            
+            /* Improved hero image sizing */
+            .hero-image-frame {
+                width: 85% !important;
+                height: auto !important;
+                aspect-ratio: 1 / 1;
+                margin: 0 auto;
+            }
+            
+            /* Adjust stat cards for better display */
+            .stat {
+                padding: 1rem !important;
+            }
+            
+            .stat-icon {
+                width: 3.5rem !important;
+                height: 3.5rem !important;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem !important;
+            }
+            
+            /* Better card alignment */
+            .card, .skill-card {
+                padding: 1.5rem !important;
+                margin-bottom: 1.5rem;
+            }
+            
+            /* Improve mobile navigation spacing */
+            .mobile-nav-link {
+                padding: 1rem 1.25rem !important;
+            }
+            
+            /* Ensure proper spacing for testimonials */
+            .testimonial-card {
+                padding: 1.75rem !important;
+                margin-bottom: 2rem;
             }
         }
         h1, h2, h3, h4, h5, h6 {
@@ -182,6 +255,55 @@
             
             .group:hover .group-hover\:scale-110 {
                 transform: scale(1.05);
+            }
+        }
+        
+        /* Additional mobile responsive adjustments */
+        @media (max-width: 480px) {
+            /* Make content containers full width with proper padding */
+            .container, .max-w-7xl {
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+            }
+            
+            /* Ensure images are properly sized */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            /* Improve spacing in grid layouts */
+            .grid {
+                grid-gap: 1.5rem !important;
+            }
+            
+            /* Better spacing for lists and content blocks */
+            ul, ol {
+                padding-left: 1.5rem;
+            }
+            
+            li {
+                margin-bottom: 0.75rem;
+                font-size: 1.05rem;
+            }
+            
+            /* Ensure buttons are properly sized and spaced */
+            .btn, button, a.cta-button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 3rem;
+            }
+            
+            /* Improve form elements */
+            input, textarea {
+                font-size: 1.1rem !important;
+                padding: 0.75rem !important;
+            }
+            
+            /* Better spacing for icons */
+            i.bx {
+                font-size: 1.4em;
             }
         }
 
@@ -209,17 +331,58 @@
             position: fixed;
             top: 0;
             right: 0;
-            width: 320px;
-            max-width: 100%;
+            width: 85%;
+            max-width: 360px;
             height: 100%;
             background-color: white;
             transform: translateX(100%);
             transition: transform 0.3s ease;
             overflow-y: auto;
+            padding: 1.5rem 0;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         }
         
         .mobile-menu.active {
             transform: translateX(0);
+        }
+        
+        /* Mobile menu content improvements */
+        .mobile-menu-header {
+            padding: 0 1.5rem 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .mobile-menu-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .mobile-menu-close {
+            padding: 0.75rem !important;
+            font-size: 1.5rem !important;
+        }
+        
+        .mobile-nav-link {
+            padding: 1rem 1.5rem !important;
+            font-size: 1.1rem !important;
+        }
+        
+        .mobile-nav-title {
+            font-size: 1.1rem !important;
+            font-weight: 600;
+        }
+        
+        .mobile-nav-desc {
+            font-size: 0.9rem !important;
+            opacity: 0.75;
+        }
+        
+        .mobile-menu-footer {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         .header {
@@ -229,7 +392,7 @@
     <title>Henry Mfodwo - Software Engineer & Full-Stack Developer</title>
 </head>
 <body>
-    <header class="header fixed top-0 left-0 w-full bg-white shadow-md border-b border-gray-200 transition-all duration-500">
+    <header class="header fixed top-0 left-0 w-full py-4 z-1000 ">
         <div class="header-container flex items-center justify-between py-3 px-8 max-w-7xl mx-auto">
             <div class="logo-container">
                 <a class="logo flex items-center gap-3 text-decoration-none group transition-all duration-300 hover:scale-105" href="#home">
@@ -237,47 +400,48 @@
                         <i class='bx bx-terminal'></i>
                     </div>
                     <div class="logo-text">
-                        <span class="logo-name block text-lg font-bold leading-tight text-white bg-clip-text text-transparent">Henry Mfodwo</span>
-                        <span class="logo-tagline block text-sm text-gray-500 font-medium">Software Engineer</span>
+                        <span class="logo-name block text-lg font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-main-color to-secondary-color">Henry Mfodwo</span>
+                        <span class="logo-tagline block text-sm font-medium">Software Engineer</span>
                     </div>
                 </a>
             </div>
             
-            <nav class="navbar hidden lg:flex items-center gap-6 bg-gray-50 border border-gray-200 rounded-2xl py-1.5 px-4">
-                <a href="#home" class="nav-link flex items-center gap-2 text-gray-700 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 hover:text-main-color active bg-gradient-to-r from-main-color to-secondary-color">
+            <nav class="navbar hidden lg:flex items-center gap-6 rounded-2xl py-1.5 px-4">
+                <a href="#home" class="nav-link flex items-center gap-2 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 active bg-gradient-to-r from-main-color to-secondary-color">
                     <i class='bx bx-home-alt text-lg text-white'></i>
                     <span class="text-white">Home</span>
                 </a>
                 
-                <a href="#about" class="nav-link flex items-center gap-2 text-gray-700 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 hover:text-main-color">
+                <a href="#about" class="nav-link flex items-center gap-2 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 hover:text-main-color">
                     <i class='bx bx-user text-lg'></i>
                     <span>About</span>
                 </a>
-                <a href="#myskills" class="nav-link flex items-center gap-2 text-gray-700 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 hover:text-main-color">
+                <a href="#myskills" class="nav-link flex items-center gap-2 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 hover:text-main-color">
                     <i class='bx bx-brain text-lg'></i>
                     <span>Skills</span>
                 </a>
                 
-                <a href="#blog" class="nav-link flex items-center gap-2 text-gray-700 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 hover:text-main-color">
+                <a href="#blog" class="nav-link flex items-center gap-2 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 hover:text-main-color">
                     <i class='bx bx-book-open text-lg'></i>
                     <span>Blog</span>
                 </a>
                 
-                <a href="#contact" class="nav-link flex items-center gap-2 text-gray-700 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 hover:text-main-color">
+                <a href="#contact" class="nav-link flex items-center gap-2 no-underline text-base font-semibold px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-main-color/25 hover:to-secondary-color/15 hover:text-main-color">
                     <i class='bx bx-envelope text-lg'></i>
                     <span>Contact</span>
                 </a>
             </nav>
             
-            <div class="header-actions flex items-center gap-4">
+            <div class="header-actions flex items-center gap-4 ">
                 <a href="#contact" class="cta-button hidden md:flex items-center gap-2 bg-gradient-to-r from-main-color to-secondary-color text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-400 hover:shadow-lg">
                     <i class='bx bx-message-rounded text-lg'></i>
                     <span>Get In Touch</span>
                 </a>
-                <button class="menu-toggle lg:hidden" id="menu-icon" aria-label="Toggle navigation menu">
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
+                <button class="menu-toggle lg:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg" id="menu-icon" aria-label="Toggle navigation menu">
+                    <span class="menu-line block w-6 h-0.5 mb-1.5 transition-all duration-300"></span>
+                    <span class="menu-line block w-6 h-0.5 mb-1.5 transition-all duration-300"></span>
+                    <span class="menu-line block w-6 h-0.5 transition-all duration-300"></span>
+                   
                 </button>
             </div>
         </div>
@@ -303,10 +467,10 @@
             
             <div class="mobile-menu-content">
                 <div class="mobile-nav-links">
-                    <!-- Emergency close button -->
+                    <!-- Emergency close button 
                     <button id="emergency-close-btn" onclick="window.closeMobileMenuManually()" style="background: #ff3333; color: white; padding: 8px 15px; margin: 10px; border: none; border-radius: 5px; font-weight: bold; z-index: 100002 !important; position: relative !important;">
                         CLOSE MENU
-                    </button>
+                    </button> -->
                     <a href="#home" class="mobile-nav-link active" data-section="home">
                         <div class="mobile-nav-icon">
                             <i class='bx bx-home-alt'></i>
@@ -461,7 +625,7 @@
               </h1>
 
                 
-                <p class="hero-subtitle text-xl sm:text-2xl text-gray-700 font-medium">Software Engineer & Full-Stack Developer</p>
+                <p class="hero-subtitle text-xl sm:text-2xl text-gray-700 font-medium" style="opacity: 1; transform: none; transition: none; animation: none;">Software Engineer & Full-Stack Developer</p>
                 
                 <p class="hero-description text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl">
                     I transform complex problems into elegant, scalable solutions. 
@@ -470,51 +634,51 @@
                 </p>
                 
                 <div class="hero-stats grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-                    <div class="stat flex items-center gap-3 md:gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-3 md:p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                        <div class="stat-icon w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-xl md:text-2xl text-white">
+                    <div class="stat flex items-center gap-3 md:gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="stat-icon w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-xl md:text-2xl text-white">
                             <i class='bx bx-rocket'></i>
                         </div>
                         <div class="stat-content">
                             <span class="stat-number block text-xl md:text-2xl font-bold text-gray-800">50+</span>
-                            <span class="stat-label block text-xs md:text-sm text-gray-600 font-medium">Projects Delivered</span>
+                            <span class="stat-label block text-sm text-gray-600 font-medium">Projects Delivered</span>
                         </div>
                     </div>
-                    <div class="stat flex items-center gap-3 md:gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-3 md:p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                        <div class="stat-icon w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-xl md:text-2xl text-white">
+                    <div class="stat flex items-center gap-3 md:gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="stat-icon w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-xl md:text-2xl text-white">
                             <i class='bx bx-time'></i>
                         </div>
                         <div class="stat-content">
                             <span class="stat-number block text-xl md:text-2xl font-bold text-gray-800">3+</span>
-                            <span class="stat-label block text-xs md:text-sm text-gray-600 font-medium">Years Experience</span>
+                            <span class="stat-label block text-sm text-gray-600 font-medium">Years Experience</span>
                         </div>
                     </div>
-                    <div class="stat flex items-center gap-3 md:gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-3 md:p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                        <div class="stat-icon w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-xl md:text-2xl text-white">
+                    <div class="stat flex items-center gap-3 md:gap-4 bg-white shadow-md border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="stat-icon w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-main-color to-secondary-color rounded-xl flex items-center justify-center text-xl md:text-2xl text-white">
                             <i class='bx bx-heart'></i>
                         </div>
                         <div class="stat-content">
                             <span class="stat-number block text-xl md:text-2xl font-bold text-gray-800">100%</span>
-                            <span class="stat-label block text-xs md:text-sm text-gray-600 font-medium">Client Satisfaction</span>
+                            <span class="stat-label block text-sm text-gray-600 font-medium">Client Satisfaction</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="hero-cta flex flex-col sm:flex-row gap-3 md:gap-4">
-                    <a href="#portfolio" class="btn btn-primary inline-flex items-center gap-2 bg-gradient-to-r from-main-color to-dark-color text-white px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl font-semibold transition-all duration-300 hover:shadow-lg justify-center text-sm md:text-base">
+                <div class="hero-cta flex flex-col sm:flex-row gap-4 my-6">
+                    <a href="#portfolio" class="btn btn-primary inline-flex items-center gap-2 bg-gradient-to-r from-main-color to-dark-color text-white px-6 py-4 rounded-xl md:rounded-2xl font-semibold transition-all duration-300 hover:shadow-lg justify-center text-base">
                         <span>View My Work</span>
-                        <i class='bx bx-arrow-right text-lg'></i>
+                        <i class='bx bx-arrow-right text-xl'></i>
                     </a>
-                    <a href="#contact" class="btn btn-secondary inline-flex items-center gap-2 bg-gray-100 text-gray-700 border-2 border-gray-300 px-4 sm:px-5 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl font-semibold transition-all duration-300 hover:bg-gray-200 hover:border-gray-400 justify-center text-sm md:text-base">
+                    <a href="#contact" class="btn btn-secondary inline-flex items-center gap-2 bg-gray-100 text-gray-700 border-2 border-gray-300 px-6 py-4 rounded-xl md:rounded-2xl font-semibold transition-all duration-300 hover:bg-gray-200 hover:border-gray-400 justify-center text-base">
                         <span>Let's Talk</span>
-                        <i class='bx bx-message-rounded text-lg'></i>
+                        <i class='bx bx-message-rounded text-xl'></i>
                     </a>
                 </div>
                 
-                <div class="hero-social flex flex-col sm:flex-row sm:items-center gap-3 md:gap-4">
-                    <span class="social-label text-base md:text-lg text-gray-600 font-medium">Connect with me</span>
-                    <div class="social-links flex gap-3 md:gap-4">
-                        <a href="https://www.linkedin.com/in/henry-mfodwo-26904b255/" target="_blank" aria-label="LinkedIn" class="social-link w-10 h-10 md:w-12 md:h-12 bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-main-color transition-all duration-300">
-                            <i class='bx bxl-linkedin text-lg md:text-xl'></i>
+                <div class="hero-social flex flex-col sm:flex-row sm:items-center gap-4">
+                    <span class="social-label text-lg text-gray-600 font-medium">Connect with me</span>
+                    <div class="social-links flex gap-4">
+                        <a href="https://www.linkedin.com/in/henry-mfodwo-26904b255/" target="_blank" aria-label="LinkedIn" class="social-link w-12 h-12 bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-main-color transition-all duration-300">
+                            <i class='bx bxl-linkedin text-xl'></i>
                         </a>
                         <a href="https://github.com/henrymfodwo" target="_blank" aria-label="GitHub" class="social-link w-12 h-12 bg-white shadow-md hover:shadow-lg border border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-main-color transition-all duration-300">
                             <i class='bx bxl-github text-xl'></i>

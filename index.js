@@ -670,7 +670,8 @@ ScrollReveal({
     delay: 200
 });
 
-ScrollReveal().reveal('.hero-content, .heading', { origin: 'top' });
+// Explicitly exclude hero-subtitle from animations
+ScrollReveal().reveal('.hero-content:not(.hero-subtitle), .heading', { origin: 'top' });
 ScrollReveal().reveal('.hero-image, .services-container, .portfolio-box, .contact-form', { origin: 'bottom' });
 ScrollReveal().reveal('.about-content, .testimonial-card', { origin: 'left' });
 ScrollReveal().reveal('.about-img, .contact-info', { origin: 'right' });
