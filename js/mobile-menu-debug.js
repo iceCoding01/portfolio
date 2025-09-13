@@ -69,28 +69,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add additional click handler to menu icon
     if (menuIcon) {
+        // First, remove any existing click handlers
+        const oldMenuIcon = menuIcon;
+        const newMenuIcon = oldMenuIcon.cloneNode(true);
+        oldMenuIcon.parentNode.replaceChild(newMenuIcon, oldMenuIcon);
+        
+        // Reassign the variable to the new element
+        menuIcon = document.querySelector('#menu-icon');
+        
+        // Add the event listener
         menuIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             console.log('Menu icon clicked (debug)');
             
-            // Manually toggle classes
-            if (mobileMenuOverlay) {
-                mobileMenuOverlay.classList.add('active');
-                console.log('Added active class to overlay (debug)');
-                
-                // Force styles
-                mobileMenuOverlay.style.opacity = '1';
-                mobileMenuOverlay.style.visibility = 'visible';
-                mobileMenuOverlay.style.zIndex = '99999';
-            }
-            
-            if (mobileMenu) {
-                mobileMenu.classList.add('active');
-                console.log('Added active class to menu (debug)');
-                
-                // Force styles
-                mobileMenu.style.transform = 'translateX(0)';
-                mobileMenu.style.zIndex = '100000';
-            }
+            // Call the global function to open the menu
+            openMobileMenuManually();
         });
     }
     
@@ -166,16 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Overlay clicked (debug)');
                 closeMobileMenuManually();
             }
-        });
-    }
-    
-    // Add event listener to the emergency close button
-    const emergencyCloseBtn = document.getElementById('emergency-close-btn');
-    if (emergencyCloseBtn) {
-        console.log('Adding click handler to emergency close button (debug)');
-        emergencyCloseBtn.addEventListener('click', function() {
-            console.log('Emergency close button clicked (debug)');
-            closeMobileMenuManually();
         });
     }
     
